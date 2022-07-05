@@ -1,0 +1,50 @@
+@font-face {
+    font-family: monserrat-semibold;
+    src: url(../static/fonts/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: monserrat-regular;
+    src: url(../static/fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: monserrat-thin;
+    src: url(../static/fonts/Montserrat-Thin.ttf);
+}
+
+@font-face {
+    font-family: monserrat-medium;
+    src: url(../static/fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: monserrat-bold;
+    src: url(../static/fonts/Montserrat-Bold.ttf);
+}
+
+.main {
+    padding: 30px;
+    text-align: center;
+    font-family: monserrat-semibold;
+}
+
+.wow {
+    text-align: left;
+}
+
+.registroM {
+    font-size: 25px;
+    color: rgb(90, 90, 212)
+}
+
+@media screen and (max-width: 768px){
+    
+    .main {
+        padding: 40px;
+    }
+
+    .wow {
+        text-align: left;
+    }
+}

@@ -1,0 +1,117 @@
+@font-face {
+    font-family: monserrat-semibold;
+    src: url(../static/fonts/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: monserrat-regular;
+    src: url(../static/fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: monserrat-thin;
+    src: url(../static/fonts/Montserrat-Thin.ttf);
+}
+
+@font-face {
+    font-family: monserrat-medium;
+    src: url(../static/fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: monserrat-bold;
+    src: url(../static/fonts/Montserrat-Bold.ttf);
+}
+
+.reg2 {
+    text-align: center;
+    color: #231e6c;
+}
+
+.reg {
+    text-align: left;
+    color: #231e6c;
+}
+
+.texte {
+    font-size: 22px;
+    font-family: monserrat-regular;
+}
+
+.txt {
+    color: #00a6e8;
+}
+
+.etapa2 {
+    color:#231e6c;
+}
+
+.mensaje{
+    font-family: monserrat-semibold;
+    color: red;
+}
+
+.main {
+    padding: 30px;
+    font-family: monserrat-regular;
+}
+
+.txt2 {
+    font-family: monserrat-semibold;
+}
+
+.txt1 {
+    font-family: monserrat-medium;
+    text-align: center;
+}
+
+.txt3 {
+    font-family: monserrat-semibold;
+    font-size: 25px;
+}
+
+.wow {
+    padding: 15px;
+    font-size: 22px;
+}
+
+.btns {
+    padding: 10px;
+    text-align: center;
+}
+
+.opo {
+    color: #231e6c;
+    text-align: right;
+}
+
+.clave {
+    color: #231e6c;
+    font-size: 22px;
+    font-family: monserrat-bold;
+}
+
+.creci {
+    color: #00a6e8;
+    text-align: left;
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    .main {
+        text-align: center;
+    }
+    .wow {
+        text-align: left;
+        padding: 10px;
+    }
+    .opo {
+        text-align: center;
+    }
+    
+    .creci {
+        text-align: center;
+    }
+}
