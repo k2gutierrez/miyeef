@@ -13,19 +13,49 @@
     <title>Home</title>
   </head>
   <body>
+
+    <br>
+    <br>
+    <br>
     <div class="container-sm main">
     <div class="txt1">
       <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
     </div>
     <br>
+    <div>
+      <H3>Bienvenido(a) {{ a }}</H3>
+    </div>
     <br>
     <br>
     
     <div class="txt1">
-      {% if lvl == 1 %}
-        <p></p>
-      {% elif lvl == 2 %}
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/registros'">Registros</button>
+      {% if lvl == 5 %}
+        <p>Alumno</p>
+        <div>
+          <a href="/mcymd">Mejora Continua y Discontinua</a>
+          <br>
+          <a href="/decgv">Diagnóstico Enfoque Competitivo y Generación de Valor</a>
+          <br>
+          <a href="/dsomv">Diagnóstico Sinergia Organizacional y Multiplicación de Valor</a>
+          <br>
+          <a href="/daecv">Diagnóstico Alineación Estratégica y Captura de Valor</a>
+          <br>
+          <a href="/impeinh">Impulsores e Inhibidores de Valor</a>
+          <br>
+          <a href="/diques">Diques Estratégicos de Crecimiento de Valor</a>
+          <br>
+          <a href="/proyectodetonador">Proyecto Detonador de Valor</a>
+        </div>
+      {% elif lvl == 4 %}
+        <p>Coach</p>
+      
+        {% elif lvl == 3 %}
+        <div>
+          <p>Este es tu panel de Coordinadora</p>
+          <br>
+          <button type="button" class="btn btn-primary" onclick="window.location.href='/asignar'">Asignar Coaches</button>
+        </div>  
+
       {% endif %}
     </div>
     <br>
