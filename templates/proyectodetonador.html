@@ -28,47 +28,52 @@
     <br>
     <br>
     <div class="container-sm">
+
       <form id="form1" action="/proyectodetonador" method="POST">
+        <div class="col-4">
+          <label class="form-label" for="sele">Dique</label>
+          <select class="form-select" id="sele" name="sele" aria-label="Default select example">
+            <option selected>Elige un dique</option>
+            {% for i in diques %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br>
         <div class="txt2 row">
-          <div class="col-8">
-            <label class="form-label" for="text1">Líder</label>
-            <input type="text" class="form-control" id="text1" name="text1" value="{{ mc1 }}">
+          <div class="col-1">
+            <label class="form-label" for="lider">Líder</label>
+            <br>
           </div>
-          <div class="col-4">
+          <div class="col-8">
+            <input type="text" class="form-control" id="lider" name="lider" value="{{ lider }}">
+          </div>
+          <div class="col-3">
             <p>{{ fecha }}</p>
           </div>
-
         </div>
-        <select class="form-select" name="sele" aria-label="Default select example">
-          <option selected>Elige un dique</option>
-          {% for i in diques %}
-          <option value="{{ i }}">{{ i }}</option>
-          {% endfor %}
-        </select>
+        <div>
+          <label class="form-label" for="equipo">Miembros del equipo</label>
+          <textarea class="form-control" id="equipo" rows="4" name="equipo">{{ equipo }}</textarea>
+          <br>
+        </div>
         <br>
         <div class="mb-3 wow row">
-          <label class="form-label" for="text1">Proyecto Detonador (Qué quiero lograr en términos de Valor)</label>
-          <textarea class="form-control" id="text1" rows="10" name="t1">{{ mc }}</textarea>
+          <label class="form-label" for="proyecto">Proyecto Detonador (Qué quiero lograr en términos de Valor)</label>
+          <textarea class="form-control" id="proyecto" rows="10" name="proyecto">{{ proyecto }}</textarea>
         </div>
         <br>
         <div class="row">
           <div class="col-9">
-            <label class="form-label" for="text2">Actividad 1</label>
-            <input type="text" class="form-control" id="text2" name="text2" value="{{ mc2 }}">
-            <label class="form-label" for="text3">Actividad 2</label>
-            <input type="text" class="form-control" id="text3" name="text3" value="{{ mc3 }}">
-            <label class="form-label" for="text4">Actividad 3</label>
-            <input type="text" class="form-control" id="text4" name="text4" value="{{ mc4 }}">
-            <label class="form-label" for="text5">Actividad 4</label>
-            <input type="text" class="form-control" id="text5" name="text5" value="{{ mc5 }}">
-            <label class="form-label" for="text6">Actividad 5</label>
-            <input type="text" class="form-control" id="text6" name="text6" value="{{ mc6 }}">
+            <label class="form-label" for="plan">Plan de Acción</label>
+            <textarea class="form-control" id="plan" rows="10" name="plan">{{ plan }}</textarea>
           </div>
           <div class="col-3">
-
+            <label class="form-label" for="cumplimiento">Fecha de Cumplimiento</label>
+            <textarea class="form-control" id="cumplimiento" rows="10" name="cumplimiento">{{ cumplimiento }}</textarea>
           </div>
-
         </div>
+        <br>
         
         <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
       </form>

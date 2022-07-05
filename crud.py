@@ -29,9 +29,6 @@ db=firebase.database()
 
 BD = db.get()
 
-hoy = date.today()
-
-print(hoy)
 '''
 cliente = db.child("8L7kQVOg5CgPmFiYbADTMK5Edhb2").child('dolencias').child('lista total').get().val()
 
@@ -52,3 +49,13 @@ for user in DB:
   if 'cgutierrez@cedem.com.mx' in a:
     n = a.get('NAME')
     print(str(n))'''
+localId = "oweTEae2NsN5e0g9vo1bb8fRK5M2"
+sele = "programar blockchain"
+fecha = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fecha').get().val()
+lider = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('lider').get().val()
+equipo = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('equipo').get().val()
+proyecto = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('proyecto').get().val()
+plan = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('plan').get().val()
+cumplimiento = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('cumplimiento').get().val()
+
+print(lider)

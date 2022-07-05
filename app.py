@@ -516,40 +516,159 @@ def proyectodetonador():
         if i != '':
             diques.append(i)
 
+    mcont = {}
+    mensaje = ''
+    hoy = date.today()
+    fecha = str(hoy)
+    lider = ''
+    equipo = ''
+    proyecto = ''
+    plan = ''
+    cumplimiento = ''
+
+    if request.method == 'POST':
+        
+        sele = request.form.get('sele')
+
+        lider = request.form.get('lider')
+
+        equipo = request.form.get('equipo')
+
+        proyecto = request.form.get('proyecto')
+
+        plan = request.form.get('plan')
+
+        cumplimiento = request.form.get('cumplimiento')
+        
+        mcont = {
+            "lider": lider,
+            "equipo": equipo,
+            "proyecto": proyecto,
+            "plan": plan,
+            "cumplimiento": cumplimiento,
+            "fecha": fecha
+        }
+        
+        mc = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('proyectodetonador.html', mcont=mcont, mensaje=mensaje, diques=diques, lider=lider,
+        equipo=equipo, proyecto=proyecto, plan=plan, cumplimiento=cumplimiento, fecha=fecha)
+
+##############################################################################################
+@app.route('/valordelaempresa', methods= ['POST', 'GET'])
+def valordelaempresa():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
     nombre = db.child(localId).child('NAME').get().val()
-    mcont = ''
+    mcont = {}
+    valor = ''
+    capital = ''
+    ventas = ''
+    ebitda = ''
+    multiplos = ''
     mensaje = ''
     hoy = date.today()
 
-    fecha = db.child(localId).child('MASTER').child("proyecto detonador").child('fecha').get().val()
-    mc = db.child(localId).child('MASTER').child("proyecto detonador").child('respuesta').get().val()
+    valor = db.child(localId).child('MASTER').child("valor de la empresa").child('valor').get().val()
+    capital = db.child(localId).child('MASTER').child("valor de la empresa").child('capital').get().val()
+    ventas = db.child(localId).child('MASTER').child("valor de la empresa").child('ventas').get().val()
+    ebitda = db.child(localId).child('MASTER').child("valor de la empresa").child('ebitda').get().val()
+    multiplos = db.child(localId).child('MASTER').child("valor de la empresa").child('multiplos').get().val()
+    fecha = db.child(localId).child('MASTER').child("valor de la empresa").child('fecha').get().val()
+    
+    if valor is None:
+        valor = ''
+    
+    if capital is None:
+        capital = ''
+    
+    if ventas is None:
+        ventas = ''
+
+    if ebitda is None:
+        ebitda = ''
+    
+    if multiplos is None:
+        multiplos = ''
 
     if fecha is None:
         fecha = hoy
     else:
         fecha
 
-    if mc == None:
-        mc = ''
-    else:
-        mc
-
     if request.method == 'POST':
-        mcont = request.form.get('t1')
+        valor = request.form.get('valor')
+        capital = request.form.get('capital')
+        ventas = request.form.get('ventas')
+        ebitda = request.form.get('ebitda')
+        multiplos = request.form.get('multiplos')
 
-        if len(mcont) == 0:
-            mcont = ['No hay registros']
-        else:
-            mcont
-
+        mcont = {
+            "valor": valor,
+            "capital": capital,
+            "ventas": ventas,
+            "ebitda": ebitda,
+            "multiplos": multiplos,
+            "fecha": str(hoy)
+        }
         
-        mc = db.child(localId).child('MASTER').child("proyecto detonador").child('respuesta').set(mcont)
+        mc = db.child(localId).child('MASTER').child("valor de la empresa").set(mcont)
         mc
-        fecha = db.child(localId).child('MASTER').child("proyecto detonador").child('fecha').set(str(hoy))
-        fecha
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('proyectodetonador.html', mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha, diques=diques)
+    return render_template('valordelaempresa.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, valor=valor, 
+    capital=capital, ventas=ventas, ebitda=ebitda, multiplos=multiplos)
+
+##############################################################################################
+@app.route('/fusionesyadquisiciones', methods= ['POST', 'GET'])
+def fusionesyadquisiciones():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("fusiones y adquisiciones").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("fusiones y adquisiciones").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("fusiones y adquisiciones").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("fusiones y adquisiciones").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('fusionesyadquisiciones.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
 
 ###############################################################################################
 
