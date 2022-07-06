@@ -127,47 +127,6 @@ def home():
     return render_template('home.html', a=a, lvl=lvl)
 
 ######################################################################################################
-@app.route('/asignar', methods=['GET', 'POST'])
-def asignar():
-
-    token = session['user']
-    user = auth.get_account_info(token)
-
-    nada = ['No hay registro']
-    listaregistros = []
-    nama = ''
-    cdc = db.get()
-    identificacion = ''
-    nom = request.form.get('sele')
-
-    change = 0
-    namae = ''
-
-    for i in cdc:
-        nivel = db.child(i.key()).child('NIVEL').get().val()
-        if nivel == 4:
-            nama = db.child(i.key()).child('NAME').get().val()
-            listaregistros.append(nama)
-
-    if nom == None:
-        change
-
-    else:
-        for a in cdc:
-            ident = db.child(a.key()).child('NAME').get().val()
-            if ident == nom:
-                identificacion = a.key()
-
-
-        
-        namae = db.child(identificacion).child('NAME').get().val()
-
-        change = 1
-
-    return render_template('asignar.html', listaregistros=listaregistros, identificacion=identificacion, nom=nom, change=change, namae=namae, nama=nama)
-
-
-##############################################################################################
 @app.route('/mcymd', methods= ['POST', 'GET'])
 def mcymd():
 
@@ -670,116 +629,1332 @@ def fusionesyadquisiciones():
 
     return render_template('fusionesyadquisiciones.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
 
-###############################################################################################
-
-@app.route('/resultado', methods=['GET', 'POST'])
-def resultado():
+##############################################################################################
+@app.route('/fertilidad', methods= ['POST', 'GET'])
+def fertilidad():
 
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
 
-    nada = ['No hay registro']
+    r1 = db.child(localId).child('MASTER').child("fertilidad").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("fertilidad").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
 
-    listaCausas = db.child(localId).child('dolencias').child("Causas").get().val()
-    if listaCausas is None:
-        listaCausas = nada
+    if fecha is None:
+        fecha = hoy
     else:
-        listaCausas
+        fecha
 
-    listaEfectos = db.child(localId).child('dolencias').child("Efectos").get().val()
-    if listaEfectos is None:
-        listaEfectos = nada
-    else:
-        listaEfectos
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
 
-    listaNoP = db.child(localId).child('dolencias').child("NoProblemas").get().val()
-    if listaNoP is None:
-        listaNoP = nada
-    else:
-        listaNoP
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("fertilidad").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
 
-    c1 = db.child(localId).child('dolencias').child('CausasDeCausas').child('Contexto').child(0).child('causa').get().val()
-    c2 = db.child(localId).child('dolencias').child('CausasDeCausas').child('Contexto').child(1).child('causa').get().val()
-    c3 = db.child(localId).child('dolencias').child('CausasDeCausas').child('Contexto').child(2).child('causa').get().val()
+    return render_template('fertilidad.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
 
-    k1 = db.child(localId).child('dolencias').child('CausasDeCausas').child('Contexto').child(0).child('contexto').get().val()
-    k2 = db.child(localId).child('dolencias').child('CausasDeCausas').child('Contexto').child(1).child('contexto').get().val()
-    k3 = db.child(localId).child('dolencias').child('CausasDeCausas').child('Contexto').child(2).child('contexto').get().val()
-
-    return render_template('resultado.html',k1=k1, k2=k2, k3=k3, c1=c1, c2=c2, c3=c3, listaCausas=listaCausas,
-    listaEfectos=listaEfectos, listaNoP=listaNoP)
-
-######################################################################################################
-@app.route('/registros', methods=['GET', 'POST'])
-def registros():
+##############################################################################################
+@app.route('/mapacompetitivo', methods= ['POST', 'GET'])
+def mapacompetitivo():
 
     token = session['user']
     user = auth.get_account_info(token)
-
-    nada = ['No hay registro']
-    listaregistros = []
+    localId = user['users'][0]['localId']
     
-    cdc = db.get()
-    listaCausas = []
-    listaEfectos = []
-    listaNoP = []
-    identificacion = ''
-    nom = request.form.get('sele')
-    k1 = ''
-    k2 = ''
-    k3 = ''
-    c1 = ''
-    c2 = ''
-    c3 = ''
-    change = 0
-    namae = ''
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
 
-    for i in cdc:
-        nivel = db.child(i.key()).child('NAME').get().val()
-        listaregistros.append(nivel)
+    r1 = db.child(localId).child('MASTER').child("mapa competitivo").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("mapa competitivo").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("mapa competitivo").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
 
-    if nom == None:
-        change
-
+    if fecha is None:
+        fecha = hoy
     else:
-        for a in cdc:
-            ident = db.child(a.key()).child('NAME').get().val()
-            if ident == nom:
-                identificacion = a.key()
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("mapa competitivo").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('mapacompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+##############################################################################################
+@app.route('/segmentaciondemercado', methods= ['POST', 'GET'])
+def segmentaciondemercado():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("segmentacion de mercado").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("segmentacion de mercado").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("segmentacion de mercado").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("segmentacion de mercado").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('segmentaciondemercado.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/diferenciacion', methods= ['POST', 'GET'])
+def diferenciacion():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("diferenciacion").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("diferenciacion").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("diferenciacion").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('diferenciacion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/managementvsmomentum', methods= ['POST', 'GET'])
+def managementvsmomentum():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("management vs momentum").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("management vs momentum").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("management vs momentum").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('managementvsmomentum.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/corebusiness', methods= ['POST', 'GET'])
+def corebusiness():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("core business").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("core business").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("core business").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('corebusiness.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/estrategiadeconcentracion', methods= ['POST', 'GET'])
+def estrategiadeconcentracion():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("estrategia de concentracion").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("estrategia de concentracion").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("estrategia de concentracion").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('estrategiadeconcentracion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/fortalecimientocompetitivo', methods= ['POST', 'GET'])
+def fortalecimientocompetitivo():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("fortalecimiento competitivo").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("fortalecimiento competitivo").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("fortalecimiento competitivo").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("fortalecimiento competitivo").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('fortalecimientocompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/estrategiadeabandono', methods= ['POST', 'GET'])
+def estrategiadeabandono():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("estrategia de abandono").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("estrategia de abandono").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("estrategia de abandono").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("estrategia de abandono").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('estrategiadeabandono.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/nueva-adyacencia', methods= ['POST', 'GET'])
+def nuevaadyacencia():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    r4 = ''
+    r5 = ''
+    r6 = ''
+
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("nueva adyacencia").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("nueva adyacencia").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("nueva adyacencia").child('r3').get().val()
+    r4 = db.child(localId).child('MASTER').child("nueva adyacencia").child('r4').get().val()
+    r5 = db.child(localId).child('MASTER').child("nueva adyacencia").child('r5').get().val()
+    r6 = db.child(localId).child('MASTER').child("nueva adyacencia").child('r6').get().val()
+    fecha = db.child(localId).child('MASTER').child("nueva adyacencia").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+    
+    if r3 is None:
+        r3 = ''
+
+    if r4 is None:
+        r4 = ''
+    
+    if r5 is None:
+        r5 = ''
+    
+    if r6 is None:
+        r6 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+        r4 = request.form.get('r4')
+        r5 = request.form.get('r5')
+        r6 = request.form.get('r6')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "r3": r3,
+            "r4": r4,
+            "r5": r5,
+            "r6": r6,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("nueva adyacencia").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('nueva-adyacencia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3, r4=r4, 
+    r5=r5, r6=r6)
+
+###############################################################################################
+@app.route('/querencia', methods= ['POST', 'GET'])
+def querencia():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("querencia").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("querencia").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("querencia").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("querencia").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('querencia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/talentograma', methods= ['POST', 'GET'])
+def talentograma():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("talentograma").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("talentograma").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("talentograma").child('r3').get().val()
+    fecha = db.child(localId).child('MASTER').child("talentograma").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if r3 is None:
+        r3 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "r3": r3,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("talentograma").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('talentograma.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3)
 
 
-        listaCausas = db.child(identificacion).child('dolencias').child("Causas").get().val()
-        if listaCausas is None:
-            listaCausas = nada
-        else:
-            listaCausas
+###############################################################################################
+@app.route('/formuladegobierno', methods= ['POST', 'GET'])
+def formuladegobierno():
 
-        listaEfectos = db.child(identificacion).child('dolencias').child("Efectos").get().val()
-        if listaEfectos is None:
-            listaEfectos = nada
-        else:
-            listaEfectos
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
 
-        listaNoP = db.child(identificacion).child('dolencias').child("NoProblemas").get().val()
-        if listaNoP is None:
-            listaNoP = nada
-        else:
-            listaNoP
+    r1 = db.child(localId).child('MASTER').child("formula de gobierno").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("formula de gobierno").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("formula de gobierno").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
 
-        c1 = db.child(identificacion).child('dolencias').child('CausasDeCausas').child('Contexto').child(0).child('causa').get().val()
-        c2 = db.child(identificacion).child('dolencias').child('CausasDeCausas').child('Contexto').child(1).child('causa').get().val()
-        c3 = db.child(identificacion).child('dolencias').child('CausasDeCausas').child('Contexto').child(2).child('causa').get().val()
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
 
-        k1 = db.child(identificacion).child('dolencias').child('CausasDeCausas').child('Contexto').child(0).child('contexto').get().val()
-        k2 = db.child(identificacion).child('dolencias').child('CausasDeCausas').child('Contexto').child(1).child('contexto').get().val()
-        k3 = db.child(identificacion).child('dolencias').child('CausasDeCausas').child('Contexto').child(2).child('contexto').get().val()
-        namae = db.child(identificacion).child('NAME').get().val()
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
 
-        change = 1
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("formula de gobierno").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
 
-    return render_template('registros.html',k1=k1, k2=k2, k3=k3, c1=c1, c2=c2, c3=c3, listaCausas=listaCausas,
-        listaEfectos=listaEfectos, listaNoP=listaNoP, listaregistros=listaregistros, identificacion=identificacion, nom=nom, change=change, namae=namae)
+    return render_template('formuladegobierno.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+###############################################################################################
+@app.route('/formuladepropiedad', methods= ['POST', 'GET'])
+def formuladepropiedad():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("formula de propiedad").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("formula de propiedad").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("formula de propiedad").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("formula de propiedad").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('formuladepropiedad.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+###############################################################################################
+@app.route('/alianzasestrategicas', methods= ['POST', 'GET'])
+def alianzasestrategicas():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("alianzas estrategicas").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("alianzas estrategicas").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("alianzas estrategicas").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("alianzas estrategicas").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('alianzasestrategicas.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/talentoyestrategia', methods= ['POST', 'GET'])
+def talentoyestrategia():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("talento y estrategia").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("talento y estrategia").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("talento y estrategia").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("talento y estrategia").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('talentoyestrategia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/alineaciondelaorganizacion', methods= ['POST', 'GET'])
+def alineaciondelaorganizacion():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("alineacion de la organizacion").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("alineacion de la organizacion").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("alineacion de la organizacion").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("alineacion de la organizacion").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('alineaciondelaorganizacion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/recursosbasicos', methods= ['POST', 'GET'])
+def recursosbasicos():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("recursos basicos").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("recursos basicos").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("recursos basicos").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("recursos basicos").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('recursosbasicos.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/procesocritico', methods= ['POST', 'GET'])
+def procesocritico():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("proceso critico").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("proceso critico").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("proceso critico").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("proceso critico").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('procesocritico.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/alineaciondelainformacion', methods= ['POST', 'GET'])
+def alineaciondelainformacion():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    r4 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("alineacion de la informacion").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("alineacion de la informacion").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("alineacion de la informacion").child('r3').get().val()
+    r4 = db.child(localId).child('MASTER').child("alineacion de la informacion").child('r4').get().val()
+    fecha = db.child(localId).child('MASTER').child("alineacion de la informacion").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if r3 is None:
+        r3 = ''
+    
+    if r4 is None:
+        r4 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+        r4 = request.form.get('r4')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "r3": r3,
+            "r4": r4,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("alineacion de la informacion").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('alineaciondelainformacion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2,
+    r3=r3, r4=r4)
+
+###############################################################################################
+@app.route('/visioncomunvalor', methods= ['POST', 'GET'])
+def visioncomunvalor():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("vision comun de valor").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("vision comun de valor").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("vision comun de valor").child('r3').get().val()
+    fecha = db.child(localId).child('MASTER').child("vision comun de valor").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if r3 is None:
+        r3 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "r3": r3,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("vision comun de valor").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('visioncomunvalor.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2,
+    r3=r3)
+
+###############################################################################################
+@app.route('/liderazgoduenez', methods= ['POST', 'GET'])
+def liderazgoduenez():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("liderazgo de duenez").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("liderazgo de duenez").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("liderazgo de duenez").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('liderazgoduenez.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/gobernabilidadliderazgo', methods= ['POST', 'GET'])
+def gobernabilidadliderazgo():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("gobernabilidad y liderazgo").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("gobernabilidad y liderazgo").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("gobernabilidad y liderazgo").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('gobernabilidadliderazgo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/nuestrosistemagobierno', methods= ['POST', 'GET'])
+def nuestrosistemagobierno():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").child('r3').get().val()
+    fecha = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if r3 is None:
+        r3 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "r3": r3,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('nuestrosistemagobierno.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2,
+    r3=r3)
+
+###############################################################################################
+@app.route('/entendimientoprofundonegocio', methods= ['POST', 'GET'])
+def entendimientoprofundonegocio():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("entendimiento profundo de cada negocio").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("entendimiento profundo de cada negocio").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("entendimiento profundo de cada negocio").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('entendimientoprofundonegocio.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/conceptoduenezvalores', methods= ['POST', 'GET'])
+def conceptoduenezvalores():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("concepto de dueñez valores").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("concepto de dueñez valores").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("concepto de dueñez valores").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('conceptoduenezvalores.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/competenciasmetamanagement', methods= ['POST', 'GET'])
+def competenciasmetamanagement():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("competencias de metamanagement").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("competencias de metamanagement").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("competencias de metamanagement").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('competenciasmetamanagement.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/capacidadesinstitucionalizacion', methods= ['POST', 'GET'])
+def capacidadesinstitucionalizacion():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("capacidades de institucionalizacion").child('r1').get().val()
+    fecha = db.child(localId).child('MASTER').child("capacidades de institucionalizacion").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+
+        mcont = {
+            "r1": r1,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("capacidades de institucionalizacion").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('capacidadesinstitucionalizacion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+
+###############################################################################################
+@app.route('/radararmonia2', methods= ['POST', 'GET'])
+def radararmonia2():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("radar de armonia 2").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("radar de armonia 2").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("radar de armonia 2").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("radar de armonia 2").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('radararmonia2.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+
 
 
 if __name__ == "__main__":

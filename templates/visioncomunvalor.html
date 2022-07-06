@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="../static/logoCedem.png">
+    <link rel="stylesheet" href="../static/c.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>VISION COMUN VALOR</title>
+  </head>
+  <body>
+    <div class="container-sm main">
+      <div class="txt1">
+        <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
+      </div>
+    <br>
+    <div class="container-sm row">
+      <div class="col-2 txt2">
+        <h3>Nombre: </h3>
+      </div>
+      <div class="col-8 txt2">
+        <h3>{{ nombre }}</h3>
+      </div>
+      <div class="col-2">
+        <p>{{ fecha }}</p>
+      </div>
+
+    </div>
+    <div class="container-sm txt2">
+      <h2>Visión Común de Valor</h2>
+    </div>
+    <br>
+    <br>
+    <div class="container-sm">
+      <form id="form1" action="/visioncomunvalor" method="POST">
+        <div class="mb-3 wow">
+          <p>Responde las siguientes preguntas y especifica si tus socios y consejeros coinciden
+            con tus respuestas:</p>
+          <label class="form-label" for="r1">1. ¿Cuánto vale la empresa?</label>
+          <textarea class="form-control" id="r1" rows="4" name="r1">{{ r1 }}</textarea>
+          <br>
+          <label class="form-label" for="r2">2. ¿Cuál es la meta de valor?</label>
+          <textarea class="form-control" id="r2" rows="4" name="r2">{{ r2 }}</textarea>
+          <br>
+          <label class="form-label" for="r3">3. ¿Cuál es la estrategia para lograr esta meta de valor?</label>
+          <textarea class="form-control" id="r3" rows="4" name="r3">{{ r3 }}</textarea>
+          <br>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+      </form>
+      <br>
+      <br>
+      <div>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
+        <br>
+        <h3>{{ mensaje }}</h3>
+      </div>
+    </div>
+    
+    
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
+</html>
