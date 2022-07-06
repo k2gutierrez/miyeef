@@ -1,7 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, session, make_response
+from flask import Flask, render_template, request, redirect, url_for, session, Response
 import pyrebase
 import os
 from datetime import date
+import io
+import numpy as np
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 import pandas as pd
 from math import pi
@@ -1966,23 +1970,91 @@ def radararmonia():
     mcont = {}
     r1 = ''
     r2 = ''
+    r3 = ''
+    r4 = ''
+    r5 = ''
+    r6 = ''
+    r7 = ''
+    r8 = ''
     mensaje = ''
     hoy = date.today()
 
     r1 = db.child(localId).child('MASTER').child("radar de armonia").child('r1').get().val()
     r2 = db.child(localId).child('MASTER').child("radar de armonia").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("radar de armonia").child('r3').get().val()
+    r4 = db.child(localId).child('MASTER').child("radar de armonia").child('r4').get().val()
+    r5 = db.child(localId).child('MASTER').child("radar de armonia").child('r5').get().val()
+    r6 = db.child(localId).child('MASTER').child("radar de armonia").child('r6').get().val()
+    r7 = db.child(localId).child('MASTER').child("radar de armonia").child('r7').get().val()
+    r8 = db.child(localId).child('MASTER').child("radar de armonia").child('r8').get().val()
     fecha = db.child(localId).child('MASTER').child("radar de armonia").child('fecha').get().val()
     
     if r1 is None:
-        r1 = ''
+        r1 = 0
     
     if r2 is None:
-        r2 = ''
+        r2 = 0
+    
+    if r3 is None:
+        r3 = 0
+    
+    if r4 is None:
+        r4 = 0
+
+    if r5 is None:
+        r5 = 0
+    
+    if r6 is None:
+        r6 = 0
+
+    if r7 is None:
+        r7 = 0
+    
+    if r8 is None:
+        r8 = 0
 
     if fecha is None:
         fecha = hoy
     else:
         fecha
+
+    #Chart#
+    df = pd.DataFrame({
+                'Querencia Familiar-Empresarial': [r1],
+                'Actitudes Fundamentales': [r2],
+                'Calidad de Diálogo': [r3],
+                'Manejo de Conflictos': [r4],
+                'Gobernabilidad': [r5],
+                'Cultura y Reglas Familiares': [r6],
+                'Sucesión': [r7],
+                'Herencia': [r8]
+                })
+    # number of variable
+    categories = list(df)[1:]
+    N = len(categories)
+    # We are going to plot the first line of the data frame.
+    # But we need to repeat the first value to close the circular graph:
+    values = df.loc[0].drop('group').values.flatten().tolist()
+    values += values[:1]
+    # values
+    # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
+    angles = [n / float(N) * 2 * pi for n in range(N)]
+    angles += angles[:1]
+    # Initialise the spider plot
+    ax = plt.subplot(111, polar=True)
+    # Draw one axe per variable + add labels
+    plt.xticks(angles[:-1], categories, color='blue', size=10)
+    # Draw ylabels
+    ax.set_rlabel_position(0)
+    plt.yticks([1, 2, 3, 4, 5, 6, 7, 8, 9], ["1", "2", "3", '4', '5', '6', '7', '8', '9'], color="grey", size=7)
+    plt.ylim(0, 10)
+    # Plot data
+    ax.plot(angles, values, linewidth=1, linestyle='solid')
+    # Fill area
+    ax.fill(angles, values, 'b', alpha=0.1)
+    # Show the graph
+    fig = plt.show()
+    st.pyplot(fig)
 
     if request.method == 'POST':
         r1 = request.form.get('r1')
