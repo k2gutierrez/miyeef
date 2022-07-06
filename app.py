@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, session, m
 import pyrebase
 import os
 from datetime import date
+import matplotlib.pyplot as plt
+import pandas as pd
+from math import pi
 import config
 
 app = Flask(__name__)
@@ -18,7 +21,6 @@ firebaseConfig = {
   'appId': config.appId,
   'measurementId': config.measurementId
   }
-
 
 #Firebase
 firebase = pyrebase.initialize_app(firebaseConfig)
@@ -1951,6 +1953,52 @@ def radararmonia2():
         mensaje = 'Los registros han quedado guardados'
 
     return render_template('radararmonia2.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+
+###############################################################################################
+@app.route('/radararmonia', methods= ['POST', 'GET'])
+def radararmonia():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    
+    nombre = db.child(localId).child('NAME').get().val()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("radar de armonia").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("radar de armonia").child('r2').get().val()
+    fecha = db.child(localId).child('MASTER').child("radar de armonia").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("radar de armonia").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('radararmonia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
 
 ###############################################################################################
 
