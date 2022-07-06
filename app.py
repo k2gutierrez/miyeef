@@ -1,23 +1,22 @@
-from ctypes import c_ssize_t
-from click import style
 from flask import Flask, render_template, request, redirect, url_for, session, make_response
 import pyrebase
 import os
 from datetime import date
+import config
 
 app = Flask(__name__)
 
 app.secret_key = os.urandom(24)
 
 firebaseConfig = {
-  'apiKey': "AIzaSyD5mRUV08gkotpiTMoigFJd9Bfb9O8_hgQ",
-  'authDomain': "cedem-db.firebaseapp.com",
-  'databaseURL': "https://cedem-db-default-rtdb.firebaseio.com/",
-  'projectId': "cedem-db",
-  'storageBucket': "cedem-db.appspot.com",
-  'messagingSenderId': "272607335771",
-  'appId': "1:272607335771:web:dff8951eb8e08f8eef367e",
-  'measurementId': "G-ZT3V8MY4NC"
+  'apiKey': config.apiKey,
+  'authDomain': config.authDomain,
+  'databaseURL': config.databaseURL,
+  'projectId': config.projectId,
+  'storageBucket': config.storageBucket,
+  'messagingSenderId': config.messagingSenderId,
+  'appId': config.appId,
+  'measurementId': config.measurementId
   }
 
 
