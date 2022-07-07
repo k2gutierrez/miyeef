@@ -141,8 +141,8 @@ def mcymd():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = ''
     mdisc = ''
     mensaje = ''
@@ -201,8 +201,8 @@ def decgv():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = ''
     mensaje = ''
     hoy = date.today()
@@ -244,8 +244,8 @@ def dsomv():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = ''
     mensaje = ''
     hoy = date.today()
@@ -287,8 +287,8 @@ def daecv():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = ''
     mensaje = ''
     hoy = date.today()
@@ -331,8 +331,8 @@ def impeinh():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = ''
     mdisc = ''
     mensaje = ''
@@ -392,8 +392,8 @@ def diques():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont1 = ''
     mcont2 = ''
     mcont3 = ''
@@ -530,8 +530,8 @@ def valordelaempresa():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     valor = ''
     capital = ''
@@ -598,8 +598,8 @@ def fusionesyadquisiciones():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -644,8 +644,8 @@ def fertilidad():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -683,8 +683,8 @@ def mapacompetitivo():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -729,8 +729,8 @@ def segmentaciondemercado():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -775,8 +775,8 @@ def diferenciacion():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -814,8 +814,8 @@ def managementvsmomentum():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -853,8 +853,8 @@ def corebusiness():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -892,8 +892,8 @@ def estrategiadeconcentracion():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -931,8 +931,8 @@ def fortalecimientocompetitivo():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -977,8 +977,8 @@ def estrategiadeabandono():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1023,8 +1023,8 @@ def nuevaadyacencia():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1099,8 +1099,8 @@ def querencia():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1145,8 +1145,8 @@ def talentograma():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1199,8 +1199,8 @@ def formuladegobierno():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1244,8 +1244,8 @@ def formuladepropiedad():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1289,8 +1289,8 @@ def alianzasestrategicas():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1335,8 +1335,8 @@ def talentoyestrategia():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1381,8 +1381,8 @@ def alineaciondelaorganizacion():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1427,8 +1427,8 @@ def recursosbasicos():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1473,8 +1473,8 @@ def procesocritico():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1519,8 +1519,8 @@ def alineaciondelainformacion():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1580,8 +1580,8 @@ def visioncomunvalor():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1634,8 +1634,8 @@ def liderazgoduenez():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -1673,8 +1673,8 @@ def gobernabilidadliderazgo():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -1712,8 +1712,8 @@ def nuestrosistemagobierno():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1766,8 +1766,8 @@ def entendimientoprofundonegocio():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -1805,8 +1805,8 @@ def conceptoduenezvalores():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -1844,8 +1844,8 @@ def competenciasmetamanagement():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -1883,8 +1883,8 @@ def capacidadesinstitucionalizacion():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     mensaje = ''
@@ -1922,8 +1922,8 @@ def radararmonia2():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
@@ -1968,8 +1968,8 @@ def radararmonia():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    
-    nombre = db.child(localId).child('NAME').get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     mcont = {}
     r1 = ''
     r2 = ''
