@@ -9,7 +9,6 @@ from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 import pandas as pd
 from math import pi
-import config
 
 plt.rcParams["figure.figsize"] = [7.50, 7.50]
 plt.rcParams["figure.autolayout"] = True
@@ -19,14 +18,14 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 firebaseConfig = {
-  'apiKey': config.apiKey,
-  'authDomain': config.authDomain,
-  'databaseURL': config.databaseURL,
-  'projectId': config.projectId,
-  'storageBucket': config.storageBucket,
-  'messagingSenderId': config.messagingSenderId,
-  'appId': config.appId,
-  'measurementId': config.measurementId
+  'apiKey': "AIzaSyD5mRUV08gkotpiTMoigFJd9Bfb9O8_hgQ", 
+  'authDomain': "cedem-db.firebaseapp.com",
+  'databaseURL': "https://cedem-db-default-rtdb.firebaseio.com/",
+  'projectId': "cedem-db",
+  'storageBucket': "cedem-db.appspot.com",
+  'messagingSenderId': "272607335771",
+  'appId': "1:272607335771:web:dff8951eb8e08f8eef367e",
+  'measurementId': "G-ZT3V8MY4NC"
   }
 
 #Firebase
