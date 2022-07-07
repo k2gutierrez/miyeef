@@ -2546,6 +2546,373 @@ def evaluandoduenezcompartida():
     r10c=r10c, r11=r11)
 
 ###############################################################################################
+@app.route('/binomios-producto-mercado', methods= ['POST', 'GET'])
+def binomios_producto_mercado():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    r4 = ''
+    r5 = ''
+    r6 = ''
+    r7 = ''
+    r8 = ''
+    r9 = ''
+    r10 = ''
+    r11 = ''
+    r12 = ''
+    r13 = ''
+    r14 = ''
+    r15 = ''
+    r16 = ''
+    r17 = ''
+    r18 = ''
+    r19 = ''
+    r20 = ''
+    r21 = ''
+    r22 = ''
+    r23 = ''
+    r24 = ''
+    r25 = ''
+    r26 = ''
+    r27 = ''
+    r28 = ''
+    r29 = ''
+    r30 = ''
+    r31 = ''
+    r32 = ''
+    r33 = ''
+    r34 = ''
+    r35 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r3').get().val()
+    r4 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r4').get().val()
+    r5 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r5').get().val()
+    r6 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r6').get().val()
+    r7 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r7').get().val()
+    r8 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r8').get().val()
+    r9 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r9').get().val()
+    r10 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r10').get().val()
+    r11 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r11').get().val()
+    r12 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r12').get().val()
+    r13 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r13').get().val()
+    r14 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r14').get().val()
+    r15 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r15').get().val()
+    r16 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r16').get().val()
+    r17 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r17').get().val()
+    r18 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r18').get().val()
+    r19 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r19').get().val()
+    r20 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r20').get().val()
+    r21 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r21').get().val()
+    r22 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r22').get().val()
+    r23 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r23').get().val()
+    r24 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r24').get().val()
+    r25 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r25').get().val()
+    r26 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r26').get().val()
+    r27 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r27').get().val()
+    r28 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r28').get().val()
+    r29 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r29').get().val()
+    r30 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r30').get().val()
+    r31 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r31').get().val()
+    r32 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r32').get().val()
+    r33 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r33').get().val()
+    r34 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r34').get().val()
+    r35 = db.child(localId).child('MASTER').child("binomios producto-mercado").child('r35').get().val()
+    fecha = db.child(localId).child('MASTER').child("binomios producto-mercado").child('fecha').get().val()
+    
+    if r1 is None: r1 = ''
+    if r2 is None: r2 = ''
+    if r3 is None: r3 = ''
+    if r4 is None: r4 = ''
+    if r5 is None: r5 = ''
+    if r6 is None: r6 = ''
+    if r7 is None: r7 = ''
+    if r8 is None: r8 = ''
+    if r9 is None: r9 = ''
+    if r10 is None: r10 = ''
+    if r11 is None: r11 = ''
+    if r12 is None: r12 = ''
+    if r13 is None: r13 = ''
+    if r14 is None: r14 = ''
+    if r15 is None: r15 = ''
+    if r16 is None: r16 = ''
+    if r17 is None: r17 = ''
+    if r18 is None: r18 = ''
+    if r19 is None: r19 = ''
+    if r20 is None: r20 = ''
+    if r21 is None: r21 = ''
+    if r22 is None: r22 = ''
+    if r23 is None: r23 = ''
+    if r24 is None: r24 = ''
+    if r25 is None: r25 = ''
+    if r26 is None: r26 = ''
+    if r27 is None: r27 = ''
+    if r28 is None: r28 = ''
+    if r29 is None: r29 = ''
+    if r30 is None: r30 = ''
+    if r31 is None: r31 = ''
+    if r32 is None: r32 = ''
+    if r33 is None: r33 = ''
+    if r34 is None: r34 = ''
+    if r35 is None: r35 = ''
+
+    if fecha is None: fecha = hoy
+    else: fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+        r4 = request.form.get('r4')
+        r5 = request.form.get('r5')
+        r6 = request.form.get('r6')
+        r7 = request.form.get('r7')
+        r8 = request.form.get('r8')
+        r9 = request.form.get('r9')
+        r10 = request.form.get('r10')
+        r11 = request.form.get('r11')
+        r12 = request.form.get('r12')
+        r13 = request.form.get('r13')
+        r14 = request.form.get('r14')
+        r15 = request.form.get('r15')
+        r16 = request.form.get('r16')
+        r17 = request.form.get('r17')
+        r18 = request.form.get('r18')
+        r19 = request.form.get('r19')
+        r20 = request.form.get('r20')
+        r21 = request.form.get('r21')
+        r22 = request.form.get('r22')
+        r23 = request.form.get('r23')
+        r24 = request.form.get('r24')
+        r25 = request.form.get('r25')
+        r26 = request.form.get('r26')
+        r27 = request.form.get('r27')
+        r28 = request.form.get('r28')
+        r29 = request.form.get('r29')
+        r30 = request.form.get('r30')
+        r31 = request.form.get('r31')
+        r32 = request.form.get('r32')
+        r33 = request.form.get('r33')
+        r34 = request.form.get('r34')
+        r35 = request.form.get('r35')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "r3": r3,
+            "r4": r4,
+            "r5": r5,
+            "r6": r6,
+            "r7": r7,
+            "r8": r8,
+            "r9": r9,
+            "r10": r10,
+            "r11": r11,
+            "r12": r12,
+            "r13": r13,
+            "r14": r14,
+            "r15": r15,
+            "r16": r16,
+            "r17": r17,
+            "r18": r18,
+            "r19": r19,
+            "r20": r20,
+            "r21": r21,
+            "r22": r22,
+            "r23": r23,
+            "r24": r24,
+            "r25": r25,
+            "r26": r26,
+            "r27": r27,
+            "r28": r28,
+            "r29": r29,
+            "r30": r30,
+            "r31": r31,
+            "r32": r32,
+            "r33": r33,
+            "r34": r34,
+            "r35": r35,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("binomios producto-mercado").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('binomios-producto-mercado.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, 
+    r3=r3, r4=r4, r5=r5, r6=r6, r7=r7, r8=r8, r9=r9, r10=r10, r11=r11, r12=r12, r13=r13, r14=r14, r15=r15, r16=r16, r17=r17, r18=r18, 
+    r19=r19, r20=r20, r21=r21, r22=r22, r23=r23, r24=r24, r25=r25, r26=r26, r27=r27, r28=r28, r29=r29, r30=r30, r31=r31, r32=r32, 
+    r33=r33, r34=r34, r35=r35)
+
+###############################################################################################
+@app.route('/analisiscompetencia', methods= ['POST', 'GET'])
+def analisiscompetencia():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    r4 = ''
+    r5 = ''
+    r6 = ''
+    r7 = ''
+    r8 = ''
+    r9 = ''
+    r10 = ''
+    r11 = ''
+    r12 = ''
+    r13 = ''
+    r14 = ''
+    r15 = ''
+    r16 = ''
+    r17 = ''
+    r18 = ''
+    r19 = ''
+    r20 = ''
+    r21 = ''
+    r22 = ''
+    r23 = ''
+    r24 = ''
+    r25 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r3').get().val()
+    r4 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r4').get().val()
+    r5 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r5').get().val()
+    r6 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r6').get().val()
+    r7 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r7').get().val()
+    r8 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r8').get().val()
+    r9 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r9').get().val()
+    r10 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r10').get().val()
+    r11 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r11').get().val()
+    r12 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r12').get().val()
+    r13 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r13').get().val()
+    r14 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r14').get().val()
+    r15 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r15').get().val()
+    r16 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r16').get().val()
+    r17 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r17').get().val()
+    r18 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r18').get().val()
+    r19 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r19').get().val()
+    r20 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r20').get().val()
+    r21 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r21').get().val()
+    r22 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r22').get().val()
+    r23 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r23').get().val()
+    r24 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r24').get().val()
+    r25 = db.child(localId).child('MASTER').child("analisis de la competencia").child('r25').get().val()
+    fecha = db.child(localId).child('MASTER').child("analisis de la competencia").child('fecha').get().val()
+    
+    if r1 is None: r1 = ''
+    if r2 is None: r2 = ''
+    if r3 is None: r3 = ''
+    if r4 is None: r4 = ''
+    if r5 is None: r5 = ''
+    if r6 is None: r6 = ''
+    if r7 is None: r7 = ''
+    if r8 is None: r8 = ''
+    if r9 is None: r9 = ''
+    if r10 is None: r10 = ''
+    if r11 is None: r11 = ''
+    if r12 is None: r12 = ''
+    if r13 is None: r13 = ''
+    if r14 is None: r14 = ''
+    if r15 is None: r15 = ''
+    if r16 is None: r16 = ''
+    if r17 is None: r17 = ''
+    if r18 is None: r18 = ''
+    if r19 is None: r19 = ''
+    if r20 is None: r20 = ''
+    if r21 is None: r21 = ''
+    if r22 is None: r22 = ''
+    if r23 is None: r23 = ''
+    if r24 is None: r24 = ''
+    if r25 is None: r25 = ''
+
+    if fecha is None: fecha = hoy
+    else: fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+        r4 = request.form.get('r4')
+        r5 = request.form.get('r5')
+        r6 = request.form.get('r6')
+        r7 = request.form.get('r7')
+        r8 = request.form.get('r8')
+        r9 = request.form.get('r9')
+        r10 = request.form.get('r10')
+        r11 = request.form.get('r11')
+        r12 = request.form.get('r12')
+        r13 = request.form.get('r13')
+        r14 = request.form.get('r14')
+        r15 = request.form.get('r15')
+        r16 = request.form.get('r16')
+        r17 = request.form.get('r17')
+        r18 = request.form.get('r18')
+        r19 = request.form.get('r19')
+        r20 = request.form.get('r20')
+        r21 = request.form.get('r21')
+        r22 = request.form.get('r22')
+        r23 = request.form.get('r23')
+        r24 = request.form.get('r24')
+        r25 = request.form.get('r25')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "r3": r3,
+            "r4": r4,
+            "r5": r5,
+            "r6": r6,
+            "r7": r7,
+            "r8": r8,
+            "r9": r9,
+            "r10": r10,
+            "r11": r11,
+            "r12": r12,
+            "r13": r13,
+            "r14": r14,
+            "r15": r15,
+            "r16": r16,
+            "r17": r17,
+            "r18": r18,
+            "r19": r19,
+            "r20": r20,
+            "r21": r21,
+            "r22": r22,
+            "r23": r23,
+            "r24": r24,
+            "r25": r25,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("analisis de la competencia").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('analisiscompetencia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, 
+    r3=r3, r4=r4, r5=r5, r6=r6, r7=r7, r8=r8, r9=r9, r10=r10, r11=r11, r12=r12, r13=r13, r14=r14, r15=r15, r16=r16, r17=r17, r18=r18, 
+    r19=r19, r20=r20, r21=r21, r22=r22, r23=r23, r24=r24, r25=r25)
+
+###############################################################################################
 
 
 
