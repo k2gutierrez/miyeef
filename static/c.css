@@ -23,6 +23,12 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.chart {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
 .mensaje {
     font-family: monserrat-semibold;
     color: red;

@@ -11,6 +11,9 @@ import pandas as pd
 from math import pi
 import config
 
+plt.rcParams["figure.figsize"] = [7.50, 7.50]
+plt.rcParams["figure.autolayout"] = True
+
 app = Flask(__name__)
 
 app.secret_key = os.urandom(24)
@@ -1978,6 +1981,7 @@ def radararmonia():
     r8 = ''
     mensaje = ''
     hoy = date.today()
+    fig = None
 
     r1 = db.child(localId).child('MASTER').child("radar de armonia").child('r1').get().val()
     r2 = db.child(localId).child('MASTER').child("radar de armonia").child('r2').get().val()
@@ -2019,58 +2023,68 @@ def radararmonia():
         fecha
 
     #Chart#
-    df = pd.DataFrame({
-                'Querencia Familiar-Empresarial': [r1],
-                'Actitudes Fundamentales': [r2],
-                'Calidad de Diálogo': [r3],
-                'Manejo de Conflictos': [r4],
-                'Gobernabilidad': [r5],
-                'Cultura y Reglas Familiares': [r6],
-                'Sucesión': [r7],
-                'Herencia': [r8]
-                })
-    # number of variable
-    categories = list(df)[1:]
-    N = len(categories)
-    # We are going to plot the first line of the data frame.
-    # But we need to repeat the first value to close the circular graph:
-    values = df.loc[0].drop('group').values.flatten().tolist()
-    values += values[:1]
-    # values
-    # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
-    angles = [n / float(N) * 2 * pi for n in range(N)]
-    angles += angles[:1]
-    # Initialise the spider plot
-    ax = plt.subplot(111, polar=True)
-    # Draw one axe per variable + add labels
-    plt.xticks(angles[:-1], categories, color='blue', size=10)
-    # Draw ylabels
-    ax.set_rlabel_position(0)
-    plt.yticks([1, 2, 3, 4, 5, 6, 7, 8, 9], ["1", "2", "3", '4', '5', '6', '7', '8', '9'], color="grey", size=7)
-    plt.ylim(0, 10)
-    # Plot data
-    ax.plot(angles, values, linewidth=1, linestyle='solid')
-    # Fill area
-    ax.fill(angles, values, 'b', alpha=0.1)
-    # Show the graph
-    fig = plt.show()
-    st.pyplot(fig)
+    data = [
+        ['Querencia Familiar-Empresarial', r1],
+        ['Actitudes Fundamentales', r2],
+        ['Calidad de Diálogo', r3],
+        ['Manejo de Conflictos', r4],
+        ['Gobernabilidad', r5],
+        ['Cultura y Reglas Familiares', r6],
+        ['Sucesión', r7],
+        ['Herencia', r8]
+        ]
+
+    labels = [row[0] for row in data]
+    values = [row[1] for row in data]
 
     if request.method == 'POST':
         r1 = request.form.get('r1')
         r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+        r4 = request.form.get('r4')
+        r5 = request.form.get('r5')
+        r6 = request.form.get('r6')
+        r7 = request.form.get('r7')
+        r8 = request.form.get('r8')
 
         mcont = {
             "r1": r1,
             "r2": r2,
+            "r3": r3,
+            "r4": r4,
+            "r5": r5,
+            "r6": r6,
+            "r7": r7,
+            "r8": r8,
             "fecha": str(hoy)
         }
         
         mc = db.child(localId).child('MASTER').child("radar de armonia").set(mcont)
         mc
+        r1
+        r2
+        r3
+        r4
+        r5
+        r6
+        r7
+        r8
+        data = [
+            ['Querencia Familiar-Empresarial', r1],
+            ['Actitudes Fundamentales', r2],
+            ['Calidad de Diálogo', r3],
+            ['Manejo de Conflictos', r4],
+            ['Gobernabilidad', r5],
+            ['Cultura y Reglas Familiares', r6],
+            ['Sucesión', r7],
+            ['Herencia', r8]
+            ]
+        labels = [row[0] for row in data]
+        values = [row[1] for row in data]
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('radararmonia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+    return render_template('radararmonia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, 
+    r3=r3, r4=r4, r5=r5, r6=r6, r7=r7, r8=r8, labels=labels, values=values)
 
 ###############################################################################################
 
