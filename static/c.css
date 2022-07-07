@@ -101,3 +101,9 @@
         text-align: center;
     }
 }
+
+@media print {
+    .noprint {
+        display: none;
+     }
+ }
