@@ -23,6 +23,11 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.c {
+    text-align: center;
+    font-family: monserrat-medium;
+}
+
 .chart {
     display: flex;
     align-items: center;
