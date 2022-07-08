@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from math import pi
 
+from requests import RequestException
+
 plt.rcParams["figure.figsize"] = [7.50, 7.50]
 plt.rcParams["figure.autolayout"] = True
 
@@ -143,56 +145,67 @@ def mcymd():
     localId = user['users'][0]['localId']
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
-    mcont = ''
-    mdisc = ''
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    r4 = ''
+    r5 = ''
+    r6 = ''
     mensaje = ''
-    hoy = date.today()
+    hoy = str(date.today())
 
     fecha = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child('fecha').get().val()
-    mc = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child('mejora continua').get().val()
-    md = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child('mejora discontinua').get().val()
+    r1 = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child("mc1").get().val()
+    r2 = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child("mc2").get().val()
+    r3 = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child("mc3").get().val()
+    r4 = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child("md1").get().val()
+    r5 = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child("md2").get().val()
+    r6 = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child("md3").get().val()
 
     if fecha is None:
         fecha = hoy
     else:
         fecha
-
-    if mc == None:
-        mc = ''
-    else:
-        mc
-        
-    if md == None:
-        md = ''
-    else:
-        md
-
     
+    if r1 is None: r1 = ''
+    if r2 is None: r2 = ''
+    if r3 is None: r3 = ''
+    if r4 is None: r4 = ''
+    if r5 is None: r5 = ''
+    if r6 is None: r6 = ''
 
     if request.method == 'POST':
-        mcont = request.form.get('t1')
-        mdisc = request.form.get('t2')
+        r1 = request.form.get('text1')
+        r2 = request.form.get('text2')
+        r3 = request.form.get('text3')
+        r4 = request.form.get('text4')
+        r5 = request.form.get('text5')
+        r6 = request.form.get('text6')
 
-        if len(mcont) == 0:
-            mcont = ['No hay registros']
-        else:
-            mcont
+        if len(r1) == 0: r1 = 'No hay registros'
+        if len(r2) == 0: r2 = 'No hay registros'
+        if len(r3) == 0: r3 = 'No hay registros'
+        if len(r4) == 0: r4 = 'No hay registros'
+        if len(r5) == 0: r5 = 'No hay registros'
+        if len(r6) == 0: r6 = 'No hay registros'
 
-        if len(mdisc) == 0:
-            mdisc = ['No hay registros']
-        else:
-            mdisc
+        mcont = {
+            "mc1": r1,
+            "mc2": r2,
+            "mc3": r3,
+            "md1": r4,
+            "md2": r5,
+            "md3": r6,
+            "fecha": fecha
+        }
 
-        
-        mc = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child('mejora continua').set(mcont)
+        mc = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").set(mcont)
         mc
-        md = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child('mejora discontinua').set(mdisc)
-        md
-        fecha = db.child(localId).child('MASTER').child("mejora continua y mejora discontinua").child('fecha').set(str(hoy))
-        fecha
+
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('mcymd.html', mdisc=mdisc, mcont=mcont, mensaje=mensaje, mc=mc, md=md, nombre=nombre, fecha=fecha)
+    return render_template('mcymd.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3, r4=r4, r5=r5, r6=r6)
 
 ##############################################################################################
 @app.route('/decgv', methods= ['POST', 'GET'])
@@ -487,32 +500,37 @@ def proyectodetonador():
     mensaje = ''
     hoy = date.today()
     fecha = str(hoy)
-    lider = ''
-    equipo = ''
-    proyecto = ''
-    plan = ''
-    cumplimiento = ''
 
     if request.method == 'POST':
-        
         sele = request.form.get('sele')
-
         lider = request.form.get('lider')
-
         equipo = request.form.get('equipo')
-
         proyecto = request.form.get('proyecto')
-
-        plan = request.form.get('plan')
-
-        cumplimiento = request.form.get('cumplimiento')
+        p1 = request.form.get('text1')
+        p2 = request.form.get('text2')
+        p3 = request.form.get('text3')
+        p4 = request.form.get('text4')
+        p5 = request.form.get('text5')
+        f1 = request.form.get('date1')
+        f2 = request.form.get('date2')
+        f3 = request.form.get('date3')
+        f4 = request.form.get('date4')
+        f5 = request.form.get('date5')
         
         mcont = {
             "lider": lider,
             "equipo": equipo,
             "proyecto": proyecto,
-            "plan": plan,
-            "cumplimiento": cumplimiento,
+            "p1": p1,
+            "p2": p2,
+            "p3": p3,
+            "p4": p4,
+            "p5": p5,
+            "fc1": f1,
+            "fc2": f2,
+            "fc3": f3,
+            "fc4": f4,
+            "fc5": f5,
             "fecha": fecha
         }
         
@@ -520,10 +538,119 @@ def proyectodetonador():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('proyectodetonador.html', mcont=mcont, mensaje=mensaje, diques=diques, lider=lider,
-        equipo=equipo, proyecto=proyecto, plan=plan, cumplimiento=cumplimiento, fecha=fecha)
+    return render_template('proyectodetonador.html', mcont=mcont, mensaje=mensaje, diques=diques, fecha=fecha)
 
 ##############################################################################################
+@app.route('/proyectodetonador2', methods= ['POST', 'GET'])
+def proyectodetonador2():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+
+    d = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
+    pd = []
+    for i in d:
+        if i != '':
+            pd.append(i)
+
+    mcont = {}
+    mensaje = ''
+    hoy = str(date.today())
+    fecha = hoy
+    lider = ''
+    equipo = ''
+    proyecto = ''
+    fc1 = ''
+    fc2 = ''
+    fc3 = ''
+    fc4 = ''
+    fc5 = ''
+    p1 = ''
+    p2 = ''
+    p3 = ''
+    p4 = ''
+    p5 = ''
+    sele = ''
+    proy = ''
+    a = 0
+
+    if request.method == 'POST':
+        if "ver" in request.form:
+            sele = request.form.get('sele')
+            equipo = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('equipo').get().val()
+            fc1 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc1').get().val() 
+            fc2 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc2').get().val()
+            fc3 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc3').get().val()
+            fc4 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc4').get().val()
+            fc5 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc5').get().val()
+            fecha = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fecha').get().val()
+            lider = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('lider').get().val()
+            proyecto = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('proyecto').get().val()
+            p1 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p1').get().val()
+            p2 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p2').get().val()
+            p3 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p3').get().val()
+            p4 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p4').get().val()
+            p5 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p5').get().val()
+            proy = sele
+            a = 1
+
+        elif "guardar" in request.form:
+            lider = request.form.get('lider')
+            equipo = request.form.get('equipo')
+            proyecto = request.form.get('proyecto')
+            p1 = request.form.get('text1')
+            p2 = request.form.get('text2')
+            p3 = request.form.get('text3')
+            p4 = request.form.get('text4')
+            p5 = request.form.get('text5')
+            f1 = request.form.get('date1')
+            f2 = request.form.get('date2')
+            f3 = request.form.get('date3')
+            f4 = request.form.get('date4')
+            f5 = request.form.get('date5')
+            sele2 = request.form.get('sele2')
+            
+            mcont = {
+                "lider": lider,
+                "equipo": equipo,
+                "proyecto": proyecto,
+                "p1": p1,
+                "p2": p2,
+                "p3": p3,
+                "p4": p4,
+                "p5": p5,
+                "fc1": f1,
+                "fc2": f2,
+                "fc3": f3,
+                "fc4": f4,
+                "fc5": f5,
+                "fecha": hoy
+            }
+            print(proy)
+            
+            db.child(localId).child('MASTER').child("proyecto detonador").child(sele2).update(mcont)
+            lider = ''
+            equipo = ''
+            proyecto = ''
+            fc1 = ''
+            fc2 = ''
+            fc3 = ''
+            fc4 = ''
+            fc5 = ''
+            p1 = ''
+            p2 = ''
+            p3 = ''
+            p4 = ''
+            p5 = ''
+            sele = ''
+            mensaje = 'Los registros han quedado guardados'
+
+    return render_template('proyectodetonador2.html', mensaje=mensaje, pd=pd, fecha=fecha, lider=lider, equipo=equipo, proyecto=proyecto,
+    p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, fc1=fc1, fc2=fc2, fc3=fc3, fc4=fc4, fc5=fc5, proy=proy, a=a)
+
+##############################################################################################
+
 @app.route('/valordelaempresa', methods= ['POST', 'GET'])
 def valordelaempresa():
 

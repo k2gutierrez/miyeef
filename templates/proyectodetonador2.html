@@ -33,17 +33,37 @@
     <br>
     <br>
     <div class="container-sm">
-
-      <form id="form1" action="/proyectodetonador" method="POST">
-        <div class="col-4">
-          <label class="form-label" for="sele">Dique</label>
-          <select class="form-select" id="sele" name="sele" aria-label="Default select example">
-            <option selected>Elige un dique</option>
-            {% for i in diques %}
-            <option value="{{ i }}">{{ i }}</option>
-            {% endfor %}
-          </select>
+      {% if a == 0 %}
+      <form action="" method="POST">
+        <div class="row">
+          <div class="noprint">
+            <h3>{{ mensaje }}</h3>
+            <br>
+          </div>
+          <p>Elige un proyecto</p>
+          <div class="col-4">
+            <select class="form-select" id="sele" name="sele" aria-label="Default select example">
+              <option selected>Proyectos</option>
+              {% for i in pd %}
+              <option value="{{ i }}">{{ i }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col">
+            <button type="submit" name="ver" class="btn btn-primary">Ver</button>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
+          </div>
         </div>
+      </form>
+
+      {% elif a == 1 %}
+      
+      <div>
+        <h2>{{ proy }}</h2>
+      </div>
+      <form id="form1" action="/proyectodetonador2" method="POST">
         <br>
         <div class="txt2 row">
           <div class="col-1">
@@ -71,49 +91,54 @@
         <div class="row">
           <div class="col-9">
             <p>Plan de Acción</p>
-            <input type="text" class="form-control" id="text1" name="text1">
+            <input type="text" class="form-control" id="text1" name="text1" value="{{ p1 }}">
             <br>
-            <input type="text" class="form-control" id="text2" name="text2">
+            <input type="text" class="form-control" id="text2" name="text2" value="{{ p2 }}">
             <br>
-            <input type="text" class="form-control" id="text3" name="text3">
+            <input type="text" class="form-control" id="text3" name="text3"  value="{{ p3 }}">
             <br>
-            <input type="text" class="form-control" id="text4" name="text4">
+            <input type="text" class="form-control" id="text4" name="text4" value="{{ p4 }}">
             <br>
-            <input type="text" class="form-control" id="text5" name="text5">
+            <input type="text" class="form-control" id="text5" name="text5" value="{{ p5 }}">
           </div>
           <div class="col-3">
             <p>Fecha de Cumplimiento</p>
-            <input type="date" class="form-control" id="date1" name="date1">
+            <input type="date" class="form-control" id="date1" name="date1" value="{{ fc1 }}">
             <br>
-            <input type="date" class="form-control" id="date2" name="date2">
+            <input type="date" class="form-control" id="date2" name="date2" value="{{ fc2 }}">
             <br>
-            <input type="date" class="form-control" id="date3" name="date3">
+            <input type="date" class="form-control" id="date3" name="date3" value="{{ fc3 }}">
             <br>
-            <input type="date" class="form-control" id="date4" name="date4">
+            <input type="date" class="form-control" id="date4" name="date4" value="{{ fc4 }}">
             <br>
-            <input type="date" class="form-control" id="date5" name="date5">
+            <input type="date" class="form-control" id="date5" name="date5" value="{{ fc5 }}">
           </div>
         </div>
         <br>
+        <div class="col-4">
+          <h3>Confirma el proyecto detonador que quieres modificar seleccionandolo a continuación:</h3>
+          <select class="form-select" id="sele2" name="sele2" aria-label="Default select example">
+            {% for i in pd %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br>
         <div class="noprint">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          <button type="submit" name="guardar" class="btn btn-primary btn-lg">Guardar</button>
         </div>
         
       </form>
       <br>
       <br>
       <div class="noprint">
-        <h3>{{ mensaje }}</h3>
-        <br>
         <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/proyectodetonador2'">Ver proyectos</button>
         <br>
         <br>
         <button type="button" class="btn btn-primary" onclick="print()">Imprimir</button>
         <br>
       </div>
+      {% endif %}
     </div>
     
   </div>
