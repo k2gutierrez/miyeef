@@ -627,7 +627,6 @@ def proyectodetonador2():
                 "fc5": f5,
                 "fecha": hoy
             }
-            print(proy)
             
             db.child(localId).child('MASTER').child("proyecto detonador").child(sele2).update(mcont)
             lider = ''

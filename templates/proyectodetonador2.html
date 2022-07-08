@@ -43,7 +43,7 @@
           <p>Elige un proyecto</p>
           <div class="col-4">
             <select class="form-select" id="sele" name="sele" aria-label="Default select example">
-              <option selected>Proyectos</option>
+              <option selected>Proyectos:</option>
               {% for i in pd %}
               <option value="{{ i }}">{{ i }}</option>
               {% endfor %}
@@ -57,13 +57,13 @@
           </div>
         </div>
       </form>
-
       {% elif a == 1 %}
       
       <div>
         <h2>{{ proy }}</h2>
       </div>
-      <form id="form1" action="/proyectodetonador2" method="POST">
+      <form id="form1" action="" method="POST">
+        
         <br>
         <div class="txt2 row">
           <div class="col-1">
@@ -115,9 +115,10 @@
           </div>
         </div>
         <br>
-        <div class="col-4">
+        <div class="col-4 noprint">
           <h3>Confirma el proyecto detonador que quieres modificar seleccionandolo a continuación:</h3>
           <select class="form-select" id="sele2" name="sele2" aria-label="Default select example">
+            <option>Proyectos:</option>
             {% for i in pd %}
             <option value="{{ i }}">{{ i }}</option>
             {% endfor %}
