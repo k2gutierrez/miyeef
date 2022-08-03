@@ -23,6 +23,34 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.row{
+    padding: 25px;
+    margin: 10px;
+}
+
+.cl{
+    padding: 25px;
+}
+
+.box1{
+    background: rgb(0,0,36);
+    background: radial-gradient(circle, rgba(0,0,36,1) 0%, rgba(191,203,205,1) 0%, rgba(154,154,217,0.8673670151654411) 100%);
+}
+
+.box2{
+    background: rgb(191,203,205);
+    background: radial-gradient(circle, rgba(191,203,205,1) 0%, rgba(154,154,217,0.8673670151654411) 0%, rgba(77,139,95,0.8897759787508753) 0%);
+}
+
+.box3{
+    background: rgb(191,203,205);
+    background: radial-gradient(circle, rgba(191,203,205,1) 0%, rgba(154,154,217,0.8673670151654411) 0%, rgba(139,122,77,0.8897759787508753) 0%);
+}
+
+.boxlist{
+    text-align: left;
+}
+
 .c {
     text-align: center;
     font-family: monserrat-medium;
