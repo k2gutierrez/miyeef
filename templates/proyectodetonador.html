@@ -38,19 +38,26 @@
         <div class="col-4">
           <label class="form-label" for="sele">Dique</label>
           <select class="form-select" id="sele" name="sele" aria-label="Default select example">
-            <option selected>Elige un dique</option>
+            <option value="" {{ sect1 }}>Elige un dique</option>
             {% for i in diques %}
             <option value="{{ i }}">{{ i }}</option>
             {% endfor %}
+            <option value="otro" {{ sect2 }}>Otro Dique</option>
           </select>
+          <br>
+          <label for="otroDique">En caso de seleccionar Otro dique, escribe el nuevo dique a continuación:</label>
+          <input type="text" class="form-control" id="otroDique" name="otroDique">
+        </div>
+        <div class="col-8">
+          <h3 class="alerta">{{ mensaje2 }}</h3>
         </div>
         <br>
         <div class="txt2 row">
-          <div class="col-1">
-            <label class="form-label" for="lider">Líder</label>
+          <div class="col-2">
+            <label class="form-label" for="lider">* Líder</label>
             <br>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <input type="text" class="form-control" id="lider" name="lider" value="{{ lider }}">
           </div>
           <div class="col-3">
@@ -58,40 +65,80 @@
           </div>
         </div>
         <div>
-          <label class="form-label" for="equipo">Miembros del equipo</label>
+          <label class="form-label" for="equipo">* Miembros del equipo</label>
           <textarea class="form-control" id="equipo" rows="4" name="equipo">{{ equipo }}</textarea>
           <br>
         </div>
         <br>
         <div class="mb-3 wow row">
-          <label class="form-label" for="proyecto">Proyecto Detonador (Qué quiero lograr en términos de Valor)</label>
+          <label class="form-label" for="proyecto">* Proyecto Detonador (Qué quiero lograr en términos de Valor)</label>
           <textarea class="form-control" id="proyecto" rows="10" name="proyecto">{{ proyecto }}</textarea>
         </div>
         <br>
         <div class="row">
           <div class="col-9">
-            <p>Plan de Acción</p>
+            <h4>Plan de Acción</h4>
+            <label for="text1">* Actividad 1</label>
             <input type="text" class="form-control" id="text1" name="text1">
             <br>
+            <label for="text2">Actividad 2</label>
             <input type="text" class="form-control" id="text2" name="text2">
             <br>
+            <label for="text3">Actividad 3</label>
             <input type="text" class="form-control" id="text3" name="text3">
             <br>
+            <label for="text4">Actividad 4</label>
             <input type="text" class="form-control" id="text4" name="text4">
             <br>
+            <label for="text5">Actividad 5</label>
             <input type="text" class="form-control" id="text5" name="text5">
+            <br>
+            <label for="text6">Actividad 6</label>
+            <input type="text" class="form-control" id="text6" name="text6">
+            <br>
+            <label for="text7">Actividad 7</label>
+            <input type="text" class="form-control" id="text7" name="text7">
+            <br>
+            <label for="text8">Actividad 8</label>
+            <input type="text" class="form-control" id="text8" name="text8">
+            <br>
+            <label for="text9">Actividad 9</label>
+            <input type="text" class="form-control" id="text9" name="text9">
+            <br>
+            <label for="text10">Actividad 10</label>
+            <input type="text" class="form-control" id="text10" name="text10">
           </div>
           <div class="col-3">
-            <p>Fecha de Cumplimiento</p>
+            <h4>Fecha de Cumplimiento</h4>
+            <label for="date1">* Fecha 1</label>
             <input type="date" class="form-control" id="date1" name="date1">
             <br>
+            <label for="date2">Fecha 2</label>
             <input type="date" class="form-control" id="date2" name="date2">
             <br>
+            <label for="date3">Fecha 3</label>
             <input type="date" class="form-control" id="date3" name="date3">
             <br>
+            <label for="date4">Fecha 4</label>
             <input type="date" class="form-control" id="date4" name="date4">
             <br>
+            <label for="date5">Fecha 5</label>
             <input type="date" class="form-control" id="date5" name="date5">
+            <br>
+            <label for="date6">Fecha 6</label>
+            <input type="date" class="form-control" id="date6" name="date6">
+            <br>
+            <label for="date7">Fecha 7</label>
+            <input type="date" class="form-control" id="date7" name="date7">
+            <br>
+            <label for="date8">Fecha 8</label>
+            <input type="date" class="form-control" id="date8" name="date8">
+            <br>
+            <label for="date9">Fecha 9</label>
+            <input type="date" class="form-control" id="date9" name="date9">
+            <br>
+            <label for="date10">Fecha 10</label>
+            <input type="date" class="form-control" id="date10" name="date10">
           </div>
         </div>
         <br>
@@ -108,10 +155,21 @@
         <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
         <br>
         <br>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/proyectodetonador2'">Ver proyectos</button>
+        {% if ver == 0 %}
+        <div>
+
+        </div>
+        {% elif ver == 1 %}
+        <div>
+          <button type="button" class="btn btn-primary" onclick="window.location.href='/proyectodetonador2'">Ver proyectos</button>
+        </div>
+        {% endif %}
         <br>
         <br>
-        <button type="button" class="btn btn-primary" onclick="print()">Imprimir</button>
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
       </div>
     </div>

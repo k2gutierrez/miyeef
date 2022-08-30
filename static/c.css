@@ -67,6 +67,11 @@
     color: red;
 }
 
+.alerta {
+    font-family: monserrat-semibold;
+    color: red;
+}
+
 .main {
     padding: 30px;
     font-family: monserrat-regular;

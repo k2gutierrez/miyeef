@@ -110,7 +110,7 @@ def resetpassword():
     if request.method == "POST":
         correo = str(request.form.get('correo'))
         auth.send_password_reset_email(correo)
-        mensaje = 'Se ha enviado un correo para cambiar tu contraseña, sigue las instrucciones e ingresa nuevamente. En caso de no velor en tu bandeja revisa en tu apartado de SPAM'
+        mensaje = 'Se ha enviado un correo para cambiar tu contraseña, sigue las instrucciones e ingresa nuevamente. En caso de no ver el correo en tu bandeja revisa en tu apartado de SPAM'
 
         return render_template('resetpassword.html', correo=correo, mensaje=mensaje)
 
@@ -489,56 +489,182 @@ def proyectodetonador():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+    d2 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     
     d = db.child(localId).child('MASTER').child("diques").child('respuesta').get().val()
     diques = []
-    for i in d:
-        if i != '':
-            diques.append(i)
+    ver = 0
+
+    if d2 is not None:
+        ver = 1
+
+    if d is None:
+        res = 'No tienes diques registrados'
+        diques.append(res)
+    else:
+        for i in d:
+            if i != '':
+                diques.append(i)
+            else:
+                res = 'No tienes diques registrados'
+                diques.append(res)
 
     mcont = {}
     mensaje = ''
+    mensaje2 = ''
     hoy = date.today()
     fecha = str(hoy)
+    sect1 = "selected"
+    sect2 = ""
 
     if request.method == 'POST':
-        sele = request.form.get('sele')
-        lider = request.form.get('lider')
-        equipo = request.form.get('equipo')
-        proyecto = request.form.get('proyecto')
-        p1 = request.form.get('text1')
-        p2 = request.form.get('text2')
-        p3 = request.form.get('text3')
-        p4 = request.form.get('text4')
-        p5 = request.form.get('text5')
-        f1 = request.form.get('date1')
-        f2 = request.form.get('date2')
-        f3 = request.form.get('date3')
-        f4 = request.form.get('date4')
-        f5 = request.form.get('date5')
-        
-        mcont = {
-            "lider": lider,
-            "equipo": equipo,
-            "proyecto": proyecto,
-            "p1": p1,
-            "p2": p2,
-            "p3": p3,
-            "p4": p4,
-            "p5": p5,
-            "fc1": f1,
-            "fc2": f2,
-            "fc3": f3,
-            "fc4": f4,
-            "fc5": f5,
-            "fecha": fecha
-        }
-        
-        mc = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).set(mcont)
-        mc
-        mensaje = 'Los registros han quedado guardados'
 
-    return render_template('proyectodetonador.html', mcont=mcont, mensaje=mensaje, diques=diques, fecha=fecha)
+        sele1 = request.form.get('sele')
+        sele2 = request.form.get('otroDique')
+        if sele1 == "":
+            mensaje2 = "No has seleccionado un Dique"
+            sect1 = sect1
+            sect2 = sect2
+        elif sele1 == "No tienes diques registrados":
+            mensaje2 = "Elige 'Otro Dique' o vuelve a home a registrar nuevos Diques"
+            sect1 = sect1
+            sect2 = sect2
+        elif sele1 == "otro" and sele2 == "":
+            mensaje2 = "No has nombrado el nuevo Dique"
+            sect1 = ""
+            sect2 = "selected"
+
+        elif sele1 == "otro" and sele2 != "":
+            sele = sele2
+            lider = request.form.get('lider')
+            equipo = request.form.get('equipo')
+            proyecto = request.form.get('proyecto')
+            p1 = request.form.get('text1')
+            p2 = request.form.get('text2')
+            p3 = request.form.get('text3')
+            p4 = request.form.get('text4')
+            p5 = request.form.get('text5')
+            p6 = request.form.get('text6')
+            p7 = request.form.get('text7')
+            p8 = request.form.get('text8')
+            p9 = request.form.get('text9')
+            p10 = request.form.get('text10')
+            f1 = request.form.get('date1')
+            f2 = request.form.get('date2')
+            f3 = request.form.get('date3')
+            f4 = request.form.get('date4')
+            f5 = request.form.get('date5')
+            f6 = request.form.get('date6')
+            f7 = request.form.get('date7')
+            f8 = request.form.get('date8')
+            f9 = request.form.get('date9')
+            f10 = request.form.get('date10')
+
+            if lider == "" or equipo == "" or proyecto == "" or p1 == "" or f1 == "":
+                mensaje2 = "Debes llenar los campos marcados con ' * ' para poder registrar el Proyecto Detonador"
+            else:
+
+                mcont = {
+                    "lider": lider,
+                    "equipo": equipo,
+                    "proyecto": proyecto,
+                    "p1": p1,
+                    "p2": p2,
+                    "p3": p3,
+                    "p4": p4,
+                    "p5": p5,
+                    "p6": p6,
+                    "p7": p7,
+                    "p8": p8,
+                    "p9": p9,
+                    "p10": p10,
+                    "fc1": f1,
+                    "fc2": f2,
+                    "fc3": f3,
+                    "fc4": f4,
+                    "fc5": f5,
+                    "fc6": f6,
+                    "fc7": f7,
+                    "fc8": f8,
+                    "fc9": f9,
+                    "fc10": f10,
+                    "fecha": fecha
+                }
+                
+                mc = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).set(mcont)
+                mc
+                mensaje = 'Los registros han quedado guardados'
+                mensaje2 = "Registro exitoso"
+                sect1 = "selected"
+                sect2 = ""
+                ver = 1
+        else:
+            sele = sele1
+            lider = request.form.get('lider')
+            equipo = request.form.get('equipo')
+            proyecto = request.form.get('proyecto')
+            p1 = request.form.get('text1')
+            p2 = request.form.get('text2')
+            p3 = request.form.get('text3')
+            p4 = request.form.get('text4')
+            p5 = request.form.get('text5')
+            p6 = request.form.get('text6')
+            p7 = request.form.get('text7')
+            p8 = request.form.get('text8')
+            p9 = request.form.get('text9')
+            p10 = request.form.get('text10')
+            f1 = request.form.get('date1')
+            f2 = request.form.get('date2')
+            f3 = request.form.get('date3')
+            f4 = request.form.get('date4')
+            f5 = request.form.get('date5')
+            f6 = request.form.get('date6')
+            f7 = request.form.get('date7')
+            f8 = request.form.get('date8')
+            f9 = request.form.get('date9')
+            f10 = request.form.get('date10')
+            
+            if lider == "" or equipo == "" or proyecto == "" or p1 == "" or f1 == "":
+                mensaje2 = "Debes llenar los campos marcados con ' * ' para poder registrar el Proyecto Detonador"
+            
+            else:
+
+                mcont = {
+                    "lider": lider,
+                    "equipo": equipo,
+                    "proyecto": proyecto,
+                    "p1": p1,
+                    "p2": p2,
+                    "p3": p3,
+                    "p4": p4,
+                    "p5": p5,
+                    "p6": p6,
+                    "p7": p7,
+                    "p8": p8,
+                    "p9": p9,
+                    "p10": p10,
+                    "fc1": f1,
+                    "fc2": f2,
+                    "fc3": f3,
+                    "fc4": f4,
+                    "fc5": f5,
+                    "fc6": f6,
+                    "fc7": f7,
+                    "fc8": f8,
+                    "fc9": f9,
+                    "fc10": f10,
+                    "fecha": fecha
+                }
+                
+                mc = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).set(mcont)
+                mc
+                mensaje = 'Los registros han quedado guardados'
+                mensaje2 = "Registro exitoso"
+                sect1 = "selected"
+                sect2 = ""
+                ver = 1
+
+    return render_template('proyectodetonador.html', sect1=sect1, sect2=sect2 ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, diques=diques, fecha=fecha, ver=ver)
 
 ##############################################################################################
 @app.route('/proyectodetonador2', methods= ['POST', 'GET'])
@@ -566,11 +692,21 @@ def proyectodetonador2():
     fc3 = ''
     fc4 = ''
     fc5 = ''
+    fc6 = ''
+    fc7 = ''
+    fc8 = ''
+    fc9 = ''
+    fc10 = ''
     p1 = ''
     p2 = ''
     p3 = ''
     p4 = ''
     p5 = ''
+    p6 = ''
+    p7 = ''
+    p8 = ''
+    p9 = ''
+    p10 = ''
     sele = ''
     proy = ''
     a = 0
@@ -584,6 +720,11 @@ def proyectodetonador2():
             fc3 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc3').get().val()
             fc4 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc4').get().val()
             fc5 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc5').get().val()
+            fc6 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc6').get().val() 
+            fc7 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc7').get().val()
+            fc8 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc8').get().val()
+            fc9 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc9').get().val()
+            fc10 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc10').get().val()
             fecha = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fecha').get().val()
             lider = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('lider').get().val()
             proyecto = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('proyecto').get().val()
@@ -592,6 +733,11 @@ def proyectodetonador2():
             p3 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p3').get().val()
             p4 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p4').get().val()
             p5 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p5').get().val()
+            p6 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p6').get().val()
+            p7 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p7').get().val()
+            p8 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p8').get().val()
+            p9 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p9').get().val()
+            p10 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p10').get().val()
             proy = sele
             a = 1
 
@@ -604,11 +750,21 @@ def proyectodetonador2():
             p3 = request.form.get('text3')
             p4 = request.form.get('text4')
             p5 = request.form.get('text5')
+            p6 = request.form.get('text6')
+            p7 = request.form.get('text7')
+            p8 = request.form.get('text8')
+            p9 = request.form.get('text9')
+            p10 = request.form.get('text10')
             f1 = request.form.get('date1')
             f2 = request.form.get('date2')
             f3 = request.form.get('date3')
             f4 = request.form.get('date4')
             f5 = request.form.get('date5')
+            f6 = request.form.get('date6')
+            f7 = request.form.get('date7')
+            f8 = request.form.get('date8')
+            f9 = request.form.get('date9')
+            f10 = request.form.get('date10')
             sele2 = request.form.get('sele2')
             
             mcont = {
@@ -620,11 +776,21 @@ def proyectodetonador2():
                 "p3": p3,
                 "p4": p4,
                 "p5": p5,
+                "p6": p6,
+                "p7": p7,
+                "p8": p8,
+                "p9": p9,
+                "p10": p10,
                 "fc1": f1,
                 "fc2": f2,
                 "fc3": f3,
                 "fc4": f4,
                 "fc5": f5,
+                "fc6": f6,
+                "fc7": f7,
+                "fc8": f8,
+                "fc9": f9,
+                "fc10": f10,
                 "fecha": hoy
             }
             
@@ -637,16 +803,26 @@ def proyectodetonador2():
             fc3 = ''
             fc4 = ''
             fc5 = ''
+            fc6 = ''
+            fc7 = ''
+            fc8 = ''
+            fc9 = ''
+            fc10 = ''
             p1 = ''
             p2 = ''
             p3 = ''
             p4 = ''
             p5 = ''
+            p6 = ''
+            p7 = ''
+            p8 = ''
+            p9 = ''
+            p10 = ''
             sele = ''
             mensaje = 'Los registros han quedado guardados'
 
     return render_template('proyectodetonador2.html', mensaje=mensaje, pd=pd, fecha=fecha, lider=lider, equipo=equipo, proyecto=proyecto,
-    p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, fc1=fc1, fc2=fc2, fc3=fc3, fc4=fc4, fc5=fc5, proy=proy, a=a)
+    p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8, p9=p9, p10=p10, fc1=fc1, fc2=fc2, fc3=fc3, fc4=fc4, fc5=fc5, fc6=fc6, fc7=fc7, fc8=fc8, fc9=fc9, fc10=fc10, proy=proy, a=a)
 
 ##############################################################################################
 
