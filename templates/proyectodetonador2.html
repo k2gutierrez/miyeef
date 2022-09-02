@@ -15,24 +15,18 @@
   <body>
     <div class="container-sm main">
       <div class="row align-items-center">
-        <div class="col-3">
+        <div class="col-sm-3">
           <img src="../static/logo.png" class="img-fluid" alt="">
         </div>
-        <div class="col-9 txt1">
+        <div class="col-sm-9 txt1">
           <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
         </div>
       </div>
-    <br>
-        
-
-
     </div>
     <div class="container-sm txt2">
       <h2>Proyecto Detonador de Valor</h2>
     </div>
-    <br>
-    <br>
-    <div class="container-sm">
+    <div class="container-sm mc">
       {% if a == 0 %}
       <form action="" method="POST">
         <div class="row">
@@ -64,11 +58,9 @@
       </div>
       <form id="form1" action="" method="POST">
         
-        <br>
         <div class="txt2 row">
           <div class="col-1">
             <label class="form-label" for="lider">Líder</label>
-            <br>
           </div>
           <div class="col-8">
             <input type="text" class="form-control" id="lider" name="lider" value="{{ lider }}">
@@ -80,61 +72,94 @@
         <div>
           <label class="form-label" for="equipo">Miembros del equipo</label>
           <textarea class="form-control" id="equipo" rows="4" name="equipo">{{ equipo }}</textarea>
-          <br>
         </div>
-        <br>
         <div class="mb-3 wow row">
           <label class="form-label" for="proyecto">Proyecto Detonador (Qué quiero lograr en términos de Valor)</label>
           <textarea class="form-control" id="proyecto" rows="10" name="proyecto">{{ proyecto }}</textarea>
         </div>
-        <br>
         <div class="row">
-          <div class="col-9">
+          <div class="col-sm-9">
             <p>Plan de Acción</p>
             <input type="text" class="form-control" id="text1" name="text1" value="{{ p1 }}">
-            <br>
-            <input type="text" class="form-control" id="text2" name="text2" value="{{ p2 }}">
-            <br>
-            <input type="text" class="form-control" id="text3" name="text3"  value="{{ p3 }}">
-            <br>
-            <input type="text" class="form-control" id="text4" name="text4" value="{{ p4 }}">
-            <br>
-            <input type="text" class="form-control" id="text5" name="text5" value="{{ p5 }}">
-            <br>
-            <input type="text" class="form-control" id="text6" name="text6" value="{{ p6 }}">
-            <br>
-            <input type="text" class="form-control" id="text7" name="text7" value="{{ p7 }}">
-            <br>
-            <input type="text" class="form-control" id="text8" name="text8" value="{{ p8 }}">
-            <br>
-            <input type="text" class="form-control" id="text9" name="text9" value="{{ p9 }}">
-            <br>
-            <input type="text" class="form-control" id="text10" name="text10" value="{{ p10 }}">
           </div>
-          <div class="col-3">
+          <div class="col-sm-3">
             <p>Fecha de Cumplimiento</p>
             <input type="date" class="form-control" id="date1" name="date1" value="{{ fc1 }}">
-            <br>
-            <input type="date" class="form-control" id="date2" name="date2" value="{{ fc2 }}">
-            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text2" name="text2" value="{{ p2 }}">
+          </div>
+          <div class="col-sm-3">
+            <input type="date" class="form-control" id="date2" name="date2" value="{{ fc2 }}">           
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text3" name="text3"  value="{{ p3 }}">
+          </div>
+          <div class="col-sm-3">
             <input type="date" class="form-control" id="date3" name="date3" value="{{ fc3 }}">
-            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text4" name="text4" value="{{ p4 }}">
+          </div>
+          <div class="col-sm-3">
             <input type="date" class="form-control" id="date4" name="date4" value="{{ fc4 }}">
-            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text5" name="text5" value="{{ p5 }}">
+          </div>
+          <div class="col-sm-3">
             <input type="date" class="form-control" id="date5" name="date5" value="{{ fc5 }}">
-            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text6" name="text6" value="{{ p6 }}">
+          </div>
+          <div class="col-sm-3">
             <input type="date" class="form-control" id="date6" name="date6" value="{{ fc6 }}">
-            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text7" name="text7" value="{{ p7 }}">
+          </div>
+          <div class="col-sm-3">
             <input type="date" class="form-control" id="date7" name="date7" value="{{ fc7 }}">
-            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text8" name="text8" value="{{ p8 }}">
+          </div>
+          <div class="col-sm-3">
             <input type="date" class="form-control" id="date8" name="date8" value="{{ fc8 }}">
-            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text9" name="text9" value="{{ p9 }}">
+          </div>
+          <div class="col-sm-3">
             <input type="date" class="form-control" id="date9" name="date9" value="{{ fc9 }}">
-            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="text10" name="text10" value="{{ p10 }}">
+          </div>
+          <div class="col-sm-3">
             <input type="date" class="form-control" id="date10" name="date10" value="{{ fc10 }}">
           </div>
         </div>
-        <br>
+
         <div class="col-4 noprint">
           <h3>Confirma el proyecto detonador que quieres modificar seleccionandolo a continuación:</h3>
           <select class="form-select" id="sele2" name="sele2" aria-label="Default select example">
@@ -148,9 +173,7 @@
         <div class="noprint">
           <button type="submit" name="guardar" class="btn btn-primary btn-lg">Guardar</button>
         </div>
-        
       </form>
-      <br>
       <br>
       <div class="noprint">
         <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>

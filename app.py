@@ -2,18 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, session, R
 import pyrebase
 import os
 from datetime import date
-import io
-import numpy as np
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-import matplotlib.pyplot as plt
-import pandas as pd
 from math import pi
 
 from requests import RequestException
-
-plt.rcParams["figure.figsize"] = [7.50, 7.50]
-plt.rcParams["figure.autolayout"] = True
 
 app = Flask(__name__)
 

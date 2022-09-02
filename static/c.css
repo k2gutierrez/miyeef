@@ -23,6 +23,13 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.mc {
+    background-color: rgba(191, 211, 248, 0.726);
+    border-style:ridge;
+    margin-top: 5px;
+    padding: 10px;
+}
+
 .row{
     padding: 25px;
     margin: 10px;
@@ -147,7 +154,28 @@
 }
 
 @media print {
+    @page {
+        margin: 0;
+        size: A4 portrait;
+    }
     .noprint {
         display: none;
      }
+     .mc {
+        border-style:solid ;
+    }
+    body {
+        page-break-inside: avoid;
+        align-self: center;
+        width: 100%; 
+        margin-left: 50px;
+        -webkit-print-color-adjust: exact !important; /*Chrome, Safari */
+        color-adjust: exact !important;  /*Firefox*/
+        position: relative;
+        display: inline;
+    }
+    /*.pb {
+        page-break-after: always;
+    }*/
+
  }
