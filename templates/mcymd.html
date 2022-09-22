@@ -40,6 +40,9 @@
         <p class="fecha">Fecha:  {{ fecha }}</p>
       </div>
     </div>
+    <div class="noprint">
+      <h3 class="mensajeG">{{ mensaje }}</h3>
+    </div>
     <div class="row txt2">
       <p>Identifica 3 oportunidades en tu empresa de:</p>
     </div>
@@ -65,19 +68,16 @@
             <textarea class="form-control" id="text6" rows="6" name="text6">{{ r6 }}</textarea>
           </div>
         </div>
-        <div class="noprint">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+        <div class="row noprint text-center">
+          <div class="col-12">
+            <button type="submit" class="botones btn btn-info">Guardar</button>
+            <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
+          </div>
+          <div class="col-12">
+            <button type="button" class="botones btn btn-primary" onclick="window.location.href='/home'">Home</button>
+          </div>
         </div>
       </form>
-      <div class="noprint">
-        <h3>{{ mensaje }}</h3>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="print()">Imprimir</button>
-        <br>
-      </div>
     </div>
     
   </div>

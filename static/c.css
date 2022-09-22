@@ -23,6 +23,10 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.botones {
+    margin: 5px;
+}
+
 .logo {
     width: 150px;
 }
@@ -78,6 +82,11 @@
 .mensaje {
     font-family: monserrat-semibold;
     color: red;
+}
+
+.mensajeG {
+    font-family: monserrat-semibold;
+    color: blue;
 }
 
 .alerta {
