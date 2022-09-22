@@ -23,6 +23,10 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.logo {
+    width: 150px;
+}
+
 .mc {
     background-color: rgba(191, 211, 248, 0.726);
     border-style:ridge;
@@ -31,12 +35,8 @@
 }
 
 .row{
-    padding: 25px;
-    margin: 10px;
-}
-
-.cl{
-    padding: 0px;
+    padding: 10px;
+    margin: 5px;
 }
 
 .box1{
@@ -55,7 +55,13 @@
 }
 
 .boxlist{
+    font-family: monserrat-regular;
     text-align: left;
+    font-size: 16px;
+}
+
+.cl {
+    padding: 5px;
 }
 
 .c {
@@ -90,11 +96,22 @@
 
 .txt2 {
     font-family: monserrat-semibold;
+    font-size: 20px;
 }
 
 .txt1 {
     font-family: monserrat-medium;
     text-align: center;
+    font-size: 30px;
+}
+
+.fecha {
+    text-align: right;
+}
+
+.txtName {
+    font-family: monserrat-medium;
+    font-size: 25px;
 }
 
 .wow2 {
@@ -105,7 +122,7 @@
 
 .wow {
     padding: 15px;
-    font-size: 22px;
+    font-size: 15px;
 }
 
 .opo {
@@ -151,6 +168,18 @@
     .creci {
         text-align: center;
     }
+    .txt1 {
+        font-size: 20px;
+    }
+    .txtName {
+        font-size: 15px;
+    }
+    .boxlist{
+        font-size: 15px;
+    }
+    .fecha {
+        text-align: center;
+    }
 }
 
 @media print {
@@ -173,6 +202,15 @@
         color-adjust: exact !important;  /*Firefox*/
         position: relative;
         display: inline;
+    }
+    .txt1{
+        font-size: 20px;
+    }
+    .txtName {
+        font-size: 15px;
+    }
+    .fecha {
+        font-size: 15px;
     }
     /*.pb {
         page-break-after: always;
