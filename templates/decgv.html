@@ -12,53 +12,66 @@
 
     <style>
       @page {
-          size: A4 portrait;
-    }
+        size: A4 portrait;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right: 0;
+        margin-left: 0;
+      }
     </style>
 
-    <title>DECGV</title>
+    <title>ECV_DECGV_S2_{{ nombre }}</title>
   </head>
   <body>
     <div class="container-sm main">
       <div class="row align-items-center">
-        <div class="col-sm-3">
-          <img src="../static/logo.png" class="img-fluid" alt="">
+        <div class="col-sm-2">
+          <img src="../static/logo.png" class="logo img-fluid" alt="">
         </div>
-        <div class="col-sm-9 txt1">
-          <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
+        <div class="col-sm-10 txt1">
+          <p><span class="opo">Máster en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></p>
         </div>
       </div>
-    <div class="container-sm row">
-      <div class="col-sm-8 txt2">
-        <h3>Nombre: <span>{{ nombre }}</span></h3>
+    <div class="txtName row">
+      <div class="col-sm-8 col-12 txtName">
+        <p>Nombre: {{ nombre }}</p>
       </div>
-      <div class="col-sm-4">
-        <p><b>Fecha:</b> {{ fecha }}</p>
+      <div class="col-sm-3 col-12">
+        <p class="fecha">Fecha:  {{ fecha }}</p>
+      </div>
+    </div>
+    <div class="row txt2title">
+      <p>Diagnóstico de Enfoque Competitivo y Generación de Valor</p>
+    </div>
+    <div class="noprint txt2">
+      <p>{{ mensaje }}</p>
+    </div>
+    <div class="printing">
+      <div class="row">
+        <p class="txtprint1">¿Cuáles son los cambios relevantes que podrías hacer en tu empresa en la dimensión del Enfoque Competitivo y Generación de Valor?</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc }}</p>
       </div>
     </div>
     <div class="container-sm txt2">
-      <h2>Diagnóstico Enfoque Competitivo y Generación de Valor</h2>
-    </div>
-    <div class="container-sm">
-      <form id="form1" action="/decgv" method="POST">
+      <form id="form1" action="/decgv" method="POST" class="noprint">
         <div class="mb-3 wow row mc">
-          <label class="form-label" for="text1">¿Cuáles son los cambios más relevantes que propones hacer en tu  empresa en la dimensión del Enfoque Competitivo y Generación  de Valor?</label>
-          <textarea class="form-control" id="text1" rows="10" name="t1">{{ mc }}</textarea>
+          <label class="form-label" for="text1">¿Cuáles son los cambios relevantes que podrías hacer en tu empresa en la dimensión del Enfoque Competitivo y Generación de Valor?</label>
+          <textarea class="form-control" id="text1" rows="20" name="t1">{{ mc }}</textarea>
         </div>
         <div class="noprint">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          <div class="row text-center">
+            <div class="col-12">
+              <button type="submit" class="botones btn btn-info">Guardar</button>
+              <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
+            </div>
+            <div class="col-12">
+              <button type="button" class="botones btn btn-primary" onclick="window.location.href='/home'">Home</button>
+            </div>
+          </div>
         </div>
-        
       </form>
-      <div class="noprint">
-        <h3>{{ mensaje }}</h3>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="print()">Imprimir</button>
-        <br>
-      </div>
     </div>
     
   </div>

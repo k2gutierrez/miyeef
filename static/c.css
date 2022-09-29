@@ -23,6 +23,22 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.printing {
+    display: none;
+}
+
+.txtprint1 {
+    color: blue;
+    font-family: monserrat-semibold;
+    font-size: 18px;
+}
+
+.txtprint2 {
+    color: black;
+    font-family: monserrat-regular;
+    font-size: 14px;
+}
+
 .botones {
     margin: 5px;
 }
@@ -104,6 +120,11 @@
 }
 
 .txt2 {
+    font-family: monserrat-semibold;
+    font-size: 16px;
+}
+
+.txt2title {
     font-family: monserrat-semibold;
     font-size: 20px;
 }
@@ -191,10 +212,21 @@
     }
 }
 
+@page {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    size: a4 portrait;
+}
+
 @media print {
     @page {
-        margin: 0;
-        size: A4 portrait;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+        size: a4 portrait;
     }
     .noprint {
         display: none;
@@ -203,14 +235,14 @@
         border-style:solid ;
     }
     body {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
         align-self: center;
         width: 100%; 
-        margin-left: 50px;
+        margin-left: 0px;
         -webkit-print-color-adjust: exact !important; /*Chrome, Safari */
         color-adjust: exact !important;  /*Firefox*/
-        position: relative;
-        display: inline;
+        /*position: relative;
+        display: inline;*/
     }
     .txt1{
         font-size: 20px;
@@ -223,6 +255,12 @@
     }
     /*.pb {
         page-break-after: always;
+    }*/
+    .printing {
+        display: contents;
+    }
+    /*.printing.row {
+        margin-bottom: 5px;
     }*/
 
  }
