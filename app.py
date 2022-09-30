@@ -111,21 +111,26 @@ def resetpassword():
 @app.route('/home', methods= ['POST', 'GET'])
 def home():
 
-    token = session['user']
-    user = auth.get_account_info(token)
-    localId = user['users'][0]['localId']
-    nombre = str(db.child(localId).child('NAME').get().val())
-    a = nombre.title()
-    lvl = db.child(localId).child('NIVEL').get().val()
-
-    if lvl == 3:
-        lvl = 3
-    elif lvl == 4:
-        lvl = 4
+    if KeyError:
+        return redirect(url_for('.index'))
     else:
-        lvl = 5
 
-    return render_template('home.html', a=a, lvl=lvl)
+
+        token = session['user']
+        user = auth.get_account_info(token)
+        localId = user['users'][0]['localId']
+        nombre = str(db.child(localId).child('NAME').get().val())
+        a = nombre.title()
+        lvl = db.child(localId).child('NIVEL').get().val()
+
+        if lvl == 3:
+            lvl = 3
+        elif lvl == 4:
+            lvl = 4
+        else:
+            lvl = 5
+
+        return render_template('home.html', a=a, lvl=lvl)
 
 ######################################################################################################
 @app.route('/mcymd', methods= ['POST', 'GET'])
