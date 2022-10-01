@@ -1,3 +1,4 @@
+from urllib.error import HTTPError
 from flask import Flask, render_template, request, redirect, url_for, session, Response
 import pyrebase
 import os
@@ -60,7 +61,7 @@ def registro():
             return redirect(url_for('.home'))
         except:
             exist = 1
-            mensaje = 'Este correo ya está registrado! Da click en Ingresa o registrate con otro correo.'
+            mensaje = 'El registro no ha sido exitoso, asegurate de llenar bien todos los campos!!'
             return render_template('registro.html', mensaje=mensaje, exist=exist)
 
     return render_template('registro.html')
@@ -97,13 +98,24 @@ def resetpassword():
 
     correo = ''
     mensaje = ''
+    BD = db.get()
+    emails = []
+    for i in BD:
+        eme = db.child(i.key()).child('EMAIL').get().val()
+        emails.append(eme)
 
     if request.method == "POST":
         correo = str(request.form.get('correo'))
-        auth.send_password_reset_email(correo)
-        mensaje = 'Se ha enviado un correo para cambiar tu contraseña, sigue las instrucciones e ingresa nuevamente. En caso de no ver el correo en tu bandeja revisa en tu apartado de SPAM'
-
-        return render_template('resetpassword.html', correo=correo, mensaje=mensaje)
+        if correo in emails:
+            auth.send_password_reset_email(correo)
+            mensaje = 'Se ha enviado un correo para cambiar tu contraseña, sigue las instrucciones e ingresa nuevamente. En caso de no ver el correo en tu bandeja revisa en tu apartado de SPAM'
+            return render_template('resetpassword.html', correo=correo, mensaje=mensaje)
+        elif correo == '':
+            mensaje = "Debes registrar un correo para recuperar la contraseña"
+            return render_template('resetpassword.html', correo=correo, mensaje=mensaje)
+        else:
+            mensaje = "Este correo no aparece registrado"
+            return render_template('resetpassword.html', correo=correo, mensaje=mensaje)
 
     return render_template('resetpassword.html')
 
@@ -111,22 +123,42 @@ def resetpassword():
 @app.route('/home', methods= ['POST', 'GET'])
 def home():
 
+    try:
+        token = session['user']
+        user = auth.get_account_info(token)
+        localId = user['users'][0]['localId']
+        nombre = str(db.child(localId).child('NAME').get().val())
+        a = nombre.title()
+        lvl = db.child(localId).child('NIVEL').get().val()
 
-    token = session['user']
-    user = auth.get_account_info(token)
-    localId = user['users'][0]['localId']
-    nombre = str(db.child(localId).child('NAME').get().val())
-    a = nombre.title()
-    lvl = db.child(localId).child('NIVEL').get().val()
+        if lvl == 3:
+            lvl = 3
+        elif lvl == 4:
+            lvl = 4
+        else:
+            lvl = 5
 
-    if lvl == 3:
-        lvl = 3
-    elif lvl == 4:
-        lvl = 4
+        return render_template('home.html', a=a, lvl=lvl)
+
+    except KeyError:
+        return redirect(url_for('.index'))
+        
     else:
-        lvl = 5
+        token = session['user']
+        user = auth.get_account_info(token)
+        localId = user['users'][0]['localId']
+        nombre = str(db.child(localId).child('NAME').get().val())
+        a = nombre.title()
+        lvl = db.child(localId).child('NIVEL').get().val()
 
-    return render_template('home.html', a=a, lvl=lvl)
+        if lvl == 3:
+            lvl = 3
+        elif lvl == 4:
+            lvl = 4
+        else:
+            lvl = 5
+
+        return render_template('home.html', a=a, lvl=lvl)
 
 ######################################################################################################
 @app.route('/mcymd', methods= ['POST', 'GET'])
