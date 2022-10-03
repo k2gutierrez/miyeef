@@ -25,15 +25,18 @@
   <body>
     <div class="container-sm main">
       <div class="row align-items-end">
-        <div class="col-sm-6 col-12">
+        <div class="col-6">
           <img src="../static/headermiyeef.jpeg" class="logo img-fluid" alt="">
         </div>
-        <div class="col-sm-6 col-12">
+        <div class="col-6">
           <p class="fecha">Fecha:  {{ fecha }}</p>
         </div>
       </div>
     <div class="txtName row">
       <p>Nombre: {{ nombre }}</p>
+    </div>
+    <div class="row txt2title">
+      <p>Mejora Continua y Mejora Discontinua</p>
     </div>
     <div class="row txt2">
       <p>Identifica en tu empresa 3 oportunidades de Mejora Continua y 3 de Mejora
@@ -41,7 +44,7 @@
     </div>
       <div class="printing">
         <div class="row txt2title">
-          <h3 class="txtprint1">Mejora Continua:</h3>
+          <p class="txtprint1">Mejora Continua:</p>
         </div>
         <div class="row">
           <p class="txtprint1">1: <span class="txtprint2">{{ r1 }}</span></p>
@@ -54,8 +57,8 @@
         </div>
       </div>
       <div class="printing">
-        <div class="row txt2">
-          <h3 class="txtprint1">Mejora Discontinua:</h3>
+        <div class="row txt2title">
+          <p class="txtprint1">Mejora Discontinua:</p>
         </div>
         <div class="row">
           <p class="txtprint1">1: <span class="txtprint2">{{ r4 }}</span></p>
@@ -74,23 +77,23 @@
     <div>
       <form id="form1" action="/mcymd" method="POST" class="noprint">
         <div class="mb-3 wow row">
-          <div class="col-sm-6 mc">
-            <h4>Mejora Continua</h4>
+          <div class="col-sm-6 mc mc0">
+            <p class="">Mejora Continua</p>
             <label for="text1" class="form-label">MC-1</label>
-            <textarea class="form-control" id="text1" rows="10" name="text1" >{{ r1 }}</textarea>
+            <textarea class="form-control mc1" id="text1" rows="10" name="text1" >{{ r1 }}</textarea>
             <label for="text2" class="form-label">MC-2</label>
-            <textarea class="form-control" id="text2" rows="10" name="text2" >{{ r2 }}</textarea>
+            <textarea class="form-control mc1" id="text2" rows="10" name="text2" >{{ r2 }}</textarea>
             <label for="text3" class="form-label">MC-3</label>
-            <textarea class="form-control" id="text3" rows="10" name="text3" >{{ r3 }}</textarea>
+            <textarea class="form-control mc1" id="text3" rows="10" name="text3" >{{ r3 }}</textarea>
           </div>
-          <div class="col-sm-6 mc">
-            <h4>Mejora Discontinua</h4>
+          <div class="col-sm-6 mc mc0">
+            <p class="">Mejora Discontinua</p>
             <label for="text4" class="form-label">MD-1</label>
-            <textarea class="form-control" id="text4" rows="10" name="text4">{{ r4 }}</textarea>
+            <textarea class="form-control mc1" id="text4" rows="10" name="text4">{{ r4 }}</textarea>
             <label for="text5" class="form-label">MD-2</label>
-            <textarea class="form-control" id="text5" rows="10" name="text5">{{ r5 }}</textarea>
+            <textarea class="form-control mc1" id="text5" rows="10" name="text5">{{ r5 }}</textarea>
             <label for="text6" class="form-label">MD-3</label>
-            <textarea class="form-control" id="text6" rows="10" name="text6">{{ r6 }}</textarea>
+            <textarea class="form-control mc1" id="text6" rows="10" name="text6">{{ r6 }}</textarea>
           </div>
         </div>
         <div class="noprint">

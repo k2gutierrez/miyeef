@@ -30,13 +30,13 @@
 .txtprint1 {
     color: blue;
     font-family: monserrat-semibold;
-    font-size: 18px;
+    font-size: 12px;
 }
 
 .txtprint2 {
     color: black;
     font-family: monserrat-regular;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .botones {
@@ -54,9 +54,19 @@
     padding: 10px;
 }
 
+.mc0 {
+    font-family: monserrat-regular;
+    font-size: 12px;
+}
+
+.mc1 {
+    font-family: monserrat-regular;
+    font-size: 10px;
+}
+
 .row{
-    padding: 10px;
-    margin: 5px;
+    padding: 4px;
+    margin: 4px;
 }
 
 .box1{
@@ -121,12 +131,12 @@
 
 .txt2 {
     font-family: monserrat-semibold;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .txt2title {
     font-family: monserrat-semibold;
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .txt1 {
@@ -138,12 +148,12 @@
 .fecha {
     text-align: center;
     font-family: monserrat-regular;
-    font-size: 20px;
+    font-size: 12px;
 }
 
 .txtName {
     font-family: monserrat-medium;
-    font-size: 25px;
+    font-size: 12px;
 }
 
 .wow2 {
@@ -154,7 +164,7 @@
 
 .wow {
     padding: 15px;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .opo {
@@ -185,7 +195,9 @@
 
 
 @media screen and (max-width: 768px) {
-
+    .logo {
+        width: 200px;
+    }
     .main {
         text-align: center;
     }
@@ -250,10 +262,10 @@
         font-size: 20px;
     }
     .txtName {
-        font-size: 15px;
+        font-size: 12px;
     }
     .fecha {
-        font-size: 15px;
+        font-size: 12px;
     }
     /*.pb {
         page-break-after: always;
