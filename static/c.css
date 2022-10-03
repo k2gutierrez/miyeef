@@ -44,7 +44,7 @@
 }
 
 .logo {
-    width: 150px;
+    width: 600px;
 }
 
 .mc {
@@ -136,7 +136,9 @@
 }
 
 .fecha {
-    text-align: right;
+    text-align: center;
+    font-family: monserrat-regular;
+    font-size: 20px;
 }
 
 .txtName {
@@ -222,10 +224,10 @@
 
 @media print {
     @page {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 0px;
-        margin-right: 0px;
+        margin-top: 0in;
+        margin-bottom: 0in;
+        margin-left: 0in;
+        margin-right: 0in;
         size: a4 portrait;
     }
     .noprint {

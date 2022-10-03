@@ -24,21 +24,20 @@
   </head>
   <body>
     <div class="container-sm main">
-      <div class="row align-items-center">
-        <div class="col-sm-2">
-          <img src="../static/logo.png" class="logo img-fluid" alt="">
+      <div class="row align-items-end">
+        <div class="col-sm-6 col-12">
+          <img src="../static/headermiyeef.jpeg" class="logo img-fluid" alt="">
         </div>
-        <div class="col-sm-10 txt1">
-          <p><span class="opo">Máster en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></p>
+        <div class="col-sm-6 col-12">
+          <p class="fecha">Fecha:  {{ fecha }}</p>
         </div>
       </div>
     <div class="txtName row">
-      <div class="col-sm-8 col-12 txtName">
-        <p>Nombre: {{ nombre }}</p>
-      </div>
-      <div class="col-sm-3 col-12">
-        <p class="fecha">Fecha:  {{ fecha }}</p>
-      </div>
+      <p>Nombre: {{ nombre }}</p>
+    </div>
+    <div class="row txt2">
+      <p>Identifica en tu empresa 3 oportunidades de Mejora Continua y 3 de Mejora
+        Discontinua:</p>
     </div>
       <div class="printing">
         <div class="row txt2title">
@@ -70,11 +69,6 @@
       </div>
     <div class="noprint">
       <h3 class="mensajeG">{{ mensaje }}</h3>
-    </div>
-    <div class="noprint">
-      <div class="row txt2">
-        <p>Identifica 3 oportunidades en tu empresa de:</p>
-      </div>
     </div>
     
     <div>
