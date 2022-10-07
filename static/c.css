@@ -224,6 +224,9 @@
     .fecha {
         text-align: center;
     }
+    .fechaCumplimiento {
+        display: none;
+    }
 }
 
 @page {

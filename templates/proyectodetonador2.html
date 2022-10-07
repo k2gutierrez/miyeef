@@ -164,18 +164,18 @@
       {% elif a == 1 %}
       
       <div>
-        <h2>{{ proy }}</h2>
+        <h2>Dique: {{ proy }}</h2>
       </div>
-      <form id="form1" action="" method="POST">
+      <form id="form1" action="" method="POST" class="txt2">
         
         <div class="txt2 row">
-          <div class="col-1">
+          <div class="col-sm-1">
             <label class="form-label" for="lider">Líder</label>
           </div>
-          <div class="col-8">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="lider" name="lider" value="{{ lider }}">
           </div>
-          <div class="col-3">
+          <div class="col-sm-3">
             <p>{{ fecha }}</p>
           </div>
         </div>
@@ -193,7 +193,7 @@
             <input type="text" class="form-control" id="text1" name="text1" value="{{ p1 }}">
           </div>
           <div class="col-sm-3">
-            <p>Fecha de Cumplimiento</p>
+            <p class="fechaCumplimiento">Fecha de Cumplimiento</p>
             <input type="date" class="form-control" id="date1" name="date1" value="{{ fc1 }}">
           </div>
         </div>
