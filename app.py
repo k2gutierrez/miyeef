@@ -818,7 +818,7 @@ def proyectodetonador2():
                 "fecha": hoy
             }
             
-            db.child(localId).child('MASTER').child("proyecto detonador").child(sele2).update(mcont)
+            db.child(localId).child('MASTER').child("proyecto detonador").child(proy).update(mcont)
             lider = ''
             equipo = ''
             proyecto = ''

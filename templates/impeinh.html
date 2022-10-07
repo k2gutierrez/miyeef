@@ -16,55 +16,66 @@
     }
     </style>
 
-    <title>Impulsores e Inhibidores</title>
+    <title>ECV_ImpulsoresEInhibidoresDeValor_S3_{{ nombre }}</title>
+  
   </head>
   <body>
     <div class="container-sm main">
-      <div class="row align-items-center">
-        <div class="col-sm-3">
-          <img src="../static/logo.png" class="img-fluid" alt="">
+      <div class="row align-items-end">
+        <div class="col-6">
+          <img src="../static/headermiyeef.jpeg" class="logo img-fluid" alt="">
         </div>
-        <div class="col-sm-9 txt1">
-          <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
+        <div class="col-6">
+          <p class="fecha">Fecha:  {{ fecha }}</p>
         </div>
       </div>
-    <div class="container-sm row">
-      <div class="col-sm-8 txt2">
-        <h3>Nombre: {{ nombre }}</h3>
+    <div class="txtName row">
+      <p class="txtName">Nombre: {{ nombre }}</p>
+    </div>
+    <div class="row txt2title">
+      <p>Impulsores e Inhibidores de Valor</p>
+    </div>
+    <div class="noprint txt2">
+      <p>{{ mensaje }}</p>
+    </div>
+    <div class="printing">
+      <div class="row">
+        <p class="txtprint1">1. Identifica los principales Impulsores de Valor de tu empresa: (escribe al menos tres)</p>
       </div>
-      <div class="col-sm-4">
-        <p><b>Fecha: </b> {{ fecha }}</p>
+      <div class="row">
+        <p class="txtprint2">{{ mc }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">2. Identifica los principales Inhibidores de Valor de tu empresa: (escribe al menos tres)</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ md }}</p>
       </div>
     </div>
     <div class="container-sm txt2">
-      <h2>Impulsores e Inhibidores de Valor</h2>
-    </div>
-    <div class="container-sm">
-      <form id="form1" action="/impeinh" method="POST">
+      <form id="form1" action="/impeinh" method="POST" class="noprint">
         <div class="mb-3 wow">
           <div class="mc">
-            <label class="form-label" for="text1">1. Identifica los principales Impulsores de Valor de tu empresa: (escribe al menos tres)</label>
-            <textarea class="form-control" id="text1" rows="8" name="t1">{{ mc }}</textarea>
+            <label class="form-label" for="text1">A. Identifica los principales Impulsores de Valor de tu empresa: (escribe al menos tres)</label>
+            <textarea class="form-control" id="text1" rows="12" name="t1">{{ mc }}</textarea>
           </div>
           <div class="mc">
-            <label class="form-label" for="text2">2. Identifica los principales Inhibidores de Valor de tu empresa: (escribe al menos tres)</label>
-            <textarea class="form-control" id="text2" rows="8" name="t2">{{ md }}</textarea>
+            <label class="form-label" for="text2">B. Identifica los principales Inhibidores de Valor de tu empresa: (escribe al menos tres)</label>
+            <textarea class="form-control" id="text2" rows="12" name="t2">{{ md }}</textarea>
           </div>
         </div>
         <div class="noprint">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          <div class="row text-center">
+            <div class="col-12">
+              <button type="submit" class="botones btn btn-info">Guardar</button>
+              <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
+            </div>
+            <div class="col-12">
+              <button type="button" class="botones btn btn-primary" onclick="window.location.href='/home'">Home</button>
+            </div>
+          </div>
         </div>
-        
       </form>
-      <div class="noprint">
-        <h3>{{ mensaje }}</h3>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="print()">Imprimir</button>
-        <br>
-      </div>
     </div>
     </div>
     
