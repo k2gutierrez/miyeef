@@ -31,13 +31,6 @@
     <div class="noprint txt2">
       <p>{{ mensaje }}</p>
     </div>
-    <div class="noprint">
-      <div class="row text-left">
-        <div class="col-12">
-          <button type="button" class="botones btn btn-primary" onclick="window.location.href='/proyectodetonador'">Ir a Registro de Proyecto Detonador</button>
-        </div>
-      </div>
-    </div>
     <div class="printing">
       <div class="row">
         <p class="txtprint2">Dique: {{ proy }}</p>
@@ -144,8 +137,8 @@
             <h3>{{ mensaje }}</h3>
             <br>
           </div>
-          <p>Elige un proyecto</p>
-          <div class="col-4">
+          <p>Elige un proyecto:</p>
+          <div class="col-sm-3 menutl">
             <select class="form-select" id="sele" name="sele" aria-label="Default select example">
               <option selected>Proyectos:</option>
               {% for i in pd %}
@@ -153,10 +146,13 @@
               {% endfor %}
             </select>
           </div>
-          <div class="col">
-            <button type="submit" name="ver" class="btn btn-primary">Ver</button>
+          <div class="col-sm-3 menutl">
+            <button type="submit" name="ver" class="btn btn-primary">Ver / Modificar</button>
           </div>
-          <div class="col">
+          <div class="col-sm-3 text-center menutl">
+            <button type="button" class="btn btn-primary" onclick="window.location.href='/proyectodetonador'">Registrar Nuevo Proyecto</button>
+          </div>
+          <div class="col-sm-3 text-center menutl">
             <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
           </div>
         </div>
@@ -273,7 +269,7 @@
         <div class="noprint">
           <div class="row text-center">
             <div class="col-12">
-              <button type="submit" class="botones btn btn-info">Guardar</button>
+              <button type="submit" class="botones btn btn-info">Guardar Cambios</button>
               <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
             </div>
             <div class="col-12">

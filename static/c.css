@@ -23,6 +23,10 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.menutl {
+    padding: 5px;
+}
+
 .printing {
     display: none;
 }

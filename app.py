@@ -135,6 +135,8 @@ def home():
             lvl = 3
         elif lvl == 4:
             lvl = 4
+        elif lvl == 2:
+            lvl = 2
         else:
             lvl = 5
 
@@ -598,6 +600,8 @@ def proyectodetonador():
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
     d2 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
     
     d = db.child(localId).child('MASTER').child("diques").child('respuesta').get().val()
     diques = []
@@ -696,8 +700,29 @@ def proyectodetonador():
                 sect1 = "selected"
                 sect2 = ""
                 ver = 1
+                return redirect(url_for('.proyectodetonador2'))
 
-    return render_template('proyectodetonador.html', sect1=sect1, sect2=sect2 ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, diques=diques, fecha=fecha, ver=ver)
+    return render_template('proyectodetonador.html', nombre=nombre, sect1=sect1, sect2=sect2 ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, diques=diques, fecha=fecha, ver=ver)
+
+##############################################################################################
+@app.route('/menuproyectodetonador', methods= ['POST', 'GET'])
+def menuproyectodetonador():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    proy = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
+
+    lvl = 0
+
+    if proy is None:
+        lvl = 0
+    elif proy is not None:
+        lvl = 1
+
+    return render_template('menuproyectodetonador.html', nombre=nombre, token=token, lvl=lvl)
 
 ##############################################################################################
 @app.route('/proyectodetonador2', methods= ['POST', 'GET'])
@@ -706,6 +731,8 @@ def proyectodetonador2():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
 
     d = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     pd = []
@@ -855,7 +882,7 @@ def proyectodetonador2():
             sele = ''
             mensaje = 'Los registros han quedado guardados'
 
-    return render_template('proyectodetonador2.html', mensaje=mensaje, pd=pd, fecha=fecha, lider=lider, equipo=equipo, proyecto=proyecto,
+    return render_template('proyectodetonador2.html', nombre=nombre, mensaje=mensaje, pd=pd, fecha=fecha, lider=lider, equipo=equipo, proyecto=proyecto,
     p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8, p9=p9, p10=p10, fc1=fc1, fc2=fc2, fc3=fc3, fc4=fc4, fc5=fc5, fc6=fc6, fc7=fc7, fc8=fc8, fc9=fc9, fc10=fc10, proy=proy, a=a)
 
 ##############################################################################################
