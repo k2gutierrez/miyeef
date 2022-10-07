@@ -20,40 +20,46 @@
       }
     </style>
 
-    <title>ProyectoDetonador</title>
+    <title>ECV_ProyectoDetonador_S3_{{ nombre }}</title>
+
   </head>
   <body>
     <div class="container-sm main">
-      <div class="row align-items-center">
-        <div class="col-sm-3">
-          <img src="../static/logo.png" class="img-fluid" alt="">
+      <div class="row align-items-end">
+        <div class="col-6">
+          <img src="../static/headermiyeef.jpeg" class="logo img-fluid" alt="">
         </div>
-        <div class="col-sm-9 txt1">
-          <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
+        <div class="col-6">
+          <p class="fecha">Fecha:  {{ fecha }}</p>
         </div>
       </div>
-
-
+    <div class="txtName row">
+      <p class="txtName">Nombre: {{ nombre }}</p>
     </div>
-    <div class="container-sm txt2">
-      <h2>Proyecto Detonador de Valor</h2>
+    <div class="row txt2title">
+      <p>Registro de Proyecto Detonador de Valor:</p>
     </div>
-    <br>
-    <br>
+    <div class="noprint txt2">
+      <p>{{ mensaje }}</p>
+    </div>
+    <div class="noprint">
+      {% if ver == 1 %}
+      <div class="row text-left">
+        <div class="col-12">
+          <button type="button" class="botones btn btn-primary" onclick="window.location.href='/proyectodetonador2'">Ver Proyectos Detonadores Registrados</button>
+        </div>
+      </div>
+      {% else %}
+      <div></div>
+      {% endif %}
+    </div>
+
     <div class="container-sm mc">
 
       <form id="form1" action="/proyectodetonador" method="POST">
         <div class="col-sm-4">
-          <label class="form-label" for="sele">Dique</label>
-          <select class="form-select" id="sele" name="sele" aria-label="Default select example">
-            <option value="" {{ sect1 }}>Elige un dique</option>
-            {% for i in diques %}
-            <option value="{{ i }}">{{ i }}</option>
-            {% endfor %}
-            <option value="otro" {{ sect2 }}>Otro Dique</option>
-          </select>
-          <br>
-          <label for="otroDique">En caso de seleccionar Otro dique, escribe el nuevo dique a continuación:</label>
+          
+          <label for="otroDique">Dique:</label>
           <input type="text" class="form-control" id="otroDique" name="otroDique">
         </div>
         <div class="col-8">
@@ -185,31 +191,18 @@
         </div>
 
         <div class="noprint">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          <div class="row text-center">
+            <div class="col-12">
+              <button type="submit" class="botones btn btn-info">Guardar</button>
+            </div>
+            <div class="col-12">
+              <button type="button" class="botones btn btn-primary" onclick="window.location.href='/home'">Home</button>
+            </div>
+          </div>
         </div>
         
       </form>
-      <div class="noprint">
-        <h3>{{ mensaje }}</h3>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
-        <br>
-        <br>
-        {% if ver == 0 %}
-        <div>
-
-        </div>
-        {% elif ver == 1 %}
-        <div>
-          <button type="button" class="btn btn-primary" onclick="window.location.href='/proyectodetonador2'">Ver proyectos</button>
-        </div>
-        {% endif %}
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-      </div>
+      
     </div>
     
   </div>

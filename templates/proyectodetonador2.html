@@ -10,23 +10,133 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>ProyectoDetonador</title>
+    <title>ECV_ProyectoDetonador_S3_{{ nombre }}</title>
   </head>
   <body>
     <div class="container-sm main">
-      <div class="row align-items-center">
-        <div class="col-sm-3">
-          <img src="../static/logo.png" class="img-fluid" alt="">
+      <div class="row align-items-end">
+        <div class="col-6">
+          <img src="../static/headermiyeef.jpeg" class="logo img-fluid" alt="">
         </div>
-        <div class="col-sm-9 txt1">
-          <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
+        <div class="col-6">
+          <p class="fecha">Fecha:  {{ fecha }}</p>
+        </div>
+      </div>
+    <div class="txtName row">
+      <p class="txtName">Nombre: {{ nombre }}</p>
+    </div>
+    <div class="row txt2title">
+      <p>Proyecto Detonador de Valor</p>
+    </div>
+    <div class="noprint txt2">
+      <p>{{ mensaje }}</p>
+    </div>
+    <div class="noprint">
+      <div class="row text-left">
+        <div class="col-12">
+          <button type="button" class="botones btn btn-primary" onclick="window.location.href='/proyectodetonador'">Ir a Registro de Proyecto Detonador</button>
         </div>
       </div>
     </div>
-    <div class="container-sm txt2">
-      <h2>Proyecto Detonador de Valor</h2>
+    <div class="printing">
+      <div class="row">
+        <p class="txtprint2">Dique: {{ proy }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">Lider: {{ lider }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">Fecha de registro / modificación: {{ fecha }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">Miembros del Equipo: {{ equipo }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">Proyecto Detonador (Qué quiero lograr en términos de Valor): {{ proyecto }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">Plan de acción:</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">Actividad 1: {{ p1 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc1 }}</p>
+      </div>
+      {% if p2 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 2: {{ p2 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc2 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
+      {% if p3 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 3: {{ p3 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc3 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
+      {% if p4 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 4: {{ p4 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc4 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
+      {% if p5 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 5: {{ p5 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc5 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
+      {% if p6 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 6: {{ p6 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc6 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
+      {% if p7 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 7: {{ p7 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc7 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
+      {% if p8 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 8: {{ p8 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc8 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
+      {% if p9 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 9: {{ p9 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc9 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
+      {% if p10 != '' %}
+      <div class="row">
+        <p class="txtprint2">Actividad 10: {{ p10 }}</p>
+        <p class="txtprint2">Fecha Compromiso: {{ fc10 }}</p>
+      </div>
+      {% else %}
+      <div class="noprint"></div>
+      {% endif %}
     </div>
-    <div class="container-sm mc">
+
+
+    <div class="container-sm mc noprint">
       {% if a == 0 %}
       <form action="" method="POST">
         <div class="row">
@@ -160,28 +270,19 @@
           </div>
         </div>
 
-        <div class="col-4 noprint">
-          <h3>Confirma el proyecto detonador que quieres modificar seleccionandolo a continuación:</h3>
-          <select class="form-select" id="sele2" name="sele2" aria-label="Default select example">
-            <option>Proyectos:</option>
-            {% for i in pd %}
-            <option value="{{ i }}">{{ i }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <br>
         <div class="noprint">
-          <button type="submit" name="guardar" class="btn btn-primary btn-lg">Guardar</button>
+          <div class="row text-center">
+            <div class="col-12">
+              <button type="submit" class="botones btn btn-info">Guardar</button>
+              <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
+            </div>
+            <div class="col-12">
+              <button type="button" class="botones btn btn-primary" onclick="window.location.href='/home'">Home</button>
+            </div>
+          </div>
         </div>
       </form>
-      <br>
-      <div class="noprint">
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="print()">Imprimir</button>
-        <br>
-      </div>
+      
       {% endif %}
     </div>
     

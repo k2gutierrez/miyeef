@@ -32,33 +32,20 @@ BD = db.get()
 
 co = "carlos@yahoo.com"
 
-emails = []
+emails = ['hola', 'adios', 'otro', 'prueba']
 
-for i in BD:
+'''for i in BD:
   eme = db.child(i.key()).child('EMAIL').get().val()
   emails.append(eme)
 
 if co in emails:
   print("Si está")
 else:
-  print("no está")
-'''
-cliente = db.child("8L7kQVOg5CgPmFiYbADTMK5Edhb2").child('dolencias').child('lista total').get().val()
+  print("no está")'''
 
-listo = db.child('dolencias').get().val()
+mc = db.child('oweTEae2NsN5e0g9vo1bb8fRK5M2').child('MASTER').child("impulsores e inhibidores de valor").child('impulsores').get().val()
+md = db.child('oweTEae2NsN5e0g9vo1bb8fRK5M2').child('MASTER').child("impulsores e inhibidores de valor").child('inhibidores').get().val()
 
-DB = db.get().val()'''
 
-'''for i in listo:
-  a = i.get('lastre')
-  if 'Desenfoque' in a:
-    b = i.get('dolencia')
-    print(b)'''
-'''
-nivel = db.child(i.key()).child('NAME').get().val()
 
-for user in DB:
-  db.child(user.key()).child()
-  if 'cgutierrez@cedem.com.mx' in a:
-    n = a.get('NAME')
-    print(str(n))'''
+print(mc.get('imp1'))

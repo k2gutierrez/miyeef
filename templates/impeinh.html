@@ -43,13 +43,111 @@
         <p class="txtprint1">1. Identifica los principales Impulsores de Valor de tu empresa: (escribe al menos tres)</p>
       </div>
       <div class="row">
-        <p class="txtprint2">{{ mc }}</p>
+        {% if mc1 != '' %}
+        <p class="txtprint2">{{ mc1 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc2 != '' %}
+        <p class="txtprint2">{{ mc2 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc3 != '' %}
+        <p class="txtprint2">{{ mc3 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc4 != '' %}
+        <p class="txtprint2">{{ mc4 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc5 != '' %}
+        <p class="txtprint2">{{ mc5 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc6 != '' %}
+        <p class="txtprint2">{{ mc6 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc7 != '' %}
+        <p class="txtprint2">{{ mc7 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc8 != '' %}
+        <p class="txtprint2">{{ mc8 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc9 != '' %}
+        <p class="txtprint2">{{ mc9 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if mc10 != '' %}
+        <p class="txtprint2">{{ mc10 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
       </div>
       <div class="row">
         <p class="txtprint1">2. Identifica los principales Inhibidores de Valor de tu empresa: (escribe al menos tres)</p>
       </div>
       <div class="row">
-        <p class="txtprint2">{{ md }}</p>
+        {% if md1 != '' %}
+        <p class="txtprint2">{{ md1 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md2 != '' %}
+        <p class="txtprint2">{{ md2 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md3 != '' %}
+        <p class="txtprint2">{{ md3 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md4 != '' %}
+        <p class="txtprint2">{{ md4 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md5 != '' %}
+        <p class="txtprint2">{{ md5 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md6 != '' %}
+        <p class="txtprint2">{{ md6 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md7 != '' %}
+        <p class="txtprint2">{{ md7 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md8 != '' %}
+        <p class="txtprint2">{{ md8 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md9 != '' %}
+        <p class="txtprint2">{{ md9 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if md10 != '' %}
+        <p class="txtprint2">{{ md10 }}</p>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
       </div>
     </div>
     <div class="container-sm txt2">
@@ -57,11 +155,29 @@
         <div class="mb-3 wow">
           <div class="mc">
             <label class="form-label" for="text1">A. Identifica los principales Impulsores de Valor de tu empresa: (escribe al menos tres)</label>
-            <textarea class="form-control" id="text1" rows="12" name="t1">{{ mc }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc1">{{ mc1 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc2">{{ mc2 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc3">{{ mc3 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc4">{{ mc4 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc5">{{ mc5 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc6">{{ mc6 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc7">{{ mc7 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc8">{{ mc8 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc9">{{ mc9 }}</textarea>
+            <textarea class="form-control" id="text1" rows="2" name="mc10">{{ mc10 }}</textarea>
           </div>
           <div class="mc">
             <label class="form-label" for="text2">B. Identifica los principales Inhibidores de Valor de tu empresa: (escribe al menos tres)</label>
-            <textarea class="form-control" id="text2" rows="12" name="t2">{{ md }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md1">{{ md1 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md2">{{ md2 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md3">{{ md3 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md4">{{ md4 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md5">{{ md5 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md6">{{ md6 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md7">{{ md7 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md8">{{ md8 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md9">{{ md9 }}</textarea>
+            <textarea class="form-control" id="text2" rows="2" name="md10">{{ md10 }}</textarea>
           </div>
         </div>
         <div class="noprint">

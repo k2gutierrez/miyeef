@@ -370,56 +370,140 @@ def impeinh():
     localId = user['users'][0]['localId']
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
-    mcont = ''
-    mdisc = ''
+    impulsores = {}
+    inhibidores = {}
     mensaje = ''
     hoy = date.today()
+    mc = {}
+    md = {}
 
     fecha = db.child(localId).child('MASTER').child("impulsores e inhibidores de valor").child('fecha').get().val()
     mc = db.child(localId).child('MASTER').child("impulsores e inhibidores de valor").child('impulsores').get().val()
     md = db.child(localId).child('MASTER').child("impulsores e inhibidores de valor").child('inhibidores').get().val()
 
-    if fecha is None:
-        fecha = hoy
-    else:
-        fecha
+    try:
+        mc1 = mc.get('imp1')
+        mc2 = mc.get('imp2')
+        mc3 = mc.get('imp3')
+        mc4 = mc.get('imp4')
+        mc5 = mc.get('imp5')
+        mc6 = mc.get('imp6')
+        mc7 = mc.get('imp7')
+        mc8 = mc.get('imp8')
+        mc9 = mc.get('imp9')
+        mc10 = mc.get('imp10')
+    except:
+        mc1 =''
+        mc2 = ''
+        mc3 = ''
+        mc4 = ''
+        mc5 = ''
+        mc6 = ''
+        mc7 = ''
+        mc8 = ''
+        mc9 = ''
+        mc10 = ''
 
-    if mc == None:
-        mc = ''
-    else:
-        mc
-        
-    if md == None:
-        md = ''
-    else:
-        md
+    try:
+        md1 = md.get('inh1')
+        md2 = md.get('inh2')
+        md3 = md.get('inh3')
+        md4 = md.get('inh4')
+        md5 = md.get('inh5')
+        md6 = md.get('inh6')
+        md7 = md.get('inh7')
+        md8 = md.get('inh8')
+        md9 = md.get('inh9')
+        md10 = md.get('inh10')
+    except:
+        md1 = ''
+        md2 = ''
+        md3 = ''
+        md4 = ''
+        md5 = ''
+        md6 = ''
+        md7 = ''
+        md8 = ''
+        md9 = ''
+        md10 = ''
 
-    
 
     if request.method == 'POST':
-        mcont = request.form.get('t1')
-        mdisc = request.form.get('t2')
+        imp1 = request.form.get('mc1')
+        imp2 = request.form.get('mc2')
+        imp3 = request.form.get('mc3')
+        imp4 = request.form.get('mc4')
+        imp5 = request.form.get('mc5')
+        imp6 = request.form.get('mc6')
+        imp7 = request.form.get('mc7')
+        imp8 = request.form.get('mc8')
+        imp9 = request.form.get('mc9')
+        imp10 = request.form.get('mc10')
+        inh1 = request.form.get('md1')
+        inh2 = request.form.get('md2')
+        inh3 = request.form.get('md3')
+        inh4 = request.form.get('md4')
+        inh5 = request.form.get('md5')
+        inh6 = request.form.get('md6')
+        inh7 = request.form.get('md7')
+        inh8 = request.form.get('md8')
+        inh9 = request.form.get('md9')
+        inh10 = request.form.get('md10')
 
-        if len(mcont) == 0:
-            mcont = ['No hay registros']
-        else:
-            mcont
+        impulsores = {
+            'imp1': imp1,
+            'imp2': imp2,
+            'imp3': imp3,
+            'imp4': imp4,
+            'imp5': imp5,
+            'imp6': imp6,
+            'imp7': imp7,
+            'imp8': imp8,
+            'imp9': imp9,
+            'imp10': imp10
+        }
 
-        if len(mdisc) == 0:
-            mdisc = ['No hay registros']
-        else:
-            mdisc
+        inhibidores = {
+            'inh1': inh1,
+            'inh2': inh2,
+            'inh3': inh3,
+            'inh4': inh4,
+            'inh5': inh5,
+            'inh6': inh6,
+            'inh7': inh7,
+            'inh8': inh8,
+            'inh9': inh9,
+            'inh10': inh10
+        }
 
         
-        mc = db.child(localId).child('MASTER').child("impulsores e inhibidores de valor").child('impulsores').set(mcont)
-        mc
-        md = db.child(localId).child('MASTER').child("impulsores e inhibidores de valor").child('inhibidores').set(mdisc)
-        md
+        db.child(localId).child('MASTER').child("impulsores e inhibidores de valor").child('impulsores').set(impulsores)
+        db.child(localId).child('MASTER').child("impulsores e inhibidores de valor").child('inhibidores').set(inhibidores)
         fecha = db.child(localId).child('MASTER').child("impulsores e inhibidores de valor").child('fecha').set(str(hoy))
         fecha
         mensaje = 'Los registros han quedado guardados'
+        mc1 = imp1
+        mc2 = imp2
+        mc3 = imp3
+        mc4 = imp4
+        mc5 = imp5
+        mc6 = imp6
+        mc7 = imp7
+        mc8 = imp8
+        mc9 = imp9
+        mc10 = imp10
+        md1 = inh1
+        md2 = inh2
+        md3 = inh3
+        md4 = inh4
+        md5 = inh5
+        md6 = inh6
+        md7 = inh7
+        md8 = inh8
+        md9 = inh9
+        md10 = inh10
 
-    return render_template('impeinh.html', mdisc=mdisc, mcont=mcont, mensaje=mensaje, mc=mc, md=md, nombre=nombre, fecha=fecha)
+    return render_template('impeinh.html', mc=mc, md=md, impulsores=impulsores, inhibidores=inhibidores, mensaje=mensaje, mc1=mc1, mc2=mc2, mc3=mc3, mc4=mc4, mc5=mc5, mc6=mc6, mc7=mc7, mc8=mc8, mc9=mc9, mc10=mc10, md1=md1, md2=md2, md3=md3, md4=md4, md5=md5, md6=md6, md7=md7, md8=md8, md9=md9, md10=md10, nombre=nombre, fecha=fecha)
 
 
 ##############################################################################################
@@ -543,22 +627,12 @@ def proyectodetonador():
 
     if request.method == 'POST':
 
-        sele1 = request.form.get('sele')
         sele2 = request.form.get('otroDique')
-        if sele1 == "":
-            mensaje2 = "No has seleccionado un Dique"
+        if sele2 == "":
+            mensaje2 = "No has escrito un Dique"
             sect1 = sect1
             sect2 = sect2
-        elif sele1 == "No tienes diques registrados":
-            mensaje2 = "Elige 'Otro Dique' o vuelve a home a registrar nuevos Diques"
-            sect1 = sect1
-            sect2 = sect2
-        elif sele1 == "otro" and sele2 == "":
-            mensaje2 = "No has nombrado el nuevo Dique"
-            sect1 = ""
-            sect2 = "selected"
-
-        elif sele1 == "otro" and sele2 != "":
+        elif sele2 != "":
             sele = sele2
             lider = request.form.get('lider')
             equipo = request.form.get('equipo')
@@ -586,71 +660,6 @@ def proyectodetonador():
 
             if lider == "" or equipo == "" or proyecto == "" or p1 == "" or f1 == "":
                 mensaje2 = "Debes llenar los campos marcados con ' * ' para poder registrar el Proyecto Detonador"
-            else:
-
-                mcont = {
-                    "lider": lider,
-                    "equipo": equipo,
-                    "proyecto": proyecto,
-                    "p1": p1,
-                    "p2": p2,
-                    "p3": p3,
-                    "p4": p4,
-                    "p5": p5,
-                    "p6": p6,
-                    "p7": p7,
-                    "p8": p8,
-                    "p9": p9,
-                    "p10": p10,
-                    "fc1": f1,
-                    "fc2": f2,
-                    "fc3": f3,
-                    "fc4": f4,
-                    "fc5": f5,
-                    "fc6": f6,
-                    "fc7": f7,
-                    "fc8": f8,
-                    "fc9": f9,
-                    "fc10": f10,
-                    "fecha": fecha
-                }
-                
-                mc = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).set(mcont)
-                mc
-                mensaje = 'Los registros han quedado guardados'
-                mensaje2 = "Registro exitoso"
-                sect1 = "selected"
-                sect2 = ""
-                ver = 1
-        else:
-            sele = sele1
-            lider = request.form.get('lider')
-            equipo = request.form.get('equipo')
-            proyecto = request.form.get('proyecto')
-            p1 = request.form.get('text1')
-            p2 = request.form.get('text2')
-            p3 = request.form.get('text3')
-            p4 = request.form.get('text4')
-            p5 = request.form.get('text5')
-            p6 = request.form.get('text6')
-            p7 = request.form.get('text7')
-            p8 = request.form.get('text8')
-            p9 = request.form.get('text9')
-            p10 = request.form.get('text10')
-            f1 = request.form.get('date1')
-            f2 = request.form.get('date2')
-            f3 = request.form.get('date3')
-            f4 = request.form.get('date4')
-            f5 = request.form.get('date5')
-            f6 = request.form.get('date6')
-            f7 = request.form.get('date7')
-            f8 = request.form.get('date8')
-            f9 = request.form.get('date9')
-            f10 = request.form.get('date10')
-            
-            if lider == "" or equipo == "" or proyecto == "" or p1 == "" or f1 == "":
-                mensaje2 = "Debes llenar los campos marcados con ' * ' para poder registrar el Proyecto Detonador"
-            
             else:
 
                 mcont = {
@@ -738,6 +747,7 @@ def proyectodetonador2():
     if request.method == 'POST':
         if "ver" in request.form:
             sele = request.form.get('sele')
+            db.child(localId).child('MASTER').child("proyecto detonador2").child('proyectoSelect').set(sele)
             equipo = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('equipo').get().val()
             fc1 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc1').get().val() 
             fc2 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc2').get().val()
@@ -766,6 +776,7 @@ def proyectodetonador2():
             a = 1
 
         elif "guardar" in request.form:
+            proy = db.child(localId).child('MASTER').child("proyecto detonador2").child('proyectoSelect').get().val()
             lider = request.form.get('lider')
             equipo = request.form.get('equipo')
             proyecto = request.form.get('proyecto')
@@ -789,7 +800,6 @@ def proyectodetonador2():
             f8 = request.form.get('date8')
             f9 = request.form.get('date9')
             f10 = request.form.get('date10')
-            sele2 = request.form.get('sele2')
             
             mcont = {
                 "lider": lider,
