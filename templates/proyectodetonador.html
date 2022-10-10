@@ -36,22 +36,173 @@
     <div class="txtName row">
       <p class="txtName">Nombre: {{ nombre }}</p>
     </div>
-    <div class="row txt2title">
-      <p>Registro de Proyecto Detonador de Valor:</p>
+    <div class="noprint">
+      <div class="row txt2title">
+        <p>Registro de Proyecto Detonador de Valor:</p>
+      </div>
+    </div>
+    <div class="row txt2title text-center">
+      <p>Proyecto Detonador de Valor:</p>
     </div>
     <div class="noprint txt2">
       <p>{{ mensaje }}</p>
     </div>
 
-    <div class="container-sm mc txt2">
+    <div class="printing">
+      <div class="row">
+        <p class="txt2title">Lider: {{ lider }}</p>
+      </div>
+      <div class="row cuadroAccionesFechas m-0 borde">
+        <p class="txt2title">Miembros del Equipo: <p class="txtprint2">{{ equipo }}</p></p>
+      </div>
+      <div class="row m-0">
+        <div class="col-6 cuadroAccionesFechas borde">
+            <p class="txt2title text-center">Dique de Crecimiento</p>
+            <p class="txtprint2">{{ otroDique }}</p>
+        </div>
+        <div class="col-6 cuadroAccionesFechas borde">
+            <p class="txt2title text-center">Proyecto Detonador</p>
+            <p class="txtprint0 text-center">(Qué quiero lograr en términos de Valor): {{ proyecto }}</p>
+            <p class="txtprint2">{{ proyecto }}</p>
+        </div>
+      </div>
+      <div class="cuadroAccionesFechas borde">
+        <div class="row">
+          <div class="col-7">
+            <p class="txt2title text-center">Plan de acción:</p>
+          </div>
+          <div class="col-5">
+            <p class="txt2title text-center">Fecha de Cumplimiento:</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text1 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date1 }}</p>
+          </div>
+        </div>
+        {% if p2 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text2 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date2 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p3 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text3 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date3 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p4 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text4 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date4 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p5 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text5 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date5 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p6 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text6 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date6 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p7 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text7 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date7 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p8 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text8 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date8 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p9 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text9 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date9 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p10 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ text10 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ date10 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+      </div>
+    </div>
 
-      <form id="form1" action="/proyectodetonador" method="POST">
+    <div class="container-sm mc txt2 noprint">
+
+      <form id="form1" action="/proyectodetonador" method="POST" class="noprint">
         <div class="col-sm-4">
           
           <label for="otroDique">Dique:</label>
-          <input type="text" class="form-control" id="otroDique" name="otroDique">
+          <input type="text" class="form-control" id="otroDique" name="otroDique" value="{{ otroDique }}">
         </div>
-        <div class="col-8">
+        <div class="col-8 noprint">
           <h3 class="alerta">{{ mensaje2 }}</h3>
         </div>
         <br>
@@ -80,102 +231,102 @@
           <div class="col-sm-9">
             <p>Plan de Acción</p>
             <label for="text1">* Actividad 1</label>
-            <input type="text" class="form-control" id="text1" name="text1">
+            <input type="text" class="form-control" id="text1" name="text1" value="{{ text1 }}">
           </div>
           <div class="col-sm-3">
             <p>Fecha de Cumplimiento</p>
             <label for="date1">* Fecha 1</label>
-            <input type="date" class="form-control" id="date1" name="date1">
+            <input type="date" class="form-control" id="date1" name="date1" value="{{ date1 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text2">Actividad 2</label>
-            <input type="text" class="form-control" id="text2" name="text2">
+            <input type="text" class="form-control" id="text2" name="text2" value="{{ text2 }}">
           </div>
           <div class="col-sm-3">
             <label for="date2">Fecha 2</label>
-            <input type="date" class="form-control" id="date2" name="date2">
+            <input type="date" class="form-control" id="date2" name="date2" value="{{ date2 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text3">Actividad 3</label>
-            <input type="text" class="form-control" id="text3" name="text3">
+            <input type="text" class="form-control" id="text3" name="text3" value="{{ text3 }}">
           </div>
           <div class="col-sm-3">
             <label for="date3">Fecha 3</label>
-            <input type="date" class="form-control" id="date3" name="date3">
+            <input type="date" class="form-control" id="date3" name="date3" value="{{ date3 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text4">Actividad 4</label>
-            <input type="text" class="form-control" id="text4" name="text4">
+            <input type="text" class="form-control" id="text4" name="text4" value="{{ text4 }}">
           </div>
           <div class="col-sm-3">
             <label for="date4">Fecha 4</label>
-            <input type="date" class="form-control" id="date4" name="date4">
+            <input type="date" class="form-control" id="date4" name="date4" value="{{ date4 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text5">Actividad 5</label>
-            <input type="text" class="form-control" id="text5" name="text5">
+            <input type="text" class="form-control" id="text5" name="text5" value="{{ text5 }}">
           </div>
           <div class="col-sm-3">
             <label for="date5">Fecha 5</label>
-            <input type="date" class="form-control" id="date5" name="date5">
+            <input type="date" class="form-control" id="date5" name="date5" value="{{ date5 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text6">Actividad 6</label>
-            <input type="text" class="form-control" id="text6" name="text6">
+            <input type="text" class="form-control" id="text6" name="text6" value="{{ text6 }}">
           </div>
           <div class="col-sm-3">
             <label for="date6">Fecha 6</label>
-            <input type="date" class="form-control" id="date6" name="date6">
+            <input type="date" class="form-control" id="date6" name="date6" value="{{ date6 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text7">Actividad 7</label>
-            <input type="text" class="form-control" id="text7" name="text7">
+            <input type="text" class="form-control" id="text7" name="text7" value="{{ text7 }}">
           </div>
           <div class="col-sm-3">
             <label for="date7">Fecha 7</label>
-            <input type="date" class="form-control" id="date7" name="date7">
+            <input type="date" class="form-control" id="date7" name="date7" value="{{ date7 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text8">Actividad 8</label>
-            <input type="text" class="form-control" id="text8" name="text8">
+            <input type="text" class="form-control" id="text8" name="text8" value="{{ text8 }}">
           </div>
           <div class="col-sm-3">
             <label for="date8">Fecha 8</label>
-            <input type="date" class="form-control" id="date8" name="date8">
+            <input type="date" class="form-control" id="date8" name="date8" value="{{ date8 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text9">Actividad 9</label>
-            <input type="text" class="form-control" id="text9" name="text9">
+            <input type="text" class="form-control" id="text9" name="text9" value="{{ text9 }}">
           </div>
           <div class="col-sm-3">
             <label for="date9">Fecha 9</label>
-            <input type="date" class="form-control" id="date9" name="date9">
+            <input type="date" class="form-control" id="date9" name="date9" value="{{ date9 }}">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
             <label for="text10">Actividad 10</label>
-            <input type="text" class="form-control" id="text10" name="text10">
+            <input type="text" class="form-control" id="text10" name="text10" value="{{ text10 }}">
           </div>
           <div class="col-sm-3">
             <label for="date10">Fecha 10</label>
-            <input type="date" class="form-control" id="date10" name="date10">
+            <input type="date" class="form-control" id="date10" name="date10" value="{{ date10 }}">
           </div>
         </div>
 
@@ -183,6 +334,7 @@
           <div class="row text-center">
             <div class="col-12">
               <button type="submit" class="botones btn btn-info">Guardar</button>
+              <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
             </div>
             <div class="col-12">
               <button type="button" class="botones btn btn-primary" onclick="window.location.href='/menuproyectodetonador'">Menú Proyecto Detonador</button>

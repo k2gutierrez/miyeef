@@ -607,6 +607,31 @@ def proyectodetonador():
     diques = []
     ver = 0
 
+    otroDique = ''
+    lider = ''
+    equipo = ''
+    proyecto = ''
+    text1 = ''
+    text2 = ''
+    text3 = ''
+    text4 = ''
+    text5 = ''
+    text6 = ''
+    text7 = ''
+    text8 = ''
+    text9 = ''
+    text10 = ''
+    date1 = ''
+    date2 = ''
+    date3 = ''
+    date4 = ''
+    date5 = ''
+    date6 = ''
+    date7 = ''
+    date8 = ''
+    date9 = ''
+    date10 = ''
+
     if d2 is not None:
         ver = 1
 
@@ -700,9 +725,39 @@ def proyectodetonador():
                 sect1 = "selected"
                 sect2 = ""
                 ver = 1
-                return redirect(url_for('.proyectodetonador2'))
 
-    return render_template('proyectodetonador.html', nombre=nombre, sect1=sect1, sect2=sect2 ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, diques=diques, fecha=fecha, ver=ver)
+                otroDique = sele
+                lider = lider
+                equipo = equipo
+                proyecto = proyecto
+                text1 = p1
+                text2 = p2
+                text3 = p3
+                text4 = p4
+                text5 = p5
+                text6 = p6
+                text7 = p7
+                text8 = p8
+                text9 = p9
+                text10 = p10
+                date1 = f1
+                date2 = f2
+                date3 = f3
+                date4 = f4
+                date5 = f5
+                date6 = f6
+                date7 = f7
+                date8 = f8
+                date9 = f9
+                date10 = f10
+
+                return render_template('proyectodetonador.html', lider=lider, equipo=equipo, proyecto=proyecto, otroDique=otroDique, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, text6=text6, 
+                text7=text7, text8=text8, text9=text9, text10=text10, date1=date1, date2=date2, date3=date3, date4=date4, date5=date5, date6=date6, date7=date7, 
+                date8=date8, date9=date9, date10=date10, nombre=nombre, sect1=sect1, sect2=sect2 ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, diques=diques, fecha=fecha, ver=ver)
+
+    return render_template('proyectodetonador.html', lider=lider, equipo=equipo, proyecto=proyecto, otroDique=otroDique, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, text6=text6, 
+    text7=text7, text8=text8, text9=text9, text10=text10, date1=date1, date2=date2, date3=date3, date4=date4, date5=date5, date6=date6, date7=date7, 
+    date8=date8, date9=date9, date10=date10, nombre=nombre, sect1=sect1, sect2=sect2 ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, diques=diques, fecha=fecha, ver=ver)
 
 ##############################################################################################
 @app.route('/menuproyectodetonador', methods= ['POST', 'GET'])
