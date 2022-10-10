@@ -35,144 +35,150 @@
       <div class="row">
         <p class="txt2title">Lider: {{ lider }}</p>
       </div>
-      <div class="row">
-        <p class="txt2title">Miembros del Equipo: <p class="txtprint2">{{ equipo }}</p></p>
+      <div class="row m-0">
+        <div class="col-12 cuadroAccionesFechas borde">
+          <p class="txt2title">Miembros del Equipo: <p class="txtprint2">{{ equipo }}</p></p>
+        </div>
       </div>
-      <div class="row">
-        <div class="col-6">
+      <div class="row m-0">
+        <div class="col-6 cuadroAccionesFechas borde">
           <p class="txt2title text-center">Dique de Crecimiento</p>
           <p class="txtprint2">{{ proy }}</p>
         </div>
-        <div class="col-6">
+        <div class="col-6 cuadroAccionesFechas borde">
           <p class="txt2title text-center">Proyecto Detonador</p>
           <p class="txtprint0 text-center">(Qué quiero lograr en términos de Valor): {{ proyecto }}</p>
           <p class="txtprint2">{{ proyecto }}</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-7">
-          <p class="txt2title text-center">Plan de acción:</p>
+      <div class="row m-0">
+        <div class="col-12 cuadroAccionesFechas borde">
+        <div class="row">
+          <div class="col-7">
+            <p class="txt2title text-center">Plan de acción:</p>
+          </div>
+          <div class="col-5">
+            <p class="txt2title text-center">Fecha de Cumplimiento:</p>
+          </div>
         </div>
-        <div class="col-5">
-          <p class="txt2title text-center">Fecha de Cumplimiento:</p>
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p1 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc1 }}</p>
+          </div>
+        </div>
+        {% if p2 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p2 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc2 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p3 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p3 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc3 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p4 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p4 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc4 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p5 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p5 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc5 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p6 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p6 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc6 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p7 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p7 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc7 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p8 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p8 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc8 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p9 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p9 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc9 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
+        {% if p10 != '' %}
+        <div class="row">
+          <div class="col-9">
+            <p class="txtprint2">{{ p10 }}</p>
+          </div>
+          <div class="col-3">
+            <p class="txtprint2 text-center">{{ fc10 }}</p>
+          </div>
+        </div>
+        {% else %}
+        <div class="noprint"></div>
+        {% endif %}
         </div>
       </div>
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p1 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc1 }}</p>
-        </div>
-      </div>
-      {% if p2 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p2 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc2 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
-      {% if p3 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p3 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc3 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
-      {% if p4 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p4 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc4 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
-      {% if p5 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p5 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc5 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
-      {% if p6 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p6 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc6 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
-      {% if p7 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p7 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc7 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
-      {% if p8 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p8 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc8 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
-      {% if p9 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p9 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc9 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
-      {% if p10 != '' %}
-      <div class="row">
-        <div class="col-9">
-          <p class="txtprint2">{{ p10 }}</p>
-        </div>
-        <div class="col-3">
-          <p class="txtprint2 text-center">{{ fc10 }}</p>
-        </div>
-      </div>
-      {% else %}
-      <div class="noprint"></div>
-      {% endif %}
     </div>
 
 
