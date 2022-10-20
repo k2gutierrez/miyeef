@@ -277,6 +277,49 @@ def decgv():
     return render_template('decgv.html', mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha)
 
 ##############################################################################################
+@app.route('/estadosfinancieros', methods= ['POST', 'GET'])
+def estadosfinancieros():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
+    mcont = ''
+    mensaje = ''
+    hoy = date.today()
+
+    fecha = db.child(localId).child('MASTER').child("estados financieros de la empresa").child('fecha').get().val()
+    mc = db.child(localId).child('MASTER').child("estados financieros de la empresa").child('respuesta').get().val()
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if mc == None:
+        mc = ''
+    else:
+        mc
+
+    if request.method == 'POST':
+        mcont = request.form.get('t1')
+
+        if len(mcont) == 0:
+            mcont = ['No hay registros']
+        else:
+            mcont
+
+        
+        mc = db.child(localId).child('MASTER').child("estados financieros de la empresa").child('respuesta').set(mcont)
+        mc
+        fecha = db.child(localId).child('MASTER').child("estados financieros de la empresa").child('fecha').set(str(hoy))
+        fecha
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('estadosfinancieros.html', mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha)
+
+##############################################################################################
 @app.route('/dsomv', methods= ['POST', 'GET'])
 def dsomv():
 
