@@ -184,7 +184,7 @@
 
     <div class="container-sm mc noprint">
       {% if a == 0 %}
-      <form action="" method="POST">
+      <form action="/proyectodetonador2" method="POST" id="ver" name="ver">
         <div class="row">
           <div class="noprint">
             <h3>{{ mensaje }}</h3>
@@ -203,7 +203,7 @@
             <button type="submit" name="ver" class="btn btn-primary">Ver / Modificar</button>
           </div>
           <div class="col-sm-3 text-center menutl">
-            <button type="button" class="btn btn-primary" onclick="window.location.href='/proyectodetonador'">Registrar Nuevo Proyecto</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='/menuproyectodetonador'">Menú Proyecto Detonador</button>
           </div>
           <div class="col-sm-3 text-center menutl">
             <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
@@ -215,7 +215,7 @@
       <div>
         <h2>Dique: {{ proy }}</h2>
       </div>
-      <form id="form1" action="" method="POST" class="txt2">
+      <form id="guardar" name="guardar" action="/proyectodetonador2" method="POST" class="txt2">
         
         <div class="txt2 row">
           <div class="col-sm-1">
@@ -322,7 +322,7 @@
         <div class="noprint">
           <div class="row text-center">
             <div class="col-12">
-              <button type="submit" class="botones btn btn-info">Guardar Cambios</button>
+              <button name="guardar" id="guardar" type="submit" class="botones btn btn-info">Guardar Cambios</button>
               <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
             </div>
             <div class="col-12">

@@ -201,10 +201,11 @@
     <div class="container-sm mc txt2 noprint">
 
       <form id="form1" action="/proyectodetonador" method="POST" class="noprint">
-        <div class="col-sm-4">
+        <div class="col-sm-12">
           
           <label for="otroDique">Dique:</label>
-          <input type="text" class="form-control" id="otroDique" name="otroDique" value="{{ otroDique }}">
+          <!--<input type="text" class="form-control" id="otroDique" name="otroDique" value="{{ otroDique }}">-->
+          <textarea class="form-control" id="otroDique" rows="2" name="otroDique">{{ otroDique }}</textarea>
         </div>
         <div class="col-8 noprint">
           <h3 class="alerta">{{ mensaje2 }}</h3>
