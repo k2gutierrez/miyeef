@@ -28,14 +28,12 @@
         <div class="col-6">
           <img src="../static/headermiyeef.jpeg" class="logo img-fluid" alt="">
         </div>
-        <div class="col-6">
+        <div class="col-6 text-center">
+          <p class="txtName">Nombre: {{ nombre }}</p>
           <p class="fecha">Fecha:  {{ fecha }}</p>
         </div>
       </div>
-    <div class="txtName row">
-      <p class="txtName">Nombre: {{ nombre }}</p>
-    </div>
-    <div class="row txt2title">
+    <div class="row txt2title text-center mt-1">
       <p>Los Estados Financieros de la Empresa</p>
     </div>
     <div class="noprint txt2">
@@ -45,7 +43,7 @@
       <form id="form1" action="/estadosfinancieros" method="POST" class="">
         <div class="mb-3 wow mc row">
           <label class="form-label mc0" for="text1">Analiza los Estados Financieros de tu empresa y su relación con el modelo de negocio. Anota tus conclusiones del análisis:</label>
-          <textarea class="form-control mc1" id="text1" rows="25" name="t1">{{ mc }}</textarea>
+          <textarea class="form-control mc1" id="text1" rows="26" name="t1">{{ mc }}</textarea>
         </div>
         <div class="noprint">
           <div class="row text-center">
