@@ -41,11 +41,20 @@
     <div class="noprint txt2">
       <p>{{ mensaje }}</p>
     </div>
+    <div class="printing">
+      <div class="row">
+        <p class="txtprint1">Analiza los Estados Financieros de tu empresa y su relación con el modelo de negocio.</p>
+        <p class="txtprint1">Anota tus conclusiones del análisis:</p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc }}</p>
+      </div>
+    </div>
     <div class="container-sm txt2">
-      <form id="form1" action="/estadosfinancieros" method="POST" class="">
+      <form id="form1" action="/estadosfinancieros" method="POST" class="noprint">
         <div class="mb-3 wow mc row">
           <label class="form-label mc0" for="text1">Analiza los Estados Financieros de tu empresa y su relación con el modelo de negocio. Anota tus conclusiones del análisis:</label>
-          <textarea class="form-control mc1" id="text1" rows="30" name="t1">{{ mc }}</textarea>
+          <textarea class="form-control mc1" id="text1" rows="20" name="t1">{{ mc }}</textarea>
         </div>
         <div class="noprint">
           <div class="row text-center">
