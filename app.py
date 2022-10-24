@@ -901,6 +901,7 @@ def proyectodetonador2():
                 p8 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p8').get().val()
                 p9 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p9').get().val()
                 p10 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p10').get().val()
+                proy = sele
                 a = 1
 
         elif "guardar" in request.form:
