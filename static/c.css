@@ -23,6 +23,14 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.rowcolor1 {
+    background-color: #d5d8e4;
+}
+
+.rowcolor2 {
+    background-color: #d2dcf7;
+}
+
 .borde {
     border-style: groove;
 }

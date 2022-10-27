@@ -2830,6 +2830,7 @@ def evaluandoduenezcompartida():
     nombre = n.title()
     mcont = {}
     r11 = ''
+    r12 = ''
     mensaje = ''
     hoy = date.today()
     sele = 'checked'
@@ -2854,41 +2855,19 @@ def evaluandoduenezcompartida():
     r5a = nosele
     r5b = nosele
     r5c = nosele
-     
-    r6a = nosele
-    r6b = nosele
-    r6c = nosele
-     
-    r7a = nosele
-    r7b = nosele
-    r7c = nosele
-
-    r8a = nosele
-    r8b = nosele
-    r8c = nosele
-
-    r9a = nosele
-    r9b = nosele
-    r9c = nosele
-
-    r10a = nosele
-    r10b = nosele
-    r10c = nosele
 
     r1 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r1').get().val()
     r2 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r2').get().val()
     r3 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r3').get().val()
     r4 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r4').get().val()
     r5 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r5').get().val()
-    r6 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r6').get().val()
-    r7 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r7').get().val()
-    r8 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r8').get().val()
-    r9 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r9').get().val()
-    r10 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r10').get().val()
+
     r11 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r11').get().val()
+    r12 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r12').get().val()
     fecha = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('fecha').get().val()
     
     if r11 is None: r11 = ''
+    if r12 is None: r12 = ''
 
     if fecha is None: fecha = hoy 
     else: fecha
@@ -2913,38 +2892,15 @@ def evaluandoduenezcompartida():
     elif r5 == 'NO': r5b = sele
     elif r5 == '?': r5c = sele
 
-    if r6 == 'SI': r6a = sele
-    elif r6 == 'NO': r6b = sele
-    elif r6 == '?': r6c = sele
-
-    if r7 == 'SI': r7a = sele
-    elif r7 == 'NO': r7b = sele
-    elif r7 == '?': r7c = sele
-
-    if r8 == 'SI': r8a = sele
-    elif r8 == 'NO': r8b = sele
-    elif r8 == '?': r8c = sele
-
-    if r9 == 'SI': r9a = sele
-    elif r9 == 'NO': r9b = sele
-    elif r9 == '?': r9c = sele
-    
-    if r10 == 'SI': r10a = sele
-    elif r10 == 'NO': r10b = sele
-    elif r10 == '?': r10c = sele
-
     if request.method == 'POST':
         r1 = request.form.get('r1')
         r2 = request.form.get('r2')
         r3 = request.form.get('r3')
         r4 = request.form.get('r4')
         r5 = request.form.get('r5')
-        r6 = request.form.get('r6')
-        r7 = request.form.get('r7')
-        r8 = request.form.get('r8')
-        r9 = request.form.get('r9')
-        r10 = request.form.get('r10')
+
         r11 = request.form.get('r11')
+        r12 = request.form.get('r12')
 
         mcont = {
             "r1": r1,
@@ -2952,12 +2908,8 @@ def evaluandoduenezcompartida():
             "r3": r3,
             "r4": r4,
             "r5": r5,
-            "r6": r6,
-            "r7": r7,
-            "r8": r8,
-            "r9": r9,
-            "r10": r10,
             "r11": r11,
+            "r12": r12,
             "fecha": str(hoy)
         }
         
@@ -2983,31 +2935,10 @@ def evaluandoduenezcompartida():
         elif r5 == 'NO': r5b = sele
         elif r5 == '?': r5c = sele
 
-        if r6 == 'SI': r6a = sele
-        elif r6 == 'NO': r6b = sele
-        elif r6 == '?': r6c = sele
-
-        if r7 == 'SI': r7a = sele
-        elif r7 == 'NO': r7b = sele
-        elif r7 == '?': r7c = sele
-
-        if r8 == 'SI': r8a = sele
-        elif r8 == 'NO': r8b = sele
-        elif r8 == '?': r8c = sele
-
-        if r9 == 'SI': r9a = sele
-        elif r9 == 'NO': r9b = sele
-        elif r9 == '?': r9c = sele
-        
-        if r10 == 'SI': r10a = sele
-        elif r10 == 'NO': r10b = sele
-        elif r10 == '?': r10c = sele
         mensaje = 'Los registros han quedado guardados'
 
     return render_template('evaluandoduenezcompartida.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1a=r1a, 
-    r1b=r1b, r1c=r1c, r2a=r2a, r2b=r2b, r2c=r2c, r3a=r3a, r3b=r3b, r3c=r3c, r4a=r4a, r4b=r4b, r4c=r4c, r5a=r5a, r5b=r5b, r5c=r5c, 
-    r6a=r6a, r6b=r6b, r6c=r6c, r7a=r7a, r7b=r7b, r7c=r7c, r8a=r8a, r8b=r8b, r8c=r8c, r9a=r9a, r9b=r9b, r9c=r9c, r10a=r10a, r10b=r10b, 
-    r10c=r10c, r11=r11)
+    r1b=r1b, r1c=r1c, r2a=r2a, r2b=r2b, r2c=r2c, r3a=r3a, r3b=r3b, r3c=r3c, r4a=r4a, r4b=r4b, r4c=r4c, r5a=r5a, r5b=r5b, r5c=r5c, r11=r11, r12=r12)
 
 ###############################################################################################
 @app.route('/binomios-producto-mercado', methods= ['POST', 'GET'])

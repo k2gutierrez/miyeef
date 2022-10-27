@@ -14,262 +14,265 @@
   </head>
   <body>
     <div class="container-sm main">
-      <div class="row align-items-center">
-        <div class="col-3">
-          <img src="../static/logo.png" class="img-fluid" alt="">
+      <div class="row align-items-end">
+        <div class="col-6">
+          <img src="../static/headermiyeef.jpeg" class="logo img-fluid" alt="">
         </div>
-        <div class="col-9 txt1">
-          <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
+        <div class="col-6">
+          <p class="fecha">Fecha:  {{ fecha }}</p>
         </div>
       </div>
-    <br>
-    <div class="container-sm row">
-      <div class="col-2 txt2">
-        <h3>Nombre: </h3>
-      </div>
-      <div class="col-7 txt1 txt2">
-        <h3> {{ nombre }}</h3>
-      </div>
-      <div class="col-3">
-        <p>{{ fecha }}</p>
-      </div>
+    <div class="txtName row">
+      <p class="txtName">Nombre: {{ nombre }}</p>
     </div>
+    <div class="row txt2title text-center">
+      <p>Evaluando el Ejercicio de la Dueñez Compartida</p>
+    </div>
+    <div class="noprint txt2">
+      <p>{{ mensaje }}</p>
+    </div>
+
+    <div class="printing">
+      
+      <div class="row align-items-center rowcolor1">
+        <div class="txt2 col-8">
+          <p>1. Liderazgo de Dueñez poderoso e incluyente</p>
+        </div>
+        <div class="txt2 col-4 text-center">
+          <div class="form-check form-check-inline col">
+            <input class="form-check-input" type="radio" name="r1" id="r1a" value="SI" {{ r1a }}>
+            <label class="form-check-label" for="r1a">A</label>
+          </div>
+          <div class="form-check form-check-inline col">
+            <input class="form-check-input" type="radio" name="r1" id="r1b" value="NO" {{ r1b }}>
+            <label class="form-check-label" for="r1b">M</label>
+          </div>
+          <div class="form-check form-check-inline col">
+            <input class="form-check-input" type="radio" name="r1" id="r1c" value="?" {{ r1c }}>
+            <label class="form-check-label" for="r1c">B</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-center rowcolor2">
+        <div class="txt2 col-8">
+          <p>2. Coincidencia en la Querencia Empresarial / Sabemos negociar discrepancias</p>
+        </div>
+        <div class="txt2 col-4 text-center">
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r2" id="r2a" value="SI" {{ r2a }}>
+              <label class="form-check-label" for="r2a">A</label>
+            </div>
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r2" id="r2b" value="NO" {{ r2b }}>
+              <label class="form-check-label" for="r2b">M</label>
+            </div>
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r2" id="r2c" value="?" {{ r2c }}>
+              <label class="form-check-label" for="r2c">B</label>
+            </div>
+        </div>
+      </div>
+      
+      <div class="row align-items-center rowcolor1">
+        <div class="txt2 col-8">
+          <p>3. Estructuras de gobierno funcionales</p>
+        </div>
+        <div class="txt2 col-4 text-center">
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r3" id="r3a" value="SI" {{ r3a }}>
+              <label class="form-check-label" for="r3a">A</label>
+            </div>
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r3" id="r3b" value="NO" {{ r3b }}>
+              <label class="form-check-label" for="r3b">M</label>
+            </div>
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r3" id="r3c" value="?" {{ r3c }}>
+              <label class="form-check-label" for="r3c">B</label>
+            </div>
+        </div>
+      </div>
+
+      <div class="row align-items-center rowcolor2">
+        <div class="txt2 col-8">
+          <p>4. Estructura de organización efectiva y comprometida</p>
+        </div>
+        <div class="txt2 col-4 text-center">
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r4" id="r4a" value="SI" {{ r4a }}>
+              <label class="form-check-label" for="r4a">A</label>
+            </div>
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r4" id="r4b" value="NO" {{ r4b }}>
+              <label class="form-check-label" for="r4b">M</label>
+            </div>
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r4" id="r4c" value="?" {{ r4c }}>
+              <label class="form-check-label" for="r4c">B</label>
+            </div>
+        </div>
+      </div>
+
+      <div class="row align-items-center rowcolor1">
+        <div class="txt2 col-8">
+          <p>5. Equipo bien integrado de talentos complementarios</p>
+        </div>
+        <div class="txt2 col-4 text-center">
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r5" id="r5a" value="SI" {{ r5a }}>
+              <label class="form-check-label" for="r5a">A</label>
+            </div>
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r5" id="r5b" value="NO" {{ r5b }}>
+              <label class="form-check-label" for="r5b">M</label>
+            </div>
+            <div class="form-check form-check-inline col">
+              <input class="form-check-input" type="radio" name="r5" id="r5c" value="?" {{ r5c }}>
+              <label class="form-check-label" for="r5c">B</label>
+            </div>
+        </div>
+      </div>
+      <br>
+      <div class="row txt2">
+        <p class="txtprint1">1. ¿Cuál es el área prioritaria de mejora para avanzar en la Dueñez Compartida?</p>
+        <p class="txtprint2">{{ r11 }}</p>
+      </div>
+
+      <div class="row txt2">
+        <p class="txtprint1">1. ¿Qué propones hacer con esa área de oportunidad?</p>
+        <p class="txtprint2">{{ r12 }}</p>
+      </div>
+
+    </div>
+
     <div class="container-sm txt2">
-      <h2>Evaluando la Dueñez Compartida</h2>
-    </div>
-    <br>
-    <br>
-    <div class="container-sm">
-      <form id="form1" action="/evaluandoduenezcompartida" method="POST">
+      <form id="form1" action="/evaluandoduenezcompartida" method="POST" class="noprint">
         <div class="mb-3">
-          <div class="row">
-            <div class="col-9"></div>
-            <div class="col-3">
-              <div class="row">
-                <div class="col">
-                  <p>SI</p>
-                </div>
-                <div class="col">
-                  <p>NO</p>
-                </div>
-                <div class="col">
-                  <p>?</p>
-                </div>
+
+          <div class="row align-items-center rowcolor1">
+            <div class="wow2 col-lg-8 col-12">
+              <p>1. Liderazgo de Dueñez poderoso e incluyente</p>
+            </div>
+            <div class="wow2 col-lg-4 col-12 text-center">
+              <div class="form-check form-check-inline col c">
+                <input class="form-check-input" type="radio" name="r1" id="r1a" value="SI" {{ r1a }}>
+                <label class="form-check-label" for="r1a">A</label>
+              </div>
+              <div class="form-check form-check-inline col c">
+                <input class="form-check-input" type="radio" name="r1" id="r1b" value="NO" {{ r1b }}>
+                <label class="form-check-label" for="r1b">M</label>
+              </div>
+              <div class="form-check form-check-inline col c">
+                <input class="form-check-input" type="radio" name="r1" id="r1c" value="?" {{ r1c }}>
+                <label class="form-check-label" for="r1c">B</label>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>1. Equipo de Dueñez poderoso y comprometido</p>
+          <div class="row align-items-center rowcolor2">
+            <div class="wow2 col-lg-8 col-12">
+              <p>2. Coincidencia en la Querencia Empresarial / Sabemos negociar discrepancias</p>
             </div>
-            <div class="wow2 col-3">
-              <div class="row">
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r1" id="r1a" value="SI" {{ r1a }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r1" id="r1b" value="NO" {{ r1b }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r1" id="r1c" value="?" {{ r1c }}>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>2. Coincidencia con la Querencia Empresarial / Sabemos negociar
-                discrepancias</p>
-            </div>
-            <div class="wow2 col-3">
-              <div class="row">
+            <div class="wow2 col-lg-4 col-12 text-center">
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r2" id="r2a" value="SI" {{ r2a }}>
+                  <label class="form-check-label" for="r2a">A</label>
                 </div>
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r2" id="r2b" value="NO" {{ r2b }}>
+                  <label class="form-check-label" for="r2b">M</label>
                 </div>
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r2" id="r2c" value="?" {{ r2c }}>
+                  <label class="form-check-label" for="r2c">B</label>
                 </div>
-              </div>
             </div>
           </div>
           
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>3. Estructuras de gobierno funcionales y ad-hoc al momento de la
-                empresa (asamblea, consejo, comités)</p>
+          <div class="row align-items-center rowcolor1">
+            <div class="wow2 col-lg-8 col-12">
+              <p>3. Estructuras de gobierno funcionales</p>
             </div>
-            <div class="wow2 col-3">
-              <div class="row">
+            <div class="wow2 col-lg-4 col-12 text-center">
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r3" id="r3a" value="SI" {{ r3a }}>
+                  <label class="form-check-label" for="r3a">A</label>
                 </div>
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r3" id="r3b" value="NO" {{ r3b }}>
+                  <label class="form-check-label" for="r3b">M</label>
                 </div>
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r3" id="r3c" value="?" {{ r3c }}>
+                  <label class="form-check-label" for="r3c">B</label>
                 </div>
-              </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>4. Estructuras de organización efectivas y comprometidas</p>
+          <div class="row align-items-center rowcolor2">
+            <div class="wow2 col-lg-8 col-12">
+              <p>4. Estructura de organización efectiva y comprometida</p>
             </div>
-            <div class="wow2 col-3">
-              <div class="row">
+            <div class="wow2 col-lg-4 col-12 text-center">
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r4" id="r4a" value="SI" {{ r4a }}>
+                  <label class="form-check-label" for="r4a">A</label>
                 </div>
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r4" id="r4b" value="NO" {{ r4b }}>
+                  <label class="form-check-label" for="r4b">M</label>
                 </div>
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r4" id="r4c" value="?" {{ r4c }}>
+                  <label class="form-check-label" for="r4c">B</label>
                 </div>
-              </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>5. Capacidad de diálogo / estímulo al disenso</p>
+          <div class="row align-items-center rowcolor1">
+            <div class="wow2 col-lg-8 col-12">
+              <p>5. Equipo bien integrado de talentos complementarios</p>
             </div>
-            <div class="wow2 col-3">
-              <div class="row">
+            <div class="wow2 col-lg-4 col-12 text-center">
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r5" id="r5a" value="SI" {{ r5a }}>
+                  <label class="form-check-label" for="r5a">A</label>
                 </div>
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r5" id="r5b" value="NO" {{ r5b }}>
+                  <label class="form-check-label" for="r5b">M</label>
                 </div>
                 <div class="form-check form-check-inline col c">
                   <input class="form-check-input" type="radio" name="r5" id="r5c" value="?" {{ r5c }}>
+                  <label class="form-check-label" for="r5c">B</label>
                 </div>
+            </div>
+          </div>
+          
+          <div class="row wow2">
+            <label class="form-label" for="r11">1. ¿Cuál es el área prioritaria de mejora para avanzar en la Dueñez Compartida?</label>
+            <textarea class="form-control" id="r11" rows="6" name="r11">{{ r11 }}</textarea>
+          </div>
+
+          <div class="row wow2">
+            <label class="form-label" for="r12">1. ¿Qué propones hacer con esa área de oportunidad?</label>
+            <textarea class="form-control" id="r12" rows="6" name="r12">{{ r12 }}</textarea>
+          </div>
+
+          <div class="noprint">
+            <div class="row text-center">
+              <div class="col-12">
+                <button type="submit" class="botones btn btn-info">Guardar</button>
+                <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
+              </div>
+              <div class="col-12">
+                <button type="button" class="botones btn btn-primary" onclick="window.location.href='/home'">Home</button>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>6. Rápidos para llegar a acuerdos y tomar decisiones</p>
-            </div>
-            <div class="wow2 col-3">
-              <div class="row">
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r6" id="r6a" value="SI" {{ r6a }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r6" id="r6b" value="NO" {{ r6b }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r6" id="r6c" value="?" {{ r6c }}>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>7. La estrategia y sus fundamentos permean en la organización</p>
-            </div>
-            <div class="wow2 col-3">
-              <div class="row">
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r7" id="r7a" value="SI" {{ r7a }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r7" id="r7b" value="NO" {{ r7b }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r7" id="r7c" value="?" {{ r7c }}>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>8. Sensibilidad estratégica que traduce con agilidad lo que acontece</p>
-            </div>
-            <div class="wow2 col-3">
-              <div class="row">
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r8" id="r8a" value="SI" {{ r8a }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r8" id="r8b" value="NO" {{ r8b }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r8" id="r8c" value="?" {{ r8c }}>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>9. Rapidez para abandonar lo que no funciona</p>
-            </div>
-            <div class="wow2 col-3">
-              <div class="row">
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r9" id="r9a" value="SI" {{ r9a }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r9" id="r9b" value="NO" {{ r9b }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r9" id="r9c" value="?" {{ r9c }}>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="wow2 col-9">
-              <p>10. Fluidez para alinear recursos y procesos a prioridades</p>
-            </div>
-            <div class="wow2 col-3">
-              <div class="row">
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r10" id="r10a" value="SI" {{ r10a }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r10" id="r10b" value="NO" {{ r10b }}>
-                </div>
-                <div class="form-check form-check-inline col c">
-                  <input class="form-check-input" type="radio" name="r10" id="r10c" value="?" {{ r10c }}>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <label class="form-label" for="r11">1. ¿Cuál es el área prioritaria de mejora para avanzar en la Dueñez Compartida?</label>
-          <textarea class="form-control" id="r11" rows="6" name="r11">{{ r11 }}</textarea>
-          <br>
-
-        </div>
-        <div class="noprint">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
-        </div>
       </form>
-      <br>
-      <br>
-      <div class="noprint">
-        <h3>{{ mensaje }}</h3>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="print()">Imprimir</button>
-        <br>
       </div>
     </div>
     
