@@ -2913,8 +2913,17 @@ def evaluandoduenezcompartida():
             "fecha": str(hoy)
         }
         
-        mc = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").set(mcont)
-        mc
+        db.child(localId).child('MASTER').child("evaluando la dueñez compartida").set(mcont)
+
+        r1 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r1').get().val()
+        r2 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r2').get().val()
+        r3 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r3').get().val()
+        r4 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r4').get().val()
+        r5 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r5').get().val()
+
+        r11 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r11').get().val()
+        r12 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r12').get().val()
+
         if r1 == 'SI': r1a = sele
         elif r1 == 'NO': r1b = sele
         elif r1 == '?': r1c = sele
@@ -2937,8 +2946,25 @@ def evaluandoduenezcompartida():
 
         mensaje = 'Los registros han quedado guardados'
 
+        return redirect(url_for('.RegistroGuardado'))
+
     return render_template('evaluandoduenezcompartida.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1a=r1a, 
     r1b=r1b, r1c=r1c, r2a=r2a, r2b=r2b, r2c=r2c, r3a=r3a, r3b=r3b, r3c=r3c, r4a=r4a, r4b=r4b, r4c=r4c, r5a=r5a, r5b=r5b, r5c=r5c, r11=r11, r12=r12)
+
+
+##############################################################################################
+@app.route('/evaluandoduenezcompartida/RegistroGuardado', methods= ['GET'])
+def RegistroGuardado():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+
+    r1 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r1').get().val()
+    if r1 is not None:
+        return redirect(url_for('.evaluandoduenezcompartida'))
+
+    return render_template('registroguardado.html')
 
 ###############################################################################################
 @app.route('/binomios-producto-mercado', methods= ['POST', 'GET'])
