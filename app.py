@@ -642,13 +642,13 @@ def proyectodetonador():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    d2 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
+    #d2 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     
-    d = db.child(localId).child('MASTER').child("diques").child('respuesta').get().val()
-    diques = []
-    ver = 0
+    #d = db.child(localId).child('MASTER').child("diques").child('respuesta').get().val()
+    #diques = []
+    #ver = 0
 
     otroDique = ''
     lider = ''
@@ -675,89 +675,138 @@ def proyectodetonador():
     date9 = ''
     date10 = ''
 
-    if d2 is not None:
-        ver = 1
+    #if d2 is not None:
+        #ver = 1
 
-    if d is None:
-        res = 'No tienes diques registrados'
-        diques.append(res)
-    else:
-        for i in d:
-            if i != '':
-                diques.append(i)
-            else:
-                res = 'No tienes diques registrados'
-                diques.append(res)
+    #if d is None:
+        #res = 'No tienes diques registrados'
+        #diques.append(res)
+    #else:
+        #for i in d:
+            #if i != '':
+                #diques.append(i)
+            #else:
+                #res = 'No tienes diques registrados'
+                #diques.append(res)
 
     mcont = {}
     mensaje = ''
     mensaje2 = ''
     hoy = date.today()
     fecha = str(hoy)
-    sect1 = "selected"
-    sect2 = ""
+    #sect1 = "selected"
+    #sect2 = ""
 
     if request.method == 'POST':
 
         sele2 = request.form.get('otroDique')
         if sele2 == "":
             mensaje2 = "No has escrito un Dique"
-            sect1 = sect1
-            sect2 = sect2
-        elif sele2 != "":
-            sele = sele2
             lider = request.form.get('lider')
             equipo = request.form.get('equipo')
             proyecto = request.form.get('proyecto')
-            p1 = request.form.get('text1')
-            p2 = request.form.get('text2')
-            p3 = request.form.get('text3')
-            p4 = request.form.get('text4')
-            p5 = request.form.get('text5')
-            p6 = request.form.get('text6')
-            p7 = request.form.get('text7')
-            p8 = request.form.get('text8')
-            p9 = request.form.get('text9')
-            p10 = request.form.get('text10')
-            f1 = request.form.get('date1')
-            f2 = request.form.get('date2')
-            f3 = request.form.get('date3')
-            f4 = request.form.get('date4')
-            f5 = request.form.get('date5')
-            f6 = request.form.get('date6')
-            f7 = request.form.get('date7')
-            f8 = request.form.get('date8')
-            f9 = request.form.get('date9')
-            f10 = request.form.get('date10')
+            text1 = request.form.get('text1')
+            text2 = request.form.get('text2')
+            text3 = request.form.get('text3')
+            text4 = request.form.get('text4')
+            text5 = request.form.get('text5')
+            text6 = request.form.get('text6')
+            text7 = request.form.get('text7')
+            text8 = request.form.get('text8')
+            text9 = request.form.get('text9')
+            text10 = request.form.get('text10')
+            date1 = request.form.get('date1')
+            date2 = request.form.get('date2')
+            date3 = request.form.get('date3')
+            date4 = request.form.get('date4')
+            date5 = request.form.get('date5')
+            date6 = request.form.get('date6')
+            date7 = request.form.get('date7')
+            date8 = request.form.get('date8')
+            date9 = request.form.get('date9')
+            date10 = request.form.get('date10')
+            #sect1 = sect1
+            #sect2 = sect2
+        elif sele2 != "":
+            sele = sele2
+            otroDique = sele2
+            lider = request.form.get('lider')
+            equipo = request.form.get('equipo')
+            proyecto = request.form.get('proyecto')
+            text1 = request.form.get('text1')
+            text2 = request.form.get('text2')
+            text3 = request.form.get('text3')
+            text4 = request.form.get('text4')
+            text5 = request.form.get('text5')
+            text6 = request.form.get('text6')
+            text7 = request.form.get('text7')
+            text8 = request.form.get('text8')
+            text9 = request.form.get('text9')
+            text10 = request.form.get('text10')
+            date1 = request.form.get('date1')
+            date2 = request.form.get('date2')
+            date3 = request.form.get('date3')
+            date4 = request.form.get('date4')
+            date5 = request.form.get('date5')
+            date6 = request.form.get('date6')
+            date7 = request.form.get('date7')
+            date8 = request.form.get('date8')
+            date9 = request.form.get('date9')
+            date10 = request.form.get('date10')
 
-            if lider == "" or equipo == "" or proyecto == "" or p1 == "" or f1 == "":
+            if lider == "" or equipo == "" or proyecto == "" or text1 == "" or date1 == "":
                 mensaje2 = "Debes llenar los campos marcados con ' * ' para poder registrar el Proyecto Detonador"
+                sele = sele2
+                otroDique = sele2
+                lider = request.form.get('lider')
+                equipo = request.form.get('equipo')
+                proyecto = request.form.get('proyecto')
+                text1 = request.form.get('text1')
+                text2 = request.form.get('text2')
+                text3 = request.form.get('text3')
+                text4 = request.form.get('text4')
+                text5 = request.form.get('text5')
+                text6 = request.form.get('text6')
+                text7 = request.form.get('text7')
+                text8 = request.form.get('text8')
+                text9 = request.form.get('text9')
+                text10 = request.form.get('text10')
+                date1 = request.form.get('date1')
+                date2 = request.form.get('date2')
+                date3 = request.form.get('date3')
+                date4 = request.form.get('date4')
+                date5 = request.form.get('date5')
+                date6 = request.form.get('date6')
+                date7 = request.form.get('date7')
+                date8 = request.form.get('date8')
+                date9 = request.form.get('date9')
+                date10 = request.form.get('date10')
             else:
 
                 mcont = {
                     "lider": lider,
                     "equipo": equipo,
                     "proyecto": proyecto,
-                    "p1": p1,
-                    "p2": p2,
-                    "p3": p3,
-                    "p4": p4,
-                    "p5": p5,
-                    "p6": p6,
-                    "p7": p7,
-                    "p8": p8,
-                    "p9": p9,
-                    "p10": p10,
-                    "fc1": f1,
-                    "fc2": f2,
-                    "fc3": f3,
-                    "fc4": f4,
-                    "fc5": f5,
-                    "fc6": f6,
-                    "fc7": f7,
-                    "fc8": f8,
-                    "fc9": f9,
-                    "fc10": f10,
+                    "p1": text1,
+                    "p2": text2,
+                    "p3": text3,
+                    "p4": text4,
+                    "p5": text5,
+                    "p6": text6,
+                    "p7": text7,
+                    "p8": text8,
+                    "p9": text9,
+                    "p10": text10,
+                    "fc1": date1,
+                    "fc2": date2,
+                    "fc3": date3,
+                    "fc4": date4,
+                    "fc5": date5,
+                    "fc6": date6,
+                    "fc7": date7,
+                    "fc8": date8,
+                    "fc9": date9,
+                    "fc10": date10,
                     "fecha": fecha
                 }
                 
@@ -765,42 +814,42 @@ def proyectodetonador():
                 mc
                 mensaje = 'Los registros han quedado guardados'
                 mensaje2 = "Registro exitoso"
-                sect1 = "selected"
-                sect2 = ""
-                ver = 1
+                #sect1 = "selected"
+                #sect2 = ""
+                #ver = 1
 
                 otroDique = sele
                 lider = lider
                 equipo = equipo
                 proyecto = proyecto
-                text1 = p1
-                text2 = p2
-                text3 = p3
-                text4 = p4
-                text5 = p5
-                text6 = p6
-                text7 = p7
-                text8 = p8
-                text9 = p9
-                text10 = p10
-                date1 = f1
-                date2 = f2
-                date3 = f3
-                date4 = f4
-                date5 = f5
-                date6 = f6
-                date7 = f7
-                date8 = f8
-                date9 = f9
-                date10 = f10
+                text1 = text1
+                text2 = text2
+                text3 = text3
+                text4 = text4
+                text5 = text5
+                text6 = text6
+                text7 = text7
+                text8 = text8
+                text9 = text9
+                text10 = text10
+                date1 = date1
+                date2 = date2
+                date3 = date3
+                date4 = date4
+                date5 = date5
+                date6 = date6
+                date7 = date7
+                date8 = date8
+                date9 = date9
+                date10 = date10
 
                 return render_template('proyectodetonador.html', lider=lider, equipo=equipo, proyecto=proyecto, otroDique=otroDique, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, text6=text6, 
                 text7=text7, text8=text8, text9=text9, text10=text10, date1=date1, date2=date2, date3=date3, date4=date4, date5=date5, date6=date6, date7=date7, 
-                date8=date8, date9=date9, date10=date10, nombre=nombre, sect1=sect1, sect2=sect2 ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, diques=diques, fecha=fecha, ver=ver)
+                date8=date8, date9=date9, date10=date10, nombre=nombre ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, fecha=fecha) #sect1=sect1, sect2=sect2, ver=ver, diques=diques
 
     return render_template('proyectodetonador.html', lider=lider, equipo=equipo, proyecto=proyecto, otroDique=otroDique, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, text6=text6, 
     text7=text7, text8=text8, text9=text9, text10=text10, date1=date1, date2=date2, date3=date3, date4=date4, date5=date5, date6=date6, date7=date7, 
-    date8=date8, date9=date9, date10=date10, nombre=nombre, sect1=sect1, sect2=sect2 ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, diques=diques, fecha=fecha, ver=ver)
+    date8=date8, date9=date9, date10=date10, nombre=nombre, mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, fecha=fecha) # sect1=sect1, sect2=sect2, ver=ver, diques=diques
 
 ##############################################################################################
 @app.route('/menuproyectodetonador', methods= ['POST', 'GET'])
