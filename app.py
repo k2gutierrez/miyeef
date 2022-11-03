@@ -1202,11 +1202,13 @@ def mapacompetitivo():
     mcont = {}
     r1 = ''
     r2 = ''
+    r3 = ''
     mensaje = ''
     hoy = date.today()
 
     r1 = db.child(localId).child('MASTER').child("mapa competitivo").child('r1').get().val()
     r2 = db.child(localId).child('MASTER').child("mapa competitivo").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("mapa competitivo").child('r3').get().val()
     fecha = db.child(localId).child('MASTER').child("mapa competitivo").child('fecha').get().val()
     
     if r1 is None:
@@ -1214,6 +1216,9 @@ def mapacompetitivo():
     
     if r2 is None:
         r2 = ''
+
+    if r3 is None:
+        r3 = ''
 
     if fecha is None:
         fecha = hoy
@@ -1223,10 +1228,12 @@ def mapacompetitivo():
     if request.method == 'POST':
         r1 = request.form.get('r1')
         r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
 
         mcont = {
             "r1": r1,
             "r2": r2,
+            "r3": r3,
             "fecha": str(hoy)
         }
         
@@ -1234,7 +1241,7 @@ def mapacompetitivo():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('mapacompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+    return render_template('mapacompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3)
 
 ##############################################################################################
 @app.route('/segmentaciondemercado', methods= ['POST', 'GET'])

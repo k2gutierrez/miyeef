@@ -23,6 +23,11 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+.nota {
+    color: red;
+    font-family: monserrat-bold;
+}
+
 .rowcolor1 {
     background-color: #d5d8e4;
 }
