@@ -784,6 +784,7 @@ def proyectodetonador():
             else:
 
                 mcont = {
+                    "dique" : sele,
                     "lider": lider,
                     "equipo": equipo,
                     "proyecto": proyecto,
@@ -810,7 +811,7 @@ def proyectodetonador():
                     "fecha": fecha
                 }
                 
-                mc = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).set(mcont)
+                mc = db.child(localId).child('MASTER').child("proyecto detonador").push(mcont)
                 mc
                 mensaje = 'Los registros han quedado guardados'
                 mensaje2 = "Registro exitoso"
@@ -885,12 +886,14 @@ def proyectodetonador2():
     pd = []
     for i in d:
         if i != '':
-            pd.append(i)
+            diq = db.child(localId).child('MASTER').child("proyecto detonador").child(i).child('dique').get().val()
+            pd.append(diq)
 
     mcont = {}
     mensaje = ''
     hoy = str(date.today())
     fecha = hoy
+    dique = ''
     lider = ''
     equipo = ''
     proyecto = ''
@@ -925,36 +928,45 @@ def proyectodetonador2():
             if sele == 'Proyectos:':
                 mensaje = 'Selecciona un proyecto para continuar'
             else:
-                db.child(localId).child('MASTER').child("proyecto detonador2").child('proyectoSelect').set(sele)
-                equipo = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('equipo').get().val()
-                fc1 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc1').get().val() 
-                fc2 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc2').get().val()
-                fc3 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc3').get().val()
-                fc4 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc4').get().val()
-                fc5 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc5').get().val()
-                fc6 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc6').get().val() 
-                fc7 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc7').get().val()
-                fc8 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc8').get().val()
-                fc9 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc9').get().val()
-                fc10 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fc10').get().val()
-                fecha = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('fecha').get().val()
-                lider = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('lider').get().val()
-                proyecto = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('proyecto').get().val()
-                p1 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p1').get().val()
-                p2 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p2').get().val()
-                p3 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p3').get().val()
-                p4 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p4').get().val()
-                p5 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p5').get().val()
-                p6 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p6').get().val()
-                p7 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p7').get().val()
-                p8 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p8').get().val()
-                p9 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p9').get().val()
-                p10 = db.child(localId).child('MASTER').child("proyecto detonador").child(sele).child('p10').get().val()
+                base = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
+                for i in base:
+                    diq = db.child(localId).child('MASTER').child("proyecto detonador").child(i).child('dique').get().val()
+                    if diq == sele:
+                        llave = i
+
+                
+                db.child(localId).child('MASTER').child("proyecto detonador2").child('proyectoSelect').set(llave)
+                dique = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('dique').get().val()
+                equipo = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('equipo').get().val()
+                fc1 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc1').get().val() 
+                fc2 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc2').get().val()
+                fc3 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc3').get().val()
+                fc4 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc4').get().val()
+                fc5 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc5').get().val()
+                fc6 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc6').get().val() 
+                fc7 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc7').get().val()
+                fc8 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc8').get().val()
+                fc9 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc9').get().val()
+                fc10 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fc10').get().val()
+                fecha = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('fecha').get().val()
+                lider = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('lider').get().val()
+                proyecto = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('proyecto').get().val()
+                p1 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p1').get().val()
+                p2 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p2').get().val()
+                p3 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p3').get().val()
+                p4 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p4').get().val()
+                p5 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p5').get().val()
+                p6 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p6').get().val()
+                p7 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p7').get().val()
+                p8 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p8').get().val()
+                p9 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p9').get().val()
+                p10 = db.child(localId).child('MASTER').child("proyecto detonador").child(llave).child('p10').get().val()
                 proy = sele
                 a = 1
 
         elif "guardar" in request.form:
             proy = db.child(localId).child('MASTER').child("proyecto detonador2").child('proyectoSelect').get().val()
+            dique = request.form.get('dique')
             lider = request.form.get('lider')
             equipo = request.form.get('equipo')
             proyecto = request.form.get('proyecto')
@@ -980,6 +992,7 @@ def proyectodetonador2():
             f10 = request.form.get('date10')
             
             mcont = {
+                "dique": dique,
                 "lider": lider,
                 "equipo": equipo,
                 "proyecto": proyecto,
@@ -1007,6 +1020,7 @@ def proyectodetonador2():
             }
             
             db.child(localId).child('MASTER').child("proyecto detonador").child(proy).update(mcont)
+            dique = ''
             lider = ''
             equipo = ''
             proyecto = ''
@@ -1033,8 +1047,25 @@ def proyectodetonador2():
             sele = ''
             mensaje = 'Los registros han quedado guardados'
 
-    return render_template('proyectodetonador2.html', nombre=nombre, mensaje=mensaje, pd=pd, fecha=fecha, lider=lider, equipo=equipo, proyecto=proyecto,
+            return redirect(url_for('.ProyectoGuardado'))
+
+    return render_template('proyectodetonador2.html', dique=dique, nombre=nombre, mensaje=mensaje, pd=pd, fecha=fecha, lider=lider, equipo=equipo, proyecto=proyecto,
     p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8, p9=p9, p10=p10, fc1=fc1, fc2=fc2, fc3=fc3, fc4=fc4, fc5=fc5, fc6=fc6, fc7=fc7, fc8=fc8, fc9=fc9, fc10=fc10, proy=proy, a=a)
+
+
+##############################################################################################
+@app.route('/proyectodetonador2/ProyectoGuardado', methods= ['GET'])
+def ProyectoGuardado():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+
+    r1 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
+    if r1 is not None:
+        return redirect(url_for('.proyectodetonador2'))
+
+    return render_template('proyectoguardado.html')
 
 ##############################################################################################
 

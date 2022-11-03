@@ -43,7 +43,7 @@
       <div class="row m-0">
         <div class="col-6 cuadroAccionesFechas borde">
           <p class="txt2title text-center">Dique de Crecimiento</p>
-          <p class="txtprint2">{{ proy }}</p>
+          <p class="txtprint2">{{ dique }}</p>
         </div>
         <div class="col-6 cuadroAccionesFechas borde">
           <p class="txt2title text-center">Proyecto Detonador</p>
@@ -212,11 +212,11 @@
       </form>
       {% elif a == 1 %}
       
-      <div>
-        <h2>Dique: {{ proy }}</h2>
-      </div>
       <form id="guardar" name="guardar" action="/proyectodetonador2" method="POST" class="txt2">
-        
+        <div class="row">
+          <label class="form-label" for="dique">Dique: </label>
+          <textarea class="form-control" id="dique" rows="4" name="dique">{{ dique }}</textarea>
+        </div>
         <div class="txt2 row">
           <div class="col-sm-1">
             <label class="form-label" for="lider">Líder</label>
