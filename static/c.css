@@ -70,6 +70,12 @@
     font-size: 12px;
 }
 
+.txtprint3 {
+    color: black;
+    font-family: monserrat-regular;
+    font-size: 10px;
+}
+
 .botones {
     margin: 5px;
 }
