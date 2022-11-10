@@ -91,6 +91,16 @@
     padding: 10px;
 }
 
+.bggray {
+    background-color: rgba(191, 211, 248, 0.726);
+    border-style:ridge;
+}
+
+.bgblue {
+    background-color: rgba(66, 127, 241, 0.726);
+    border-style:ridge;
+}
+
 .mc0 {
     font-family: monserrat-regular;
     font-size: 12px;
