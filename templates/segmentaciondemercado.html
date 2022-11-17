@@ -22,6 +22,23 @@
           <p class="fecha">Fecha:  {{ fecha }}</p>
         </div>
       </div>
+      {% if lvl == 2 %}
+      <div class="noprint">
+        <form id="alum" action="/segmentaciondemercado" method="POST">
+          <select class="form-select" id="alumno" name="alumno" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            {% for i in alumnos %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit">Ver</button>
+        </form>
+      </div>
+      {% elif lvl == 5 %}
+      <div>
+
+      </div>
+      {% endif %}
     <div class="txtName row">
       <p class="txtName">Nombre: {{ nombre }}</p>
     </div>
@@ -55,6 +72,7 @@
           <label class="form-label" for="r2">2. Precisa la Variable Clave de Preferencia de cada segmento de mercado:</label>
           <textarea class="form-control" style="font-size: 11px" id="r2" rows="25" name="r2">{{ r2 }}</textarea>
         </div>
+        {% if lvl == 5 %}
         <div class="noprint">
           <div class="row text-center">
             <div class="col-12">
@@ -66,6 +84,18 @@
             </div>
           </div>
         </div>
+        {% elif lvl == 2%}
+        <div class="noprint">
+          <div class="row text-center">
+            <div class="col-12">
+              <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
+            </div>
+            <div class="col-12">
+              <button type="button" class="botones btn btn-primary" onclick="window.location.href='/home'">Home</button>
+            </div>
+          </div>
+        </div>
+        {% endif %}
     </div>
     
   </div>

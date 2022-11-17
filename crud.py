@@ -47,5 +47,18 @@ mc = db.child('oweTEae2NsN5e0g9vo1bb8fRK5M2').child('MASTER').child("impulsores 
 md = db.child('oweTEae2NsN5e0g9vo1bb8fRK5M2').child('MASTER').child("impulsores e inhibidores de valor").child('inhibidores').get().val()
 
 
+def yeah():
+  lvl = 2
+  if lvl == 1:
+    namae = 'enrique chimal'
+    localId = 'algodon'
+    for i in BD.val():
+      nombre = db.child(i).child('NAME').get().val()
+      if nombre == namae:
+        llave = db.child(i).child('ID').get().val()
+    localId = llave
+    print(str(localId))
+  elif lvl == 2:
+    print('otra cosa')
 
-print(mc.get('imp1'))
+yeah()

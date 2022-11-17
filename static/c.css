@@ -84,6 +84,10 @@
     width: 500px;
 }
 
+.logo2 {
+    width: 300px;
+}
+
 .mc {
     background-color: rgba(191, 211, 248, 0.726);
     border-style:ridge;

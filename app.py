@@ -1228,6 +1228,7 @@ def mapacompetitivo():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+    lvl = db.child(localId).child('NIVEL').get().val()
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1236,43 +1237,91 @@ def mapacompetitivo():
     r3 = ''
     mensaje = ''
     hoy = date.today()
+    fecha = hoy
+    alumnos = []
 
-    r1 = db.child(localId).child('MASTER').child("mapa competitivo").child('r1').get().val()
-    r2 = db.child(localId).child('MASTER').child("mapa competitivo").child('r2').get().val()
-    r3 = db.child(localId).child('MASTER').child("mapa competitivo").child('r3').get().val()
-    fecha = db.child(localId).child('MASTER').child("mapa competitivo").child('fecha').get().val()
-    
-    if r1 is None:
-        r1 = ''
-    
-    if r2 is None:
-        r2 = ''
+    if lvl == 5:
 
-    if r3 is None:
-        r3 = ''
-
-    if fecha is None:
-        fecha = hoy
-    else:
-        fecha
-
-    if request.method == 'POST':
-        r1 = request.form.get('r1')
-        r2 = request.form.get('r2')
-        r3 = request.form.get('r3')
-
-        mcont = {
-            "r1": r1,
-            "r2": r2,
-            "r3": r3,
-            "fecha": str(hoy)
-        }
+        r1 = db.child(localId).child('MASTER').child("mapa competitivo").child('r1').get().val()
+        r2 = db.child(localId).child('MASTER').child("mapa competitivo").child('r2').get().val()
+        r3 = db.child(localId).child('MASTER').child("mapa competitivo").child('r3').get().val()
+        fecha = db.child(localId).child('MASTER').child("mapa competitivo").child('fecha').get().val()
         
-        mc = db.child(localId).child('MASTER').child("mapa competitivo").set(mcont)
-        mc
-        mensaje = 'Los registros han quedado guardados'
+        if r1 is None:
+            r1 = ''
+        
+        if r2 is None:
+            r2 = ''
 
-    return render_template('mapacompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3)
+        if r3 is None:
+            r3 = ''
+
+        if fecha is None:
+            fecha = hoy
+        else:
+            fecha
+
+        if request.method == 'POST':
+            r1 = request.form.get('r1')
+            r2 = request.form.get('r2')
+            r3 = request.form.get('r3')
+
+            mcont = {
+                "r1": r1,
+                "r2": r2,
+                "r3": r3,
+                "fecha": str(hoy)
+            }
+            
+            mc = db.child(localId).child('MASTER').child("mapa competitivo").set(mcont)
+            mc
+            mensaje = 'Los registros han quedado guardados'
+
+        return render_template('mapacompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3, lvl=lvl, alumnos=alumnos)
+
+    elif lvl == 2:
+        bd = db.get().val()
+
+        for i in bd:
+            n = db.child(i).child('NIVEL').get().val()
+            if n == 5:
+                nom = db.child(i).child('NAME').get().val()
+                alumnos.append(nom)
+        if request.method == 'POST':
+            sel = request.form.get('alumno')
+            for i in bd:
+                namae = db.child(i).child('NAME').get().val()
+                if namae == sel:
+                    newId = db.child(i).child('ID').get().val()
+
+            n = str(db.child(newId).child('NAME').get().val())
+            nombre = n.title()
+            mcont = {}
+            r1 = ''
+            r2 = ''
+            mensaje = ''
+            hoy = date.today()
+
+            r1 = db.child(newId).child('MASTER').child("mapa competitivo").child('r1').get().val()
+            r2 = db.child(newId).child('MASTER').child("mapa competitivo").child('r2').get().val()
+            r3 = db.child(newId).child('MASTER').child("mapa competitivo").child('r3').get().val()
+            fecha = db.child(newId).child('MASTER').child("mapa competitivo").child('fecha').get().val()
+            
+            if r1 is None:
+                r1 = ''
+            
+            if r2 is None:
+                r2 = ''
+
+            if r3 is None:
+                r3 = ''
+
+            if fecha is None:
+                fecha = hoy
+            else:
+                fecha
+
+    return render_template('mapacompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3, lvl=lvl, alumnos=alumnos)
 
 ##############################################################################################
 @app.route('/segmentaciondemercado', methods= ['POST', 'GET'])
@@ -1281,44 +1330,95 @@ def segmentaciondemercado():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
-    n = str(db.child(localId).child('NAME').get().val())
-    nombre = n.title()
+    lvl = db.child(localId).child('NIVEL').get().val()
     mcont = {}
+    n = ''
+    nombre = n.title()
     r1 = ''
     r2 = ''
     mensaje = ''
     hoy = date.today()
+    fecha = hoy
+    alumnos = []
 
-    r1 = db.child(localId).child('MASTER').child("segmentacion de mercado").child('r1').get().val()
-    r2 = db.child(localId).child('MASTER').child("segmentacion de mercado").child('r2').get().val()
-    fecha = db.child(localId).child('MASTER').child("segmentacion de mercado").child('fecha').get().val()
-    
-    if r1 is None:
+    if lvl == 5:
+        n = str(db.child(localId).child('NAME').get().val())
+        nombre = n.title()
         r1 = ''
-    
-    if r2 is None:
         r2 = ''
+        mensaje = ''
+        hoy = date.today()
 
-    if fecha is None:
-        fecha = hoy
-    else:
-        fecha
-
-    if request.method == 'POST':
-        r1 = request.form.get('r1')
-        r2 = request.form.get('r2')
-
-        mcont = {
-            "r1": r1,
-            "r2": r2,
-            "fecha": str(hoy)
-        }
+        r1 = db.child(localId).child('MASTER').child("segmentacion de mercado").child('r1').get().val()
+        r2 = db.child(localId).child('MASTER').child("segmentacion de mercado").child('r2').get().val()
+        fecha = db.child(localId).child('MASTER').child("segmentacion de mercado").child('fecha').get().val()
         
-        mc = db.child(localId).child('MASTER').child("segmentacion de mercado").set(mcont)
-        mc
-        mensaje = 'Los registros han quedado guardados'
+        if r1 is None:
+            r1 = ''
+        
+        if r2 is None:
+            r2 = ''
 
-    return render_template('segmentaciondemercado.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+        if fecha is None:
+            fecha = hoy
+        else:
+            fecha
+
+        if request.method == 'POST':
+            r1 = request.form.get('r1')
+            r2 = request.form.get('r2')
+
+            mcont = {
+                "r1": r1,
+                "r2": r2,
+                "fecha": str(hoy)
+            }
+            
+            mc = db.child(localId).child('MASTER').child("segmentacion de mercado").set(mcont)
+            mc
+            mensaje = 'Los registros han quedado guardados'
+
+        return render_template('segmentaciondemercado.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, alumnos=alumnos, lvl=lvl)
+
+    elif lvl == 2:
+            bd = db.get().val()
+
+            for i in bd:
+                n = db.child(i).child('NIVEL').get().val()
+                if n == 5:
+                    nom = db.child(i).child('NAME').get().val()
+                    alumnos.append(nom)
+            if request.method == 'POST':
+                sel = request.form.get('alumno')
+                for i in bd:
+                    namae = db.child(i).child('NAME').get().val()
+                    if namae == sel:
+                        newId = db.child(i).child('ID').get().val()
+
+                n = str(db.child(newId).child('NAME').get().val())
+                nombre = n.title()
+                mcont = {}
+                r1 = ''
+                r2 = ''
+                mensaje = ''
+                hoy = date.today()
+
+                r1 = db.child(newId).child('MASTER').child("segmentacion de mercado").child('r1').get().val()
+                r2 = db.child(newId).child('MASTER').child("segmentacion de mercado").child('r2').get().val()
+                fecha = db.child(newId).child('MASTER').child("segmentacion de mercado").child('fecha').get().val()
+        
+                if r1 is None:
+                    r1 = ''
+                
+                if r2 is None:
+                    r2 = ''
+
+                if fecha is None:
+                    fecha = hoy
+                else:
+                    fecha
+
+    return render_template('segmentaciondemercado.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, alumnos=alumnos, lvl=lvl)
 
 ###############################################################################################
 @app.route('/diferenciacion', methods= ['POST', 'GET'])
