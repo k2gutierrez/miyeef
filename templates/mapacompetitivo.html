@@ -27,7 +27,7 @@
         <form id="alum" action="/mapacompetitivo" method="POST">
           <select class="form-select" id="alumno" name="alumno" aria-label="Default select example">
             <option selected>Open this select menu</option>
-            {% for i in alumnos %}
+            {% for i in alumnosmap %}
             <option value="{{ i }}">{{ i }}</option>
             {% endfor %}
           </select>

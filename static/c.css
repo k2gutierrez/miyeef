@@ -23,6 +23,8 @@
     src: url(../static/fonts/Montserrat-Bold.ttf);
 }
 
+
+
 .nota {
     color: red;
     font-family: monserrat-bold;
@@ -85,12 +87,18 @@
 }
 
 .logo2 {
-    width: 300px;
+    width: 200px;
 }
 
 .mc {
     background-color: rgba(191, 211, 248, 0.726);
     border-style:ridge;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.mc2 {
+    background-color: rgba(191, 211, 248, 0.726);
     margin-top: 5px;
     padding: 10px;
 }
