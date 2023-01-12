@@ -1122,35 +1122,60 @@ def valordelaempresa():
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
-    valor = ''
-    capital = ''
-    ventas = ''
-    ebitda = ''
-    multiplos = ''
+    mc1 = ''
+    mc2 = ''
+    mc3 = ''
+    mc4 = ''
+    mc5 = ''
+    mc6 = ''
+    mc7 = ''
+    mc8 = ''
+    mc9 = ''
+    mc10 = ''
     mensaje = ''
     hoy = date.today()
 
-    valor = db.child(localId).child('MASTER').child("valor de la empresa").child('valor').get().val()
-    capital = db.child(localId).child('MASTER').child("valor de la empresa").child('capital').get().val()
-    ventas = db.child(localId).child('MASTER').child("valor de la empresa").child('ventas').get().val()
-    ebitda = db.child(localId).child('MASTER').child("valor de la empresa").child('ebitda').get().val()
-    multiplos = db.child(localId).child('MASTER').child("valor de la empresa").child('multiplos').get().val()
+    mc1 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc1').get().val()
+    mc2 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc2').get().val()
+    mc3 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc3').get().val()
+    mc4 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc4').get().val()
+    mc5 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc5').get().val()
+    mc6 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc6').get().val()
+    mc7 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc7').get().val()
+    mc8 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc8').get().val()
+    mc9 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc9').get().val()
+    mc10 = db.child(localId).child('MASTER').child("valor de la empresa").child('mc10').get().val()
     fecha = db.child(localId).child('MASTER').child("valor de la empresa").child('fecha').get().val()
     
-    if valor is None:
-        valor = ''
+    if mc1 is None:
+        mc1 = ''
     
-    if capital is None:
-        capital = ''
+    if mc2 is None:
+        mc2 = ''
     
-    if ventas is None:
-        ventas = ''
+    if mc3 is None:
+        mc3 = ''
 
-    if ebitda is None:
-        ebitda = ''
+    if mc4 is None:
+        mc4 = ''
     
-    if multiplos is None:
-        multiplos = ''
+    if mc5 is None:
+        mc5 = ''
+
+    if mc6 is None:
+        mc6 = ''
+
+    if mc7 is None:
+        mc7 = ''
+
+    if mc8 is None:
+        mc8 = ''
+
+    if mc9 is None:
+        mc9 = ''
+
+    if mc10 is None:
+        mc10 = ''
 
     if fecha is None:
         fecha = hoy
@@ -1158,27 +1183,41 @@ def valordelaempresa():
         fecha
 
     if request.method == 'POST':
-        valor = request.form.get('valor')
-        capital = request.form.get('capital')
-        ventas = request.form.get('ventas')
-        ebitda = request.form.get('ebitda')
-        multiplos = request.form.get('multiplos')
+        mc1 = request.form.get('mc1')
+        mc2 = request.form.get('mc2')
+        mc3 = request.form.get('mc3')
+        mc4 = request.form.get('mc4')
+        mc5 = request.form.get('mc5')
+        mc6 = request.form.get('mc6')
+        mc7 = request.form.get('mc7')
+        mc8 = request.form.get('mc8')
+        mc9 = request.form.get('mc9')
+        mc10 = request.form.get('mc10')
 
         mcont = {
-            "valor": valor,
-            "capital": capital,
-            "ventas": ventas,
-            "ebitda": ebitda,
-            "multiplos": multiplos,
+            "mc1": mc1,
+            "mc2": mc2,
+            "mc3": mc3,
+            "mc4": mc4,
+            "mc5": mc5,
+            "mc6": mc6,
+            "mc7": mc7,
+            "mc8": mc8,
+            "mc9": mc9,
+            "mc10": mc10,
             "fecha": str(hoy)
         }
         
         mc = db.child(localId).child('MASTER').child("valor de la empresa").set(mcont)
-        mc
+
+        print(mc)
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('valordelaempresa.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, valor=valor, 
-    capital=capital, ventas=ventas, ebitda=ebitda, multiplos=multiplos)
+        return render_template('valordelaempresa.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2,
+        mc3=mc3, mc4=mc4, mc5=mc5, mc6=mc6, mc7=mc7, mc8=mc8, mc9=mc9, mc10=mc10)
+
+    return render_template('valordelaempresa.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2,
+    mc3=mc3, mc4=mc4, mc5=mc5, mc6=mc6, mc7=mc7, mc8=mc8, mc9=mc9, mc10=mc10)
 
 ##############################################################################################
 @app.route('/fusionesyadquisiciones', methods= ['POST', 'GET'])

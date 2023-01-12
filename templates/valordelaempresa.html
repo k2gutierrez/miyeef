@@ -10,71 +10,137 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>VALOR DE LA EMPRESA</title>
+    <style>
+      @page {
+          size: A4 portrait;
+    }
+    </style>
+
+    <title>AECV_Métrica_del_Crecimiento_de_Valor_S13_{{ nombre }}</title>
+
   </head>
   <body>
     <div class="container-sm main">
-      <div class="row align-items-center">
-        <div class="col-3">
-          <img src="../static/logo.png" class="img-fluid" alt="">
+      <div class="row align-items-end">
+        <div class="col-6">
+          <img src="../static/headermiyeef.jpeg" class="logo img-fluid" alt="">
         </div>
-        <div class="col-9 txt1">
-          <h1><span class="opo">Master en Innovación y Emprendimiento </span><span class="creci">en la Empresa Familiar</span></h1>
+        <div class="col-6">
+          <p class="fecha">Fecha:  {{ fecha }}</p>
         </div>
       </div>
-    <br>
-    <div class="container-sm row">
-      <div class="col-2 txt2">
-        <h3>Nombre: </h3>
+    <div class="txtName row">
+      <p class="txtName">Nombre: {{ nombre }}</p>
+    </div>
+    <div class="row txt2title">
+      <p>Métrica del Crecimiento de Valor</p>
+    </div>
+    <div class="noprint txt2">
+      <p>{{ mensaje }}</p>
+    </div>
+    <div class="printing">
+      <div class="row">
+        <p class="txtprint1">1. Identifica en dónde se crea el Valor de tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </p>
       </div>
-      <div class="col-7 txt1 txt2">
-        <h3> {{ nombre }}</h3>
+      <div class="row">
+        <p class="txtprint2">{{ mc1 }}</p>
       </div>
-      <div class="col-3">
-        <p>{{ fecha }}</p>
+      <div class="row">
+        <p class="txtprint1">2. Identifica en dónde se destruye el Valor en tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc2 }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">3. ¿Cómo se crea (Fórmulas de Negocio)? </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc3 }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">4. ¿Quiénes lo crean (personas, equipos)? </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc4 }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">5. ¿Cuáles son los principales Impulsores e Inhibidores de Valor? </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc5 }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">6. ¿Cuáles son las principales oportunidades para el Crecimiento de Valor y sus implicaciones de explotación? </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc6 }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">7. ¿Cuáles son los principales riesgos de la empresa y cuál es su eventual impacto en el valor de la empresa? </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc7 }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">8. ¿Cuál es el valor de la empresa hoy? </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc8 }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">9. Identifica los múltiplos de tu industria: </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc9 }}</p>
+      </div>
+      <div class="row">
+        <p class="txtprint1">10. ¿Cuáles son las metas de valor de la empresa para los siguientes 3 y 5 años? </p>
+      </div>
+      <div class="row">
+        <p class="txtprint2">{{ mc10 }}</p>
       </div>
     </div>
-    <div class="container-sm txt2">
-      <h2>Valor de la Empresa</h2>
-    </div>
-    <br>
-    <br>
+    
     <div class="container-sm">
-      <form id="form1" action="/valordelaempresa" method="POST">
-        <div class="mb-3 wow">
-          <label class="form-label" for="valor">1. Determina el Valor de tu Empresa:</label>
-          <textarea class="form-control" id="valor" rows="4" name="valor">{{ valor }}</textarea>
-          <br>
-          <p>2. Calcula tus múltiplos:</p>
-          <br>
-          <label class="form-label" for="capital">Capital Contable:</label>
-          <textarea class="form-control" id="capital" rows="3" name="capital">{{ capital }}</textarea>
-          <br>
-          <label class="form-label" for="ventas">Ventas:</label>
-          <textarea class="form-control" id="ventas" rows="3" name="ventas">{{ ventas }}</textarea>
-          <br>
-          <label class="form-label" for="ebitda">EBITDA</label>
-          <textarea class="form-control" id="ebitda" rows="3" name="ebitda">{{ ebitda }}</textarea>
-          <br>
-          <label class="form-label" for="multiplos">3. Identifica los múltiplos de tu industria</label>
-          <textarea class="form-control" id="multiplos" rows="5" name="multiplos">{{ multiplos }}</textarea>
+      <form id="form1" action="/valordelaempresa" method="POST" class="noprint">
+
+        <div class="mb-3 wow row mc">
+          <label class="form-label" for="mc1">1. Identifica en dónde se crea el Valor de tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </label>
+          <textarea class="form-control" id="mc1" rows="4" name="mc1">{{ mc1 }}</textarea>
+          <label class="form-label" for="mc2">2. Identifica en dónde se destruye el Valor en tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </label>
+          <textarea class="form-control" id="mc2" rows="4" name="mc2">{{ mc2 }}</textarea>
+          <label class="form-label" for="mc3">3. ¿Cómo se crea (Fórmulas de Negocio)? </label>
+          <textarea class="form-control" id="mc3" rows="4" name="mc3">{{ mc3 }}</textarea>
+          <label class="form-label" for="mc4">4. ¿Quiénes lo crean (personas, equipos)? </label>
+          <textarea class="form-control" id="mc4" rows="4" name="mc4">{{ mc4 }}</textarea>
+          <label class="form-label" for="mc5">5. ¿Cuáles son los principales Impulsores e Inhibidores de Valor? </label>
+          <textarea class="form-control" id="mc5" rows="4" name="mc5">{{ mc5 }}</textarea>
+          <label class="form-label" for="mc6">6. ¿Cuáles son las principales oportunidades para el Crecimiento de Valor y sus implicaciones de explotación? </label>
+          <textarea class="form-control" id="mc6" rows="4" name="mc6">{{ mc6 }}</textarea>
+          <label class="form-label" for="mc7">7. ¿Cuáles son los principales riesgos de la empresa y cuál es su eventual impacto en el valor de la empresa? </label>
+          <textarea class="form-control" id="mc7" rows="4" name="mc7">{{ mc7 }}</textarea>
+          <label class="form-label" for="mc8">8. ¿Cuál es el valor de la empresa hoy? </label>
+          <textarea class="form-control" id="mc8" rows="4" name="mc8">{{ mc8 }}</textarea>
+          <label class="form-label" for="mc9">9. Identifica los múltiplos de tu industria: </label>
+          <textarea class="form-control" id="mc9" rows="4" name="mc9">{{ mc9 }}</textarea>
+          <label class="form-label" for="mc10">10. ¿Cuáles son las metas de valor de la empresa para los siguientes 3 y 5 años? </label>
+          <textarea class="form-control" id="mc10" rows="4" name="mc10">{{ mc10 }}</textarea>
         </div>
+
         <div class="noprint">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          <div class="row text-center">
+            <div class="col-12">
+              <button type="submit" class="botones btn btn-info">Guardar</button>
+              <button type="button" class="botones btn btn-info" onclick="print()">Imprimir</button>
+            </div>
+            <div class="col-12">
+              <button type="button" class="botones btn btn-primary" onclick="window.location.href='/home'">Home</button>
+            </div>
+          </div>
         </div>
         
       </form>
-      <br>
-      <br>
-      <div class="noprint">
-        <h3>{{ mensaje }}</h3>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='/home'">Home</button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary" onclick="print()">Imprimir</button>
-        <br>
-      </div>
+      
     </div>
     
   </div>
