@@ -38,7 +38,7 @@
     <div class="noprint txt2">
       <p>{{ mensaje }}</p>
     </div>
-    <div class="printing">
+    <!--<div class="printing">
       <div class="row">
         <p class="txtprint1">1. Identifica en dónde se crea el Valor de tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </p>
       </div>
@@ -99,32 +99,50 @@
       <div class="row">
         <p class="txtprint2">{{ mc10 }}</p>
       </div>
-    </div>
+    </div>-->
     
     <div class="container-sm">
-      <form id="form1" action="/valordelaempresa" method="POST" class="noprint">
+      <form id="form1" action="/valordelaempresa" method="POST" class="">
 
-        <div class="mb-3 wow row mc">
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc1">1. Identifica en dónde se crea el Valor de tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </label>
-          <textarea class="form-control" id="mc1" rows="4" name="mc1">{{ mc1 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc1" rows="7" name="mc1">{{ mc1 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc2">2. Identifica en dónde se destruye el Valor en tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </label>
-          <textarea class="form-control" id="mc2" rows="4" name="mc2">{{ mc2 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc2" rows="7" name="mc2">{{ mc2 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc3">3. ¿Cómo se crea (Fórmulas de Negocio)? </label>
-          <textarea class="form-control" id="mc3" rows="4" name="mc3">{{ mc3 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc3" rows="7" name="mc3">{{ mc3 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc4">4. ¿Quiénes lo crean (personas, equipos)? </label>
-          <textarea class="form-control" id="mc4" rows="4" name="mc4">{{ mc4 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc4" rows="7" name="mc4">{{ mc4 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc5">5. ¿Cuáles son los principales Impulsores e Inhibidores de Valor? </label>
-          <textarea class="form-control" id="mc5" rows="4" name="mc5">{{ mc5 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc5" rows="7" name="mc5">{{ mc5 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc6">6. ¿Cuáles son las principales oportunidades para el Crecimiento de Valor y sus implicaciones de explotación? </label>
-          <textarea class="form-control" id="mc6" rows="4" name="mc6">{{ mc6 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc6" rows="7" name="mc6">{{ mc6 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc7">7. ¿Cuáles son los principales riesgos de la empresa y cuál es su eventual impacto en el valor de la empresa? </label>
-          <textarea class="form-control" id="mc7" rows="4" name="mc7">{{ mc7 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc7" rows="7" name="mc7">{{ mc7 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc8">8. ¿Cuál es el valor de la empresa hoy? </label>
-          <textarea class="form-control" id="mc8" rows="4" name="mc8">{{ mc8 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc8" rows="7" name="mc8">{{ mc8 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc9">9. Identifica los múltiplos de tu industria: </label>
-          <textarea class="form-control" id="mc9" rows="4" name="mc9">{{ mc9 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc9" rows="7" name="mc9">{{ mc9 }}</textarea>
+        </div>
+        <div class="mb-2 wow row mc">
           <label class="form-label" for="mc10">10. ¿Cuáles son las metas de valor de la empresa para los siguientes 3 y 5 años? </label>
-          <textarea class="form-control" id="mc10" rows="4" name="mc10">{{ mc10 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc10" rows="7" name="mc10">{{ mc10 }}</textarea>
         </div>
 
         <div class="noprint">
