@@ -1621,8 +1621,8 @@ def diferenciacion():
     return render_template('diferenciacion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, lvl=lvl, alumnosdif=alumnosdif)
 
 ###############################################################################################
-@app.route('/managementvsmomentum', methods= ['POST', 'GET'])
-def managementvsmomentum():
+@app.route('/posicionamientocompetitivo', methods= ['POST', 'GET'])
+def posicionamientocompetitivo():
 
     token = session['user']
     user = auth.get_account_info(token)
@@ -1630,15 +1630,25 @@ def managementvsmomentum():
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
-    r1 = ''
+    mc1 = ''
+    mc2 = ''
+    mc3 = ''
     mensaje = ''
     hoy = date.today()
 
-    r1 = db.child(localId).child('MASTER').child("management vs momentum").child('r1').get().val()
-    fecha = db.child(localId).child('MASTER').child("management vs momentum").child('fecha').get().val()
+    mc1 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc1').get().val()
+    mc2 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc2').get().val()
+    mc3 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc3').get().val()
+    fecha = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('fecha').get().val()
     
-    if r1 is None:
-        r1 = ''
+    if mc1 is None:
+        mc1 = ''
+
+    if mc2 is None:
+        mc2 = ''
+
+    if mc3 is None:
+        mc3 = ''
 
     if fecha is None:
         fecha = hoy
@@ -1646,18 +1656,22 @@ def managementvsmomentum():
         fecha
 
     if request.method == 'POST':
-        r1 = request.form.get('r1')
+        mc1 = request.form.get('mc1')
+        mc2 = request.form.get('mc2')
+        mc3 = request.form.get('mc3')
 
         mcont = {
-            "r1": r1,
+            "mc1": mc1,
+            "mc2": mc2,
+            "mc3": mc3,
             "fecha": str(hoy)
         }
         
-        mc = db.child(localId).child('MASTER').child("management vs momentum").set(mcont)
+        mc = db.child(localId).child('MASTER').child("posicionamiento competitivo").set(mcont)
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('managementvsmomentum.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+    return render_template('posicionamientocompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2, mc3=mc3)
 
 ###############################################################################################
 @app.route('/corebusiness', methods= ['POST', 'GET'])
