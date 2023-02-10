@@ -1627,6 +1627,7 @@ def posicionamientocompetitivo():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+    lvl = db.child(localId).child('NIVEL').get().val()
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1635,43 +1636,89 @@ def posicionamientocompetitivo():
     mc3 = ''
     mensaje = ''
     hoy = date.today()
+    fecha = hoy
+    alumnosmap = []
 
-    mc1 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc1').get().val()
-    mc2 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc2').get().val()
-    mc3 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc3').get().val()
-    fecha = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('fecha').get().val()
     
-    if mc1 is None:
-        mc1 = ''
 
-    if mc2 is None:
-        mc2 = ''
+    if lvl == 2:
+        bd = db.get().val()
 
-    if mc3 is None:
-        mc3 = ''
+        for i in bd:
+            n = db.child(i).child('NIVEL').get().val()
+            if n == 5:
+                nom = db.child(i).child('NAME').get().val()
+                alumnosmap.append(nom)
+        if request.method == 'POST':
+            sel = request.form.get('alumno')
+            for i in bd:
+                namae = db.child(i).child('NAME').get().val()
+                if namae == sel:
+                    newId = db.child(i).child('ID').get().val()
 
-    if fecha is None:
-        fecha = hoy
-    else:
-        fecha
+            n = str(db.child(newId).child('NAME').get().val())
+            nombre = n.title()
+            mcont = {}
 
-    if request.method == 'POST':
-        mc1 = request.form.get('mc1')
-        mc2 = request.form.get('mc2')
-        mc3 = request.form.get('mc3')
+            mc1 = db.child(newId).child('MASTER').child("posicionamiento competitivo").child('mc1').get().val()
+            mc2 = db.child(newId).child('MASTER').child("posicionamiento competitivo").child('mc2').get().val()
+            mc3 = db.child(newId).child('MASTER').child("posicionamiento competitivo").child('mc3').get().val()
+            fecha = db.child(newId).child('MASTER').child("posicionamiento competitivo").child('fecha').get().val()
+                
+            if mc1 is None:
+                mc1 = ''
 
-        mcont = {
-            "mc1": mc1,
-            "mc2": mc2,
-            "mc3": mc3,
-            "fecha": str(hoy)
-        }
+            if mc2 is None:
+                mc2 = ''
+
+            if mc3 is None:
+                mc3 = ''
+
+            if fecha is None:
+                fecha = hoy
+            else:
+                fecha
+
+    elif lvl == 5:
+
+        mc1 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc1').get().val()
+        mc2 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc2').get().val()
+        mc3 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc3').get().val()
+        fecha = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('fecha').get().val()
         
-        mc = db.child(localId).child('MASTER').child("posicionamiento competitivo").set(mcont)
-        mc
-        mensaje = 'Los registros han quedado guardados'
+        if mc1 is None:
+            mc1 = ''
 
-    return render_template('posicionamientocompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2, mc3=mc3)
+        if mc2 is None:
+            mc2 = ''
+
+        if mc3 is None:
+            mc3 = ''
+
+        if fecha is None:
+            fecha = hoy
+        else:
+            fecha
+
+        if request.method == 'POST':
+            mc1 = request.form.get('mc1')
+            mc2 = request.form.get('mc2')
+            mc3 = request.form.get('mc3')
+
+            mcont = {
+                "mc1": mc1,
+                "mc2": mc2,
+                "mc3": mc3,
+                "fecha": str(hoy)
+            }
+            
+            mc = db.child(localId).child('MASTER').child("posicionamiento competitivo").set(mcont)
+            mc
+            mensaje = 'Los registros han quedado guardados'
+
+            return render_template('posicionamientocompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2, mc3=mc3, alumnosmap=alumnosmap, lvl=lvl)
+
+    return render_template('posicionamientocompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2, mc3=mc3, alumnosmap=alumnosmap, lvl=lvl)
 
 ###############################################################################################
 @app.route('/corebusiness', methods= ['POST', 'GET'])
@@ -2994,20 +3041,13 @@ def sucesion():
     r1 = ''
     r2 = ''
     r3 = ''
-    r4 = ''
-    r5 = ''
-    r6 = ''
-    r7 = ''
+    
     mensaje = ''
     hoy = date.today()
 
     r1 = db.child(localId).child('MASTER').child("sucesion").child('r1').get().val()
     r2 = db.child(localId).child('MASTER').child("sucesion").child('r2').get().val()
     r3 = db.child(localId).child('MASTER').child("sucesion").child('r3').get().val()
-    r4 = db.child(localId).child('MASTER').child("sucesion").child('r4').get().val()
-    r5 = db.child(localId).child('MASTER').child("sucesion").child('r5').get().val()
-    r6 = db.child(localId).child('MASTER').child("sucesion").child('r6').get().val()
-    r7 = db.child(localId).child('MASTER').child("sucesion").child('r7').get().val()
     fecha = db.child(localId).child('MASTER').child("sucesion").child('fecha').get().val()
     
     if r1 is None:
@@ -3018,18 +3058,6 @@ def sucesion():
 
     if r3 is None:
         r3 = ''
-    
-    if r4 is None:
-        r4 = ''
-
-    if r5 is None:
-        r5 = ''
-    
-    if r6 is None:
-        r6 = ''
-
-    if r7 is None:
-        r7 = ''
 
     if fecha is None:
         fecha = hoy
@@ -3040,19 +3068,11 @@ def sucesion():
         r1 = request.form.get('r1')
         r2 = request.form.get('r2')
         r3 = request.form.get('r3')
-        r4 = request.form.get('r4')
-        r5 = request.form.get('r5')
-        r6 = request.form.get('r6')
-        r7 = request.form.get('r7')
 
         mcont = {
             "r1": r1,
             "r2": r2,
             "r3": r3,
-            "r4": r4,
-            "r5": r5,
-            "r6": r6,
-            "r7": r7,
             "fecha": str(hoy)
         }
         
@@ -3061,7 +3081,7 @@ def sucesion():
         mensaje = 'Los registros han quedado guardados'
 
     return render_template('sucesion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, 
-    r3=r3, r4=r4, r5=r5, r6=r6, r7=r7)
+    r3=r3)
 
 ###############################################################################################
 @app.route('/diagnosticointernacionalizacion', methods= ['POST', 'GET'])

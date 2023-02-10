@@ -31,6 +31,25 @@
     <div class="txtName row">
       <p class="txtName">Nombre: {{ nombre }}</p>
     </div>
+
+    {% if lvl == 2 %}
+      <div class="noprint">
+        <form id="alum" action="/posicionamientocompetitivo" method="POST">
+          <select class="form-select" id="alumno" name="alumno" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            {% for i in alumnosmap %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit">Ver</button>
+        </form>
+      </div>
+      {% elif lvl == 5 %}
+      <div>
+
+      </div>
+    {% endif %}
+
     <div class="row txt2title">
       <p>Posicionamiento Competitivo</p>
     </div>
@@ -61,15 +80,15 @@
       <form id="form1" action="/posicionamientocompetitivo" method="POST">
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc1">1. ¿Cuál es el posicionamiento actual de tu empresa?</label>
-          <textarea class="form-control" style="font-size: 10px" id="mc1" rows="12" name="mc1">{{ mc1 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc1" rows="20" name="mc1">{{ mc1 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc2">2. ¿Cuál es el posicionamiento deseado?</label>
-          <textarea class="form-control" style="font-size: 10px" id="mc2" rows="12" name="mc2">{{ mc2 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc2" rows="20" name="mc2">{{ mc2 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc3">3. ¿Cuáles son las medidas más relevantes para avanzar hacia el posicionamiento deseado?</label>
-          <textarea class="form-control" style="font-size: 10px" id="mc3" rows="12" name="mc3">{{ mc3 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="mc3" rows="20" name="mc3">{{ mc3 }}</textarea>
         </div>
 
 
