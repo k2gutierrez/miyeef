@@ -137,6 +137,8 @@ def home():
             lvl = 4
         elif lvl == 2:
             lvl = 2
+        elif lvl == 6:
+            lvl = 6
         else:
             lvl = 5
 
@@ -169,6 +171,12 @@ def mcymd():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -231,7 +239,7 @@ def mcymd():
 
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('mcymd.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3, r4=r4, r5=r5, r6=r6)
+    return render_template('mcymd.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3, r4=r4, r5=r5, r6=r6)
 
 ##############################################################################################
 @app.route('/decgv', methods= ['POST', 'GET'])
@@ -240,6 +248,12 @@ def decgv():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = ''
@@ -274,7 +288,7 @@ def decgv():
         fecha
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('decgv.html', mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha)
+    return render_template('decgv.html', lvl=lvl,  mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha)
 
 ##############################################################################################
 @app.route('/estadosfinancieros', methods= ['POST', 'GET'])
@@ -285,6 +299,10 @@ def estadosfinancieros():
     
     localId = user['users'][0]['localId']
     lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = ''
@@ -294,7 +312,7 @@ def estadosfinancieros():
     alumnosest = []
     mc = ''
 
-    if lvl == 5:
+    if lvl == 5 or lvl == 6:
 
         fecha = db.child(localId).child('MASTER').child("estados financieros de la empresa").child('fecha').get().val()
         mc = db.child(localId).child('MASTER').child("estados financieros de la empresa").child('respuesta').get().val()
@@ -370,6 +388,12 @@ def dsomv():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = ''
@@ -404,7 +428,7 @@ def dsomv():
         fecha
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('dsomv.html', mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha)
+    return render_template('dsomv.html', lvl=lvl, mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha)
 
 ##############################################################################################
 @app.route('/daecv', methods= ['POST', 'GET'])
@@ -413,6 +437,12 @@ def daecv():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = ''
@@ -447,7 +477,7 @@ def daecv():
         fecha
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('daecv.html', mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha)
+    return render_template('daecv.html', lvl=lvl, mcont=mcont, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha)
 
 
 ##############################################################################################
@@ -457,6 +487,12 @@ def impeinh():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     impulsores = {}
@@ -592,7 +628,7 @@ def impeinh():
         md9 = inh9
         md10 = inh10
 
-    return render_template('impeinh.html', mc=mc, md=md, impulsores=impulsores, inhibidores=inhibidores, mensaje=mensaje, mc1=mc1, mc2=mc2, mc3=mc3, mc4=mc4, mc5=mc5, mc6=mc6, mc7=mc7, mc8=mc8, mc9=mc9, mc10=mc10, md1=md1, md2=md2, md3=md3, md4=md4, md5=md5, md6=md6, md7=md7, md8=md8, md9=md9, md10=md10, nombre=nombre, fecha=fecha)
+    return render_template('impeinh.html', lvl=lvl, mc=mc, md=md, impulsores=impulsores, inhibidores=inhibidores, mensaje=mensaje, mc1=mc1, mc2=mc2, mc3=mc3, mc4=mc4, mc5=mc5, mc6=mc6, mc7=mc7, mc8=mc8, mc9=mc9, mc10=mc10, md1=md1, md2=md2, md3=md3, md4=md4, md5=md5, md6=md6, md7=md7, md8=md8, md9=md9, md10=md10, nombre=nombre, fecha=fecha)
 
 
 ##############################################################################################
@@ -602,6 +638,12 @@ def diques():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont1 = ''
@@ -677,7 +719,7 @@ def diques():
         fecha
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('diques.html', mcont1=mcont1, mcont2=mcont2, mcont3=mcont3, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2, mc3=mc3)
+    return render_template('diques.html', lvl=lvl, mcont1=mcont1, mcont2=mcont2, mcont3=mcont3, mensaje=mensaje, mc=mc, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2, mc3=mc3)
 
 ##############################################################################################
 @app.route('/proyectodetonador', methods= ['POST', 'GET'])
@@ -686,6 +728,11 @@ def proyectodetonador():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
     #d2 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -888,11 +935,11 @@ def proyectodetonador():
                 date9 = date9
                 date10 = date10
 
-                return render_template('proyectodetonador.html', lider=lider, equipo=equipo, proyecto=proyecto, otroDique=otroDique, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, text6=text6, 
+                return render_template('proyectodetonador.html', lvl=lvl, lider=lider, equipo=equipo, proyecto=proyecto, otroDique=otroDique, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, text6=text6, 
                 text7=text7, text8=text8, text9=text9, text10=text10, date1=date1, date2=date2, date3=date3, date4=date4, date5=date5, date6=date6, date7=date7, 
                 date8=date8, date9=date9, date10=date10, nombre=nombre ,mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, fecha=fecha) #sect1=sect1, sect2=sect2, ver=ver, diques=diques
 
-    return render_template('proyectodetonador.html', lider=lider, equipo=equipo, proyecto=proyecto, otroDique=otroDique, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, text6=text6, 
+    return render_template('proyectodetonador.html', lvl=lvl, lider=lider, equipo=equipo, proyecto=proyecto, otroDique=otroDique, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, text6=text6, 
     text7=text7, text8=text8, text9=text9, text10=text10, date1=date1, date2=date2, date3=date3, date4=date4, date5=date5, date6=date6, date7=date7, 
     date8=date8, date9=date9, date10=date10, nombre=nombre, mcont=mcont, mensaje2=mensaje2 ,mensaje=mensaje, fecha=fecha) # sect1=sect1, sect2=sect2, ver=ver, diques=diques
 
@@ -903,6 +950,12 @@ def menuproyectodetonador():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     proy = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -923,6 +976,12 @@ def proyectodetonador2():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
 
@@ -1093,7 +1152,7 @@ def proyectodetonador2():
 
             return redirect(url_for('.ProyectoGuardado'))
 
-    return render_template('proyectodetonador2.html', dique=dique, nombre=nombre, mensaje=mensaje, pd=pd, fecha=fecha, lider=lider, equipo=equipo, proyecto=proyecto,
+    return render_template('proyectodetonador2.html', lvl=lvl, dique=dique, nombre=nombre, mensaje=mensaje, pd=pd, fecha=fecha, lider=lider, equipo=equipo, proyecto=proyecto,
     p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8, p9=p9, p10=p10, fc1=fc1, fc2=fc2, fc3=fc3, fc4=fc4, fc5=fc5, fc6=fc6, fc7=fc7, fc8=fc8, fc9=fc9, fc10=fc10, proy=proy, a=a)
 
 
@@ -1104,6 +1163,11 @@ def ProyectoGuardado():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
 
     r1 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     if r1 is not None:
@@ -1119,6 +1183,12 @@ def valordelaempresa():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1213,10 +1283,10 @@ def valordelaempresa():
         print(mc)
         mensaje = 'Los registros han quedado guardados'
 
-        return render_template('valordelaempresa.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2,
+        return render_template('valordelaempresa.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2,
         mc3=mc3, mc4=mc4, mc5=mc5, mc6=mc6, mc7=mc7, mc8=mc8, mc9=mc9, mc10=mc10)
 
-    return render_template('valordelaempresa.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2,
+    return render_template('valordelaempresa.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, mc1=mc1, mc2=mc2,
     mc3=mc3, mc4=mc4, mc5=mc5, mc6=mc6, mc7=mc7, mc8=mc8, mc9=mc9, mc10=mc10)
 
 ##############################################################################################
@@ -1273,6 +1343,10 @@ def fertilidad():
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
     lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1282,7 +1356,7 @@ def fertilidad():
     fecha = hoy
     alumnosfert = []
 
-    if lvl == 5:
+    if lvl == 5 or lvl == 6:
 
         r1 = db.child(localId).child('MASTER').child("fertilidad").child('r1').get().val()
         fecha = db.child(localId).child('MASTER').child("fertilidad").child('fecha').get().val()
@@ -1350,6 +1424,10 @@ def mapacompetitivo():
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
     lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1361,7 +1439,7 @@ def mapacompetitivo():
     fecha = hoy
     alumnosmap = []
 
-    if lvl == 5:
+    if lvl == 5 or lvl == 6:
 
         r1 = db.child(localId).child('MASTER').child("mapa competitivo").child('r1').get().val()
         r2 = db.child(localId).child('MASTER').child("mapa competitivo").child('r2').get().val()
@@ -1452,6 +1530,10 @@ def segmentaciondemercado():
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
     lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     mcont = {}
     n = ''
     nombre = n.title()
@@ -1462,7 +1544,7 @@ def segmentaciondemercado():
     fecha = hoy
     alumnosseg = []
 
-    if lvl == 5:
+    if lvl == 5 or lvl == 6:
         n = str(db.child(localId).child('NAME').get().val())
         nombre = n.title()
         r1 = ''
@@ -1549,6 +1631,10 @@ def diferenciacion():
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
     lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1558,7 +1644,7 @@ def diferenciacion():
     fecha = hoy
     alumnosdif = []
 
-    if lvl == 5:
+    if lvl == 5 or lvl == 6:
 
 
         r1 = db.child(localId).child('MASTER').child("diferenciacion").child('r1').get().val()
@@ -1628,6 +1714,10 @@ def posicionamientocompetitivo():
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
     lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1679,7 +1769,7 @@ def posicionamientocompetitivo():
             else:
                 fecha
 
-    elif lvl == 5:
+    elif lvl == 5 or lvl == 6:
 
         mc1 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc1').get().val()
         mc2 = db.child(localId).child('MASTER').child("posicionamiento competitivo").child('mc2').get().val()
@@ -1727,6 +1817,12 @@ def corebusiness():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1757,7 +1853,7 @@ def corebusiness():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('corebusiness.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+    return render_template('corebusiness.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, lvl=lvl)
 
 ###############################################################################################
 @app.route('/estrategiadeconcentracion', methods= ['POST', 'GET'])
@@ -1766,6 +1862,12 @@ def estrategiadeconcentracion():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1796,7 +1898,7 @@ def estrategiadeconcentracion():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('estrategiadeconcentracion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
+    return render_template('estrategiadeconcentracion.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
 
 ###############################################################################################
 @app.route('/fortalecimientocompetitivo', methods= ['POST', 'GET'])
@@ -1805,6 +1907,12 @@ def fortalecimientocompetitivo():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1842,7 +1950,7 @@ def fortalecimientocompetitivo():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('fortalecimientocompetitivo.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+    return render_template('fortalecimientocompetitivo.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
 
 ###############################################################################################
 @app.route('/estrategiadeabandono', methods= ['POST', 'GET'])
@@ -1851,6 +1959,12 @@ def estrategiadeabandono():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1888,7 +2002,7 @@ def estrategiadeabandono():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('estrategiadeabandono.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+    return render_template('estrategiadeabandono.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
 
 ###############################################################################################
 @app.route('/nueva-adyacencia', methods= ['POST', 'GET'])
@@ -1897,6 +2011,12 @@ def nuevaadyacencia():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1964,7 +2084,7 @@ def nuevaadyacencia():
         mensaje = 'Los registros han quedado guardados'
 
     return render_template('nueva-adyacencia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3, r4=r4, 
-    r5=r5, r6=r6)
+    r5=r5, r6=r6, lvl=lvl)
 
 ###############################################################################################
 @app.route('/querencia', methods= ['POST', 'GET'])
@@ -2508,7 +2628,12 @@ def liderazgoduenez():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
     lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -2521,7 +2646,7 @@ def liderazgoduenez():
     alumnosfert = []
     fecha = hoy
 
-    if lvl == 5:
+    if lvl == 5 or lvl == 6:
 
         r1 = db.child(localId).child('MASTER').child("liderazgo de duenez").child('r1').get().val()
         r2 = db.child(localId).child('MASTER').child("liderazgo de duenez").child('r2').get().val()
@@ -3035,6 +3160,12 @@ def sucesion():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -3080,7 +3211,7 @@ def sucesion():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('sucesion.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, 
+    return render_template('sucesion.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, 
     r3=r3)
 
 ###############################################################################################
@@ -3276,6 +3407,12 @@ def evaluandoduenezcompartida():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -3398,7 +3535,7 @@ def evaluandoduenezcompartida():
 
         return redirect(url_for('.RegistroGuardado'))
 
-    return render_template('evaluandoduenezcompartida.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1a=r1a, 
+    return render_template('evaluandoduenezcompartida.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1a=r1a, 
     r1b=r1b, r1c=r1c, r2a=r2a, r2b=r2b, r2c=r2c, r3a=r3a, r3b=r3b, r3c=r3c, r4a=r4a, r4b=r4b, r4c=r4c, r5a=r5a, r5b=r5b, r5c=r5c, r11=r11, r12=r12)
 
 
@@ -3409,6 +3546,11 @@ def RegistroGuardado():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"    
 
     r1 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r1').get().val()
     if r1 is not None:
