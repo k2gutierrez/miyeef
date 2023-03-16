@@ -106,43 +106,43 @@
 
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc1">1. Identifica en dónde se crea el Valor de tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc1" rows="7" name="mc1">{{ mc1 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc1">{{ mc1 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc2">2. Identifica en dónde se destruye el Valor en tu empresa (producto, mercados, procesos, geografías, unidades de negocio, cadena de valor): </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc2" rows="7" name="mc2">{{ mc2 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc2">{{ mc2 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc3">3. ¿Cómo se crea (Fórmulas de Negocio)? </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc3" rows="7" name="mc3">{{ mc3 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc3">{{ mc3 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc4">4. ¿Quiénes lo crean (personas, equipos)? </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc4" rows="7" name="mc4">{{ mc4 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc4">{{ mc4 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc5">5. ¿Cuáles son los principales Impulsores e Inhibidores de Valor? </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc5" rows="7" name="mc5">{{ mc5 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc5">{{ mc5 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc6">6. ¿Cuáles son las principales oportunidades para el Crecimiento de Valor y sus implicaciones de explotación? </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc6" rows="7" name="mc6">{{ mc6 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc6">{{ mc6 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc7">7. ¿Cuáles son los principales riesgos de la empresa y cuál es su eventual impacto en el valor de la empresa? </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc7" rows="7" name="mc7">{{ mc7 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc7">{{ mc7 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc8">8. ¿Cuál es el valor de la empresa hoy? </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc8" rows="7" name="mc8">{{ mc8 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc8">{{ mc8 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc9">9. Identifica los múltiplos de tu industria: </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc9" rows="7" name="mc9">{{ mc9 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc9">{{ mc9 }}</textarea>
         </div>
         <div class="mb-2 wow row mc">
           <label class="form-label" for="mc10">10. ¿Cuáles son las metas de valor de la empresa para los siguientes 3 y 5 años? </label>
-          <textarea class="form-control" style="font-size: 10px" id="mc10" rows="7" name="mc10">{{ mc10 }}</textarea>
+          <textarea class="form-control" style="font-size: 10px" id="autosize" rows="3" name="mc10">{{ mc10 }}</textarea>
         </div>
 
         <div class="noprint">
@@ -164,6 +164,9 @@
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js"></script>
+    <script>autosize(document.querySelectorAll('#autosize'));</script>
 
   </body>
 </html>

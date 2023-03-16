@@ -90,20 +90,20 @@
           <div class="col-sm-6 mc mc0">
             <p class="">Mejora Continua</p>
             <label for="text1" class="form-label">MC-1</label>
-            <textarea class="form-control mc1" id="text1" rows="10" name="text1" >{{ r1 }}</textarea>
+            <textarea class="form-control mc1" id="autosize" rows="10" name="text1" >{{ r1 }}</textarea>
             <label for="text2" class="form-label">MC-2</label>
-            <textarea class="form-control mc1" id="text2" rows="10" name="text2" >{{ r2 }}</textarea>
+            <textarea class="form-control mc1" id="autosize" rows="10" name="text2" >{{ r2 }}</textarea>
             <label for="text3" class="form-label">MC-3</label>
-            <textarea class="form-control mc1" id="text3" rows="10" name="text3" >{{ r3 }}</textarea>
+            <textarea class="form-control mc1" id="autosize" rows="10" name="text3" >{{ r3 }}</textarea>
           </div>
           <div class="col-sm-6 mc mc0">
             <p class="">Mejora Discontinua</p>
             <label for="text4" class="form-label">MD-1</label>
-            <textarea class="form-control mc1" id="text4" rows="10" name="text4">{{ r4 }}</textarea>
+            <textarea class="form-control mc1" id="autosize" rows="10" name="text4">{{ r4 }}</textarea>
             <label for="text5" class="form-label">MD-2</label>
-            <textarea class="form-control mc1" id="text5" rows="10" name="text5">{{ r5 }}</textarea>
+            <textarea class="form-control mc1" id="autosize" rows="10" name="text5">{{ r5 }}</textarea>
             <label for="text6" class="form-label">MD-3</label>
-            <textarea class="form-control mc1" id="text6" rows="10" name="text6">{{ r6 }}</textarea>
+            <textarea class="form-control mc1" id="autosize" rows="10" name="text6">{{ r6 }}</textarea>
           </div>
         </div>
         <div class="noprint">
@@ -123,6 +123,9 @@
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js"></script>
+    <script>autosize(document.querySelectorAll('#autosize'));</script>
 
   </body>
 </html>
