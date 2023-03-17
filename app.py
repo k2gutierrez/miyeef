@@ -2133,6 +2133,75 @@ def querencia():
     return render_template('querencia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
 
 ###############################################################################################
+
+@app.route('/querenciapersonal', methods= ['POST', 'GET'])
+def querenciapersonal():
+
+    token = session['user']
+    user = auth.get_account_info(token)
+    localId = user['users'][0]['localId']
+    n = str(db.child(localId).child('NAME').get().val())
+    nombre = n.title()
+    mcont = {}
+    r1 = ''
+    r2 = ''
+    r3 = ''
+    r4 = ''
+    r5 = ''
+    mensaje = ''
+    hoy = date.today()
+
+    r1 = db.child(localId).child('MASTER').child("querenciapersonal").child('r1').get().val()
+    r2 = db.child(localId).child('MASTER').child("querenciapersonal").child('r2').get().val()
+    r3 = db.child(localId).child('MASTER').child("querenciapersonal").child('r3').get().val()
+    r4 = db.child(localId).child('MASTER').child("querenciapersonal").child('r4').get().val()
+    r5 = db.child(localId).child('MASTER').child("querenciapersonal").child('r5').get().val()
+    fecha = db.child(localId).child('MASTER').child("querenciapersonal").child('fecha').get().val()
+    
+    if r1 is None:
+        r1 = ''
+    
+    if r2 is None:
+        r2 = ''
+
+    if r3 is None:
+        r3 = ''
+
+    if r4 is None:
+        r4 = ''
+
+    if r5 is None:
+        r5 = ''
+
+    if fecha is None:
+        fecha = hoy
+    else:
+        fecha
+
+    if request.method == 'POST':
+        r1 = request.form.get('r1')
+        r2 = request.form.get('r2')
+        r3 = request.form.get('r3')
+        r4 = request.form.get('r4')
+        r5 = request.form.get('r5')
+
+        mcont = {
+            "r1": r1,
+            "r2": r2,
+            "r3": r3,
+            "r4": r4,
+            "r5": r5,
+            "fecha": str(hoy)
+        }
+        
+        mc = db.child(localId).child('MASTER').child("querenciapersonal").set(mcont)
+        mc
+        mensaje = 'Los registros han quedado guardados'
+
+    return render_template('querenciapersonal.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3,
+                           r4=r4, r5=r5)
+
+###############################################################################################
 @app.route('/talentograma', methods= ['POST', 'GET'])
 def talentograma():
 

@@ -20,7 +20,7 @@
       }
     </style>
 
-    <title>TA31-SOyMV_Inquietud_Querencia_S22{{ nombre }}</title>
+    <title>TA32-SOyMV_Querencia_Personal_S22{{ nombre }}</title>
   </head>
   <body>
     <div class="container-sm main">
@@ -36,21 +36,41 @@
       <p class="txtName">Nombre: {{ nombre }}</p>
     </div>
     <div class="row txt2title">
-      <p>Querencia</p>
+      <p>Querencia Personal</p>
     </div>
     <div class="noprint txt2">
       <p>{{ mensaje }}</p>
     </div>
     
     <div class="container-sm txt2">
-      <form id="form1" action="/querencia" method="POST">
+      <form id="form1" action="/querenciapersonal" method="POST">
+        <div class="row">
+          <h4>Qué quiero lograr en términos de...</h4>
+        </div>
+        
         <div class="mb-3 wow row mc">
-          <label class="form-label" for="r1">1. En todo este ámbito de la Querencia, ¿cuál es tu gran inquietud?</label>
+          <label class="form-label" for="r1">1. ...Manejo del Tiempo:</label>
           <textarea class="form-control" id="autosize" rows="4" name="r1">{{ r1 }}</textarea>
         </div>
+
         <div class="mb-3 wow row mc">
-          <label class="form-label" for="r2">2. ¿Qué vas a hacer al respecto?</label>
+          <label class="form-label" for="r2">2. ...Patrimonio:</label>
           <textarea class="form-control" id="autosize" rows="4" name="r2">{{ r2 }}</textarea>
+        </div>
+
+        <div class="mb-3 wow row mc">
+          <label class="form-label" for="r3">3. ...Rol Empresarial:</label>
+          <textarea class="form-control" id="autosize" rows="4" name="r3">{{ r3 }}</textarea>
+        </div>
+
+        <div class="mb-3 wow row mc">
+          <label class="form-label" for="r4">4. ...Crecimiento Personal / Familiar:</label>
+          <textarea class="form-control" id="autosize" rows="4" name="r4">{{ r4 }}</textarea>
+        </div>
+
+        <div class="mb-3 wow row mc">
+          <label class="form-label" for="r5">5. ...Trascendencia:</label>
+          <textarea class="form-control" id="autosize" rows="4" name="r5">{{ r5 }}</textarea>
         </div>
 
         <div class="noprint">
