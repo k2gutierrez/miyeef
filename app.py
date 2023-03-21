@@ -139,6 +139,8 @@ def home():
             lvl = 2
         elif lvl == 6:
             lvl = 6
+        elif lvl == 10:
+            lvl = 10
         else:
             lvl = 5
 
@@ -176,6 +178,8 @@ def mcymd():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -253,6 +257,8 @@ def decgv():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -302,6 +308,8 @@ def estadosfinancieros():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -393,6 +401,8 @@ def dsomv():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -442,6 +452,8 @@ def daecv():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -492,6 +504,8 @@ def impeinh():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -643,6 +657,8 @@ def diques():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -733,6 +749,8 @@ def proyectodetonador():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
     #d2 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -955,6 +973,8 @@ def menuproyectodetonador():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     proy = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     n = str(db.child(localId).child('NAME').get().val())
@@ -981,6 +1001,8 @@ def proyectodetonador2():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1168,6 +1190,8 @@ def ProyectoGuardado():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     r1 = db.child(localId).child('MASTER').child("proyecto detonador").get().val()
     if r1 is not None:
@@ -1188,6 +1212,8 @@ def valordelaempresa():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1346,6 +1372,8 @@ def fertilidad():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1427,6 +1455,8 @@ def mapacompetitivo():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1533,6 +1563,8 @@ def segmentaciondemercado():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     mcont = {}
     n = ''
@@ -1634,6 +1666,8 @@ def diferenciacion():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1717,6 +1751,8 @@ def posicionamientocompetitivo():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
     
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1822,6 +1858,8 @@ def corebusiness():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
     
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1867,6 +1905,8 @@ def estrategiadeconcentracion():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1912,6 +1952,8 @@ def fortalecimientocompetitivo():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -1964,6 +2006,8 @@ def estrategiadeabandono():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -2016,6 +2060,8 @@ def nuevaadyacencia():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -2098,6 +2144,8 @@ def querencia():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -2151,6 +2199,8 @@ def querenciapersonal():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -2714,6 +2764,8 @@ def liderazgoduenez():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -3246,6 +3298,8 @@ def sucesion():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -3493,6 +3547,8 @@ def evaluandoduenezcompartida():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
@@ -3632,6 +3688,8 @@ def RegistroGuardado():
 
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"    
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
 
     r1 = db.child(localId).child('MASTER').child("evaluando la dueñez compartida").child('r1').get().val()
     if r1 is not None:
