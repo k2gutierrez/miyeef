@@ -2093,6 +2093,12 @@ def querencia():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -2130,7 +2136,7 @@ def querencia():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('querencia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+    return render_template('querencia.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, lvl=lvl)
 
 ###############################################################################################
 
@@ -2140,6 +2146,12 @@ def querenciapersonal():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -2199,7 +2211,7 @@ def querenciapersonal():
         mensaje = 'Los registros han quedado guardados'
 
     return render_template('querenciapersonal.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3,
-                           r4=r4, r5=r5)
+                           r4=r4, r5=r5, lvl=lvl)
 
 ###############################################################################################
 @app.route('/talentograma', methods= ['POST', 'GET'])
