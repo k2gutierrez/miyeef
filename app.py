@@ -2270,6 +2270,14 @@ def talentograma():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
+    
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -2314,7 +2322,7 @@ def talentograma():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('talentograma.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3)
+    return render_template('talentograma.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, r3=r3, lvl=lvl)
 
 
 ###############################################################################################
@@ -2324,6 +2332,14 @@ def formuladegobierno():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"  
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -2361,7 +2377,7 @@ def formuladegobierno():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('formuladegobierno.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+    return render_template('formuladegobierno.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, lvl=lvl)
 ###############################################################################################
 @app.route('/formuladepropiedad', methods= ['POST', 'GET'])
 def formuladepropiedad():
@@ -4071,107 +4087,49 @@ def dedoa():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"    
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
+    r1 = ''
     mcont = {}
 
     mensaje = ''
     hoy = date.today()
-    sele = 'checked'
-    nosele = 'unchecked'
-
-    r1a = nosele
-    r1b = nosele
-    r1c = nosele
-     
-    r2a = nosele
-    r2b = nosele
-    r2c = nosele
-     
-    r3a = nosele
-    r3b = nosele
-    r3c = nosele
-     
-    r4a = nosele
-    r4b = nosele
-    r4c = nosele
-    
-    r5a = nosele
-    r5b = nosele
-    r5c = nosele
 
     r1 = db.child(localId).child('MASTER').child("dedoa").child('r1').get().val()
-    r2 = db.child(localId).child('MASTER').child("dedoa").child('r2').get().val()
-    r3 = db.child(localId).child('MASTER').child("dedoa").child('r3').get().val()
-    r4 = db.child(localId).child('MASTER').child("dedoa").child('r4').get().val()
-    r5 = db.child(localId).child('MASTER').child("dedoa").child('r5').get().val()
+    
     fecha = db.child(localId).child('MASTER').child("dedoa").child('fecha').get().val()
+
+    if r1 is None: 
+        r1 = '' 
+    else: r1
 
     if fecha is None: fecha = hoy 
     else: fecha
 
-    if r1 == 'fuerte': r1a = sele
-    elif r1 == 'medio': r1b = sele
-    elif r1 == 'débil': r1c = sele
-
-    if r2 == 'fuerte': r2a = sele
-    elif r2 == 'medio': r2b = sele
-    elif r2 == 'débil': r2c = sele
-
-    if r3 == 'fuerte': r3a = sele
-    elif r3 == 'medio': r3b = sele
-    elif r3 == 'débil': r3c = sele
-
-    if r4 == 'fuerte': r4a = sele
-    elif r4 == 'medio': r4b = sele
-    elif r4 == 'débil': r4c = sele
-
-    if r5 == 'fuerte': r5a = sele
-    elif r5 == 'medio': r5b = sele
-    elif r5 == 'débil': r5c = sele
-
     if request.method == 'POST':
         r1 = request.form.get('r1')
-        r2 = request.form.get('r2')
-        r3 = request.form.get('r3')
-        r4 = request.form.get('r4')
-        r5 = request.form.get('r5')
 
         mcont = {
             "r1": r1,
-            "r2": r2,
-            "r3": r3,
-            "r4": r4,
-            "r5": r5,
             "fecha": str(hoy)
         }
         
         mc = db.child(localId).child('MASTER').child("dedoa").set(mcont)
         mc
-        if r1 == 'fuerte': r1a = sele
-        elif r1 == 'medio': r1b = sele
-        elif r1 == 'débil': r1c = sele
 
-        if r2 == 'fuerte': r2a = sele
-        elif r2 == 'medio': r2b = sele
-        elif r2 == 'débil': r2c = sele
 
-        if r3 == 'fuerte': r3a = sele
-        elif r3 == 'medio': r3b = sele
-        elif r3 == 'débil': r3c = sele
-
-        if r4 == 'fuerte': r4a = sele
-        elif r4 == 'medio': r4b = sele
-        elif r4 == 'débil': r4c = sele
-
-        if r5 == 'fuerte': r5a = sele
-        elif r5 == 'medio': r5b = sele
-        elif r5 == 'débil': r5c = sele
 
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('dedoa.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1a=r1a, 
-    r1b=r1b, r1c=r1c, r2a=r2a, r2b=r2b, r2c=r2c, r3a=r3a, r3b=r3b, r3c=r3c, r4a=r4a, r4b=r4b, r4c=r4c, r5a=r5a, r5b=r5b, r5c=r5c)
+    return render_template('dedoa.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
 
 ###############################################################################################
 
