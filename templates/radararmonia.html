@@ -43,7 +43,7 @@
     <div class="noprint txt2">
       <p>{{ mensaje }}</p>
     </div>
-    <div class="row text-center chart printing">
+    <div class="row text-center chart printing align-items-center">
       <canvas id="myChart" width="600" height="600"></canvas>
     </div>
     <div class="container-sm txt2 noprint">
@@ -51,9 +51,9 @@
 
         <p>Evalua del 0 al 10 cada apartado del Radar de Armonía:</p>
 
-        <div class="mb-3 wow row">
+        <div class="mb-3 wow row text-center align-items-center">
           
-          <div class="col-md-3 col-12">
+          <div class="col-sm-3 col-12">
             <div class="row">
               <label class="form-label" for="r1">Querencia Familiar-Empresarial</label>
               <input type="number" min="0" max="10" class="form-control" id="r1" name="r1" value="{{ r1 }}">
@@ -87,7 +87,7 @@
               <input type="number" min="0" max="10" class="form-control" id="r8" name="r8" value="{{ r8 }}">
             </div>
           </div>
-          <div class="col-md-9 col-12 chart">
+          <div class="col-sm-9 col-12 chart">
             <canvas id="myChart" width="600" height="600"></canvas>
           </div>
         </div>
