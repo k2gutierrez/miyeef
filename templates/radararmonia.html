@@ -37,18 +37,18 @@
     <div class="txtName row">
       <p class="txtName">Nombre: {{ nombre }}</p>
     </div>
-    <div class="row txt2title">
+    <div class="row txt2title text-center">
       <p>Radar de Armonía Familiar</p>
     </div>
     <div class="noprint txt2">
       <p>{{ mensaje }}</p>
     </div>
-    <div class="container-fluid txt2 noprint">
+    <div class="container-sm txt2">
       <form id="form1" action="/radararmonia" method="POST">
 
-        <p>Evalua del 0 al 10 cada apartado del Radar de Armonía:</p>
+        <p class="noprint">Evalua del 0 al 10 cada apartado del Radar de Armonía:</p>
 
-        <div class="wow row text-center align-items-center">
+        <div class="wow row text-center align-items-center mx-5 px-5">
           
           <div class="col-12 noprint">
             <div class="row">
@@ -87,7 +87,7 @@
           <div class="col-12">
             <div class="row">
               <div class="chart">
-                <canvas id="myChart" width="600" height="600"></canvas>
+                <canvas id="myChart" width="500" height="500"></canvas>
               </div>
             </div>
           </div>
