@@ -128,11 +128,6 @@
     margin: 2px;
 }
 
-.rowR{
-    padding: 2px;
-    margin: 2px;
-}
-
 .box1{
     background: rgb(0,0,36);
     background: radial-gradient(circle, rgba(0,0,36,1) 0%, rgba(191,203,205,1) 0%, rgba(154,154,217,0.8673670151654411) 100%);
@@ -249,7 +244,7 @@
     text-align: right;
 }
 
-.prog {
+.pwg {
     text-align: right;
 }
 
