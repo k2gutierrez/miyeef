@@ -3250,7 +3250,7 @@ def radararmonia():
         ['Herencia', r8]
         ]
 
-    labels = [row[0,1] for row in data]
+    labels = [row for row in data]
     values = [row[1] for row in data]
 
     if request.method == 'POST':
@@ -3295,7 +3295,7 @@ def radararmonia():
             ['Sucesión', r7],
             ['Herencia', r8]
             ]
-        labels = [row[0,1] for row in data]
+        labels = [row for row in data]
         values = [row[1] for row in data]
         mensaje = 'Los registros han quedado guardados'
 
