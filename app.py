@@ -2385,6 +2385,14 @@ def formuladepropiedad():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -2422,7 +2430,7 @@ def formuladepropiedad():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('formuladepropiedad.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+    return render_template('formuladepropiedad.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2, lvl=lvl)
 ###############################################################################################
 @app.route('/alianzasestrategicas', methods= ['POST', 'GET'])
 def alianzasestrategicas():
