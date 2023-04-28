@@ -1213,7 +1213,7 @@ def valordelaempresa():
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
     elif lvl == 10:
-        localId = "rnvpComf2TO4zhY84ATIXtwLRm52"
+        localId = 'rnvpComf2TO4zhY84ATIXtwLRm52'#<-José Antonio
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
