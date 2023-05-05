@@ -1322,6 +1322,15 @@ def fusionesyadquisiciones():
     token = session['user']
     user = auth.get_account_info(token)
     localId = user['users'][0]['localId']
+
+    lvl = db.child(localId).child('NIVEL').get().val()
+
+    if lvl == 6:
+        localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
+    elif lvl == 10:
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52" # Mónica Tarriba "3Pode0iRqMOfLerzjdQ68xYps4y1"    #Margarita: RTgMkKQy2cOGeGEMGzrRzvidMi73
+        # José Antonio: rnvpComf2TO4zhY84ATIXtwLRm52
+
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
     mcont = {}
@@ -1359,7 +1368,7 @@ def fusionesyadquisiciones():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('fusionesyadquisiciones.html', mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
+    return render_template('fusionesyadquisiciones.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2)
 
 ##############################################################################################
 @app.route('/fertilidad', methods= ['POST', 'GET'])
@@ -2444,7 +2453,8 @@ def alianzasestrategicas():
     if lvl == 6:
         localId = "Y37tnkTwJigrawdARUsuahC2TdR2"
     elif lvl == 10:
-        localId = "rnvpComf2TO4zhY84ATIXtwLRm52" # Mónica Tarriba "3Pode0iRqMOfLerzjdQ68xYps4y1"
+        localId = "rnvpComf2TO4zhY84ATIXtwLRm52" # Mónica Tarriba "3Pode0iRqMOfLerzjdQ68xYps4y1"    #Margarita: RTgMkKQy2cOGeGEMGzrRzvidMi73
+        # José Antonio: rnvpComf2TO4zhY84ATIXtwLRm52
 
     n = str(db.child(localId).child('NAME').get().val())
     nombre = n.title()
