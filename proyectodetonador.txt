@@ -351,3 +351,10 @@ def proyectodetonador2():
     p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8, p9=p9, p10=p10, fc1=fc1, fc2=fc2, fc3=fc3, fc4=fc4, fc5=fc5, fc6=fc6, fc7=fc7, fc8=fc8, fc9=fc9, fc10=fc10, proy=proy, a=a)
 
 ##############################################################################################
+
+
+# abraham tobías: 1gmjV321DkeGtqZJtdpPKDeQoru1
+# Thania: gS2vkxhitHQkT8XMemlVh3bxuvz2
+# Verónica: 2ZO8DOvmnrbNEfTePD61zfNRr6z1
+# José: rnvpComf2TO4zhY84ATIXtwLRm52
+# Fernando: SOd8G4OsuPVBM0r7px41paAtaI03
