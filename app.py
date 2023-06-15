@@ -31,7 +31,7 @@ storage = firebase.storage()
 #Database
 db=firebase.database()
 
-consejo5UID = "YGtaqjRtApgaLlO6BKmzS0GolTr1" #Rodolfo
+consejo5UID = "AA7D8JrK6JYiQ5tj0mLxr5cF9KJ2" #Jimena
 # abraham tobías: 1gmjV321DkeGtqZJtdpPKDeQoru1
 # Thania: gS2vkxhitHQkT8XMemlVh3bxuvz2
 # Verónica: 2ZO8DOvmnrbNEfTePD61zfNRr6z1
@@ -40,6 +40,7 @@ consejo5UID = "YGtaqjRtApgaLlO6BKmzS0GolTr1" #Rodolfo
 # Diana Petrus: TVpST5tRE4cmVK8wOWxIFTgJlAH3
 # Rodolfo Madero: YGtaqjRtApgaLlO6BKmzS0GolTr1
 # Enrique: l7mlcm4ukPY9fohs3sqzC9N7kmt1
+# Jimena: AA7D8JrK6JYiQ5tj0mLxr5cF9KJ2
 
 @app.route('/registro', methods = ['POST', 'GET'])
 def registro():
