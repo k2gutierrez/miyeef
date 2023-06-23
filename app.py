@@ -31,7 +31,7 @@ storage = firebase.storage()
 #Database
 db=firebase.database()
 
-consejo5UID = "rnvpComf2TO4zhY84ATIXtwLRm52" # José
+consejo5UID = "SOd8G4OsuPVBM0r7px41paAtaI03" 
 
 @app.route('/registro', methods = ['POST', 'GET'])
 def registro():
@@ -3023,24 +3023,15 @@ def nuestrosistemagobierno():
     nombre = n.title()
     mcont = {}
     r1 = ''
-    r2 = ''
-    r3 = ''
+
     mensaje = ''
     hoy = date.today()
 
     r1 = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").child('r1').get().val()
-    r2 = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").child('r2').get().val()
-    r3 = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").child('r3').get().val()
     fecha = db.child(localId).child('MASTER').child("nuestro sistema de gobierno").child('fecha').get().val()
     
     if r1 is None:
         r1 = ''
-    
-    if r2 is None:
-        r2 = ''
-
-    if r3 is None:
-        r3 = ''
 
     if fecha is None:
         fecha = hoy
@@ -3049,13 +3040,9 @@ def nuestrosistemagobierno():
 
     if request.method == 'POST':
         r1 = request.form.get('r1')
-        r2 = request.form.get('r2')
-        r3 = request.form.get('r3')
 
         mcont = {
             "r1": r1,
-            "r2": r2,
-            "r3": r3,
             "fecha": str(hoy)
         }
         
@@ -3063,8 +3050,7 @@ def nuestrosistemagobierno():
         mc
         mensaje = 'Los registros han quedado guardados'
 
-    return render_template('nuestrosistemagobierno.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1, r2=r2,
-    r3=r3)
+    return render_template('nuestrosistemagobierno.html', lvl=lvl, mcont=mcont, mensaje=mensaje, nombre=nombre, fecha=fecha, r1=r1)
 
 ###############################################################################################
 @app.route('/entendimientoprofundonegocio', methods= ['POST', 'GET'])
